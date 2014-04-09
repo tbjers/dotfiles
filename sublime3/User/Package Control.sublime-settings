@@ -1,0 +1,11 @@
+{
+	"installed_packages":
+	[
+		"Grunt",
+		"LESS",
+		"Pretty YAML",
+		"Puppet",
+		"SFTP",
+		"Vagrant"
+	]
+}
