@@ -14,3 +14,4 @@ brew update
 
 # Install homebrew packages
 $ZSH/homebrew/install.sh 2>&1
+$ZSH/oh-my-zsh/install.sh 2>&1
