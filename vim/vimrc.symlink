@@ -1,0 +1,57 @@
+" Turn on syntax highlighting.
+syntax enable
+
+" Set up proper text encoding.
+set encoding=utf8
+set termencoding=utf8
+
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+
+set t_Co=16
+let g:solarized_termcolors=16
+
+colorscheme solarized
+
+" Set basic defaults
+set mouse=a
+set ts=2
+set nowrap
+set autoindent
+set smartindent
+set shiftwidth=2
+set incsearch
+set ruler
+set showmatch
+set shiftround
+set smartcase
+
+" Set up function keys
+set pastetoggle=<F2>
+map <silent> <F3> :set number!<CR>
+map <silent> <F4> :set wrap!<CR>
+map <silent> <F6> :set list!<CR>
+
+" Map the scroll wheel
+map <S-MouseDown> <C-U>
+map <S-MouseUp> <C-D>
+
+" Create PHP specific settings
+autocmd BufNewFile,Bufread *.php,*.php3,*.php4,*.inc,*.lib,*.ctp compiler php
+autocmd BufNewFile,Bufread *.php,*.php3,*.php4,*.inc,*.lib,*.ctp set filetype=php
+map <silent> <F5> :make %<CR>:cw<CR>
+
+" Create Ruby/Python specific settings
+autocmd Filetype ruby set tabstop=2|set shiftwidth=2|set expandtab|set sts=2
+autocmd Filetype jade set tabstop=2|set shiftwidth=2|set expandtab|set sts=2
+autocmd BufNewFile,Bufread *.md set tabstop=2|set shiftwidth=2|set expandtab|set sts=2
+map <silent> <F8> :set tabstop=2<CR>:set shiftwidth=2<CR>:set expandtab<CR>:set sts=2<CR>
+
+" Other special settings
+autocmd Filetype make set tabstop=4|set shiftwidth=4|set noexpandtab
+
+" Use the dictionary completion
+set complete-=k complete+=k
