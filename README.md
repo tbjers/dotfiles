@@ -1,17 +1,13 @@
-# holman does dotfiles
+# tbjers ~~holman~~ does dotfiles
 
 ## dotfiles
 
-Your dotfiles are how you personalize your system. These are mine.
+Your dotfiles are how you personalize your system. ~~These are mine.~~ These were holman's, now they're mine.
 
-I was a little tired of having long alias files and everything strewn about
-(which is extremely common on other dotfiles projects, too). That led to this
-project being much more topic-centric. I realized I could split a lot of things
-up into the main areas I used (Ruby, git, system libraries, and so on), so I
-structured the project accordingly.
+I was a little tired of having long alias files and everything strewn about (which is extremely common on other dotfiles projects, too). That led to this project being much more topic-centric. I realized I could split a lot of things
+up into the main areas I used (Ruby, git, system libraries, and so on), so I structured the project accordingly.
 
-If you're interested in the philosophy behind why projects like these are
-awesome, you might want to [read my post on the
+If you're interested in the philosophy behind why projects like these are awesome, you might want to [read his post on the
 subject](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
 
 ## install
@@ -19,7 +15,7 @@ subject](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
 Run this:
 
 ```sh
-git clone https://github.com/holman/dotfiles.git ~/.dotfiles
+git clone https://github.com/tbjers/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 script/bootstrap
 ```
@@ -47,7 +43,7 @@ symlinked without extension into `$HOME` when you run `script/bootstrap`.
 
 A lot of stuff. Seriously, a lot of stuff. Check them out in the file browser
 above and see what components may mesh up with you.
-[Fork it](https://github.com/holman/dotfiles/fork), remove what you don't
+[Fork it](https://github.com/tbjers/dotfiles/fork), remove what you don't
 use, and build on what you do use.
 
 ## components
