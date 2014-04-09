@@ -46,7 +46,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-export EDITOR=subl
+export EDITOR=vim
 
 PATH=$PATH:$HOME/.dotfiles/bin:$HOME/bin:$PATH
 PATH=/usr/local/bin:$PATH
