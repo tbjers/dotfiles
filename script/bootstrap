@@ -137,6 +137,3 @@ fi
 
 echo ''
 echo '  All installed!'
-
-/usr/bin/env zsh
-source ~/.zshrc
