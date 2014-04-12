@@ -54,3 +54,5 @@ let g:ctrlp_switch_buffer = 0
 nnoremap <silent> <C-^> :bn<CR>
 nnoremap <silent> <C-w> :bw<CR>
 nnoremap <silent> <C-s> :update<CR>
+
+autocmd BufNewFile,BufRead {Gemfile,Vagrantfile,Berksfile} set filetype=ruby
