@@ -24,7 +24,7 @@ This will symlink the appropriate files in `.dotfiles` to your home directory.
 Everything is configured and tweaked within `~/.dotfiles`.
 
 The main file you'll want to change right off the bat is `zsh/zshrc.symlink`,
-which sets up a few paths that'll be different on your particular machine.
+which sets up a few paths that'll be different on your particular machine. It also includes my preferred [oh-my-zsh](https://github.com/tbjers/oh-my-zsh) modules that are managed by [antigen](https://github.com/zsh-users/antigen).
 
 `dot` is a simple script that installs some dependencies, sets sane OS X
 defaults, and so on. Tweak this script, and occasionally run `dot` from
