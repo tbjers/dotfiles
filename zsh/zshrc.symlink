@@ -35,6 +35,6 @@ antigen bundles <<EOBUNDLES
   tbjers/zsh-plugins plugins/cl
 EOBUNDLES
 
-antigen theme agnoster
+antigen theme tbjers/zsh-plugins themes/agnoster
 
 antigen apply
