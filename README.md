@@ -41,6 +41,11 @@ symlinked without extension into `$HOME` when you run `script/bootstrap`.
 
 ## what's inside
 
+ - Antigen
+ - Oh-My-Zsh
+ - Tmux
+ - iTerm2 settings
+
 A lot of stuff. Seriously, a lot of stuff. Check them out in the file browser
 above and see what components may mesh up with you.
 [Fork it](https://github.com/tbjers/dotfiles/fork), remove what you don't
@@ -71,7 +76,7 @@ said, I do use this as *my* dotfiles, so there's a good chance I may break
 something if I forget to make a check for a dependency.
 
 If you're brand-new to the project and run into any blockers, please
-[open an issue](https://github.com/holman/dotfiles/issues) on this repository
+[open an issue](https://github.com/tbjers/dotfiles/issues) on this repository
 and I'd love to get it fixed for you!
 
 ## thanks
