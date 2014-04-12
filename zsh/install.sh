@@ -5,7 +5,7 @@ then
 fi
 
 echo "\033[0;34mCloning Oh My Zsh...\033[0m"
-hash git >/dev/null && /usr/bin/env git clone https://github.com/tbjers/oh-my-zsh.git ~/.dotfiles/oh-my-zsh || {
+hash git >/dev/null && /usr/bin/env git clone git@github.com:robbyrussell/oh-my-zsh.git ~/.dotfiles/oh-my-zsh || {
   echo "git not installed"
   exit 0
 }
