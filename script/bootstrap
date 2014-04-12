@@ -53,6 +53,14 @@ link_files () {
   success "linked $1 to $2"
 }
 
+init_submodules () {
+  info 'initializing submodules'
+  cd $DOTFILES_ROOT
+  git submodule init
+  git submodule update
+  success 'submodules'
+}
+
 install_dotfiles () {
   info 'installing dotfiles'
 
@@ -120,9 +128,7 @@ install_dotfiles () {
   done
 }
 
-git submodule init
-git submodule update
-
+init_submodules
 setup_gitconfig
 install_dotfiles
 

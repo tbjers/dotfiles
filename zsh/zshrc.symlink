@@ -1,13 +1,40 @@
-ZSH=$HOME/.dotfiles/oh-my-zsh
-ZSH_THEME="agnoster"
-DISABLE_AUTO_UPDATE="true"
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(git cake composer bower gem git-extras github jake-node node npm nvm rake ruby rvm vagrant cl common-aliases)
-source $ZSH/oh-my-zsh.sh
-alias subl='open -a "Sublime Text"'
-DEFAULT_USER=torgny
+source $HOME/.dotfiles/zsh/antigen.zsh
+
 export EDITOR=vim
+DEFAULT_USER=torgny
+
 PATH=/usr/local/bin:$PATH
 PATH=$PATH:$HOME/.dotfiles/bin:$HOME/bin:$PATH
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
 eval "$(rbenv init -)"
+alias subl='open -a "Sublime Text"'
+
+DISABLE_AUTO_UPDATE="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+ANTIGEN_DEFAULT_REPO_URL=https://github.com/tbjers/oh-my-zsh.git
+
+antigen use oh-my-zsh
+
+antigen bundles <<EOBUNDLES
+  git
+  composer
+  bower
+  gem
+  git-extras
+  github
+  jake-node
+  node
+  npm
+  nvm
+  rbenv
+  rake
+  ruby
+  vagrant
+  common-aliases
+  tbjers/zsh-plugins plugins/cl
+EOBUNDLES
+
+antigen theme agnoster
+
+antigen apply
