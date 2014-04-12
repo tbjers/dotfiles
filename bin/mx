@@ -1,11 +1,12 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
 
 # mx
-# version 0.3
+# version 0.4
 
 # Contributors:
 #   Wynn Netherland - http://github.com/pengwynn
 #   Adam Jahnke - http://github.com/adamyonk
+#   Torgny Bjers - http://github.com/tbjers
 
 # Usage:
 #   mx [session]
@@ -41,10 +42,13 @@
 set -e
 
 if [ -z "$1" ]; then
-  SESSION="${PWD##*/}"
+  SESSIONDIR="${PWD##*/}"
 else
-  SESSION="$1"
+  SESSIONDIR="$1"
 fi
+
+# Clean up session name
+SESSION=`echo "$SESSIONDIR" | tr :. _`
 
 _safe_window() {
   if [ -x "$2" ]; then
@@ -54,14 +58,21 @@ _safe_window() {
 }
 
 if ! (tmux has-session -t "$SESSION" >/dev/null 2>&1); then
-  if [ -d "$PROJECTS"/"$SESSION" ]; then
-    cd "$PROJECTS"/"$SESSION"
+  LIST=`find $PROJECTS/ -mindepth 1 -maxdepth 3 -type d -name $SESSIONDIR`
+  if [ -n "$LIST" ]; then
+    if [[ `echo "$LIST" | wc -l | tr -d ' '` == "1" ]]; then
+      cd $LIST
+    else
+      echo "Several projects with the same name detected."
+      echo "$LIST"
+      exit 1
+    fi
   fi
 
   if [ -x "$PWD"/.tmux ]; then
     "$PWD"/.tmux "$SESSION"
   else
-    if [ "$EDITOR" == "subl" ]; then
+    if [[ "$EDITOR" == "subl" ]]; then
       tmux new-session -s "$SESSION" -n shell -d
       tmux send-keys "$EDITOR ." C-m C-l #':CtrlP' C-m
     else

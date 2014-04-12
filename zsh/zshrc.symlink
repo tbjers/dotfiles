@@ -3,6 +3,7 @@ source $HOME/.dotfiles/zsh/antigen.zsh
 export EDITOR=vim
 DEFAULT_USER=torgny
 
+export PROJECTS=~/git
 PATH=/usr/local/bin:$PATH
 PATH=$PATH:$HOME/.dotfiles/bin:$HOME/bin:$PATH
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
