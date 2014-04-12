@@ -15,7 +15,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_enable_fugitive = 1
 let g:airline#extensions#tabline#enabled = 1
 
-set exrc  " enable per-directory .vimrc files
+set exrc " enable per-directory .vimrc files
 set secure " disable unsafe commands in local .vimrc files
 set number
 set wrap!
@@ -53,3 +53,4 @@ let g:ctrlp_switch_buffer = 0
 
 nnoremap <silent> <C-^> :bn<CR>
 nnoremap <silent> <C-w> :bw<CR>
+nnoremap <silent> <C-s> :update<CR>

@@ -8,6 +8,8 @@ PATH=$PATH:$HOME/.dotfiles/bin:$HOME/bin:$PATH
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
 eval "$(rbenv init -)"
 alias subl='open -a "Sublime Text"'
+alias vim="stty stop '' -ixoff ; vim"
+ttyctl -f
 
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
