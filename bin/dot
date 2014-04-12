@@ -9,9 +9,6 @@ export DOTFILES=$HOME/.dotfiles
 # Set OS X defaults
 $DOTFILES/osx/set-defaults.sh
 
-# Install oh-my-zsh
-$DOTFILES/zsh/install.sh 2>&1
-
 # Upgrade homebrew
 brew update
 
