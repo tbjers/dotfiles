@@ -66,7 +66,7 @@ if ! (tmux has-session -t "$SESSION" >/dev/null 2>&1); then
       tmux send-keys "$EDITOR ." C-m C-l #':CtrlP' C-m
     else
       tmux new-session -s "$SESSION" -n editor -d
-      tmux send-keys "$EDITOR ." C-m ':CtrlP' C-m
+      tmux send-keys "$EDITOR " '-c:CtrlP' C-m
       tmux new-window -n shell -t "$SESSION"
     fi
     _safe_window console script/console
