@@ -56,7 +56,9 @@ If you're brand-new to the project and run into any blockers, please [open an is
 
 ## Thanks
 
-Thank you to Zach Holman for creating the original dotfiles repository that I have based mine on. And thank you to Scott Deeter for showing me the wonders of dotfiles. I have always kept some form of repository with my configuration settings but never thought to automate it for my various systems.
+Thank you to [Zach Holman](https://github.com/holman) for creating the original dotfiles repository that I have based mine on as well as [Scott Deeter](https://github.com/deetergp) for showing me the wonders of dotfiles.
+
+I have always kept some form of repository with my configurations and dotfiles but never thought to automate it for my various systems to the degree that some of these guys have done.
 
 ## Original Thanks
 
