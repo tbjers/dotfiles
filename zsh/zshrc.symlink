@@ -36,6 +36,7 @@ antigen bundles <<EOBUNDLES
   vagrant
   common-aliases
   tbjers/zsh-plugins plugins/cl
+  tbjers/zsh-plugins plugins/gibo
 EOBUNDLES
 
 antigen theme tbjers/zsh-plugins themes/agnoster
