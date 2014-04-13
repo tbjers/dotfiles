@@ -1,35 +1,27 @@
-#
-# General settings
-#
-# See:
-#   http://www.drbunsen.org/the-text-triumvirate/ 
-#
-
 # Run helper utilites.
 set-option -g default-command "reattach-to-user-namespace -l zsh"
+
+#set -g status-interval 1
 
 # color scheme (styled as vim-powerline)
 set -g status-left-length 52
 set -g status-right-length 451
-set -g status-fg white
-set -g status-bg colour234
+set -g status-fg brightgreen
+set -g status-bg black
 set -g pane-border-fg colour245
-set -g pane-active-border-fg colour39
+set -g pane-active-border-fg blue
 set -g message-fg colour16
 set -g message-bg colour221
 set -g message-attr bold
-set -g status-left '#[fg=colour235,bg=colour252,bold] ❐ #S #[fg=colour252,bg=colour238,nobold]#[fg=colour245,bg=colour238,bold] #(whoami) #[fg=colour238,bg=colour234,nobold]'
-set -g window-status-format "#[fg=colour235,bg=colour252,bold] #I #W "
-set -g window-status-current-format "#[fg=colour234,bg=colour39]#[fg=colour234,bg=colour39,noreverse,bold] #I: #W #[fg=colour39,bg=colour234,nobold]"
+set -g status-left '#[fg=black,bg=white,bold] ❐ #S #[fg=white,bg=brightgreen,nobold]#[fg=white,bg=brightgreen,nobold] #(whoami) #[fg=brightgreen,bg=black,nobold]'
+set -g window-status-format "#[fg=black,bg=blue,nobold] #I #W "
+set -g window-status-current-format "#[fg=black,bg=yellow]#[fg=black,bg=yellow,noreverse,nobold] #I: #W #[fg=yellow,bg=black,nobold]"
+set -g status-right '#H #(date +%D) #(date +%T)'
+set-option -g display-panes-colour brightred
 
 # Reset window numbering to start at 1
 set -g base-index 1
 setw -g pane-base-index 1
-
-#
-# Colors
-#
-set -g default-terminal "screen-256color"
 
 #
 # Key bindings
@@ -53,7 +45,6 @@ bind r source-file ~/.tmux.conf \; display-message "Config reloaded..."
 # quick pane cycling
 unbind ^A
 bind ^A select-pane -t :.+
-
 
 #
 # Window options
@@ -94,3 +85,4 @@ bind -t vi-copy v begin-selection
 bind -t vi-copy y copy-selection
 bind -t vi-copy Escape cancel
 bind y run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
+
