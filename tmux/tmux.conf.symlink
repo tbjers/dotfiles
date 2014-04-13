@@ -2,6 +2,7 @@
 set-option -g default-command "reattach-to-user-namespace -l zsh"
 
 #set -g status-interval 1
+set -g default-terminal "screen-256color"
 
 # color scheme (styled as vim-powerline)
 set -g status-left-length 52
