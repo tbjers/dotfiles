@@ -3,3 +3,4 @@ sublime2/User/Package Control.last-run
 git/gitconfig.symlink
 oh-my-zsh
 vim/vim.symlink/.netrwhist
+antigen.zsh
