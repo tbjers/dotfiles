@@ -11,10 +11,9 @@ If you're interested in the philosophy behind why projects like these are awesom
 Run this:
 
 ```sh
-git clone https://github.com/tbjers/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-script/install
-script/bootstrap
+$ git clone https://github.com/tbjers/dotfiles.git ~/.dotfiles
+$ cd ~/.dotfiles
+$ script/install && script/bootstrap
 ```
 
 This will install the appropriate prerequisites such as homebrew, Antigen, and various other needed packages. Then bootstrap will symlink the appropriate files in `.dotfiles` to your home directory. Everything is configured and tweaked within `~/.dotfiles`.
