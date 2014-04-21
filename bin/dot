@@ -11,3 +11,7 @@ $DOTFILES/osx/set-defaults.sh
 
 # Upgrade homebrew
 brew update
+
+# Upgrade antigen packages
+antigen-update
+
