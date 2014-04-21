@@ -15,6 +15,6 @@ else
 fi
 
 # Install homebrew packages
-brew install grc coreutils spark mc gibo
+brew install grc coreutils spark mc gibo tmux reattach-to-user-namespace
 
 exit 0
