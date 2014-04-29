@@ -17,6 +17,8 @@ let g:airline_powerline_fonts = 1
 let g:airline_enable_fugitive = 1
 let g:airline#extensions#tabline#enabled = 1
 
+let g:vim_markdown_folding_disabled=1
+
 set exrc " enable per-directory .vimrc files
 set secure " disable unsafe commands in local .vimrc files
 set number
@@ -54,7 +56,7 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_switch_buffer = 0
 
 nnoremap <silent> <C-^> :bn<CR>
-nnoremap <silent> <C-w> :bw<CR>
+" nnoremap <silent> <C-w> :bw<CR>
 nnoremap <silent> <C-s> :update<CR>
 
 autocmd BufNewFile,BufRead {Gemfile,Vagrantfile,Berksfile} set filetype=ruby
