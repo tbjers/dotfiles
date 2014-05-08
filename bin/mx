@@ -48,7 +48,7 @@ else
 fi
 
 # Clean up session name
-SESSION=`echo "$SESSIONDIR" | tr :. _`
+SESSION=`echo "$SESSIONDIR" | tr :. -`
 
 _safe_window() {
   if [ -x "$2" ]; then
