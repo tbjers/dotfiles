@@ -11,3 +11,7 @@ $DOTFILES/osx/set-defaults.sh
 
 # Upgrade homebrew
 brew update
+
+# Update submodules
+cd $DOTFILES
+git submodule foreach git submodule update
