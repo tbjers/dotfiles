@@ -22,3 +22,6 @@
 [submodule "vim/vim.symlink/bundle/ultisnips"]
 	path = vim/vim.symlink/bundle/ultisnips
 	url = git@github.com:SirVer/ultisnips.git
+[submodule "vim/vim.symlink/bundle/vim-json"]
+	path = vim/vim.symlink/bundle/vim-json
+	url = git@github.com:elzr/vim-json.git
