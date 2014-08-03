@@ -36,7 +36,7 @@ set noswapfile
 set backspace=indent,eol,start
 set hlsearch
 set incsearch
-set ic " case insensitive search
+set listchars=tab:▶\ ,eol:¬,trail:·,nbsp:·,extends:→,precedes:←
 
 set laststatus=2
 
@@ -56,7 +56,9 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_switch_buffer = 0
 
 nnoremap <silent> <C-^> :bn<CR>
+nnoremap <silent> <leader>w :bw<CR>
 nnoremap <silent> <C-s> :update<CR>
+nnoremap <silent> <leader>l :set list!<CR>
 
 autocmd BufNewFile,BufRead {Gemfile,Vagrantfile,Berksfile} set filetype=ruby
 
