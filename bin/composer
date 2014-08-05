@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+
+BASEDIR=$(dirname $0)
+
+php $BASEDIR/composer.phar $@
