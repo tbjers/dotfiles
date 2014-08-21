@@ -28,3 +28,6 @@
 [submodule "vim/vim.symlink/bundle/vim-volt-syntax"]
 	path = vim/vim.symlink/bundle/vim-volt-syntax
 	url = git@github.com:etaoins/vim-volt-syntax.git
+[submodule "vim/vim.symlink/bundle/php.vim"]
+	path = vim/vim.symlink/bundle/php.vim
+	url = git@github.com:StanAngeloff/php.vim.git
