@@ -5,7 +5,8 @@ DEFAULT_USER=torgny
 
 export PROJECTS=~/git
 PATH=/usr/local/bin:$PATH
-PATH=$PATH:$HOME/.dotfiles/bin:$HOME/bin:$PATH
+PATH=$PATH:$HOME/.dotfiles/bin:$HOME/.dotfiles/phalcon-tools/bin:$HOME/bin:$PATH
+export PTOOLSPATH=$HOME/.dotfiles/phalcon-tools/bin
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
 eval "$(rbenv init -)"
 alias subl='open -a "Sublime Text"'
