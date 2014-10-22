@@ -3,9 +3,12 @@
 	[
 		"Grunt",
 		"LESS",
+		"PhpDoc",
 		"Pretty YAML",
 		"Puppet",
 		"SFTP",
-		"Vagrant"
+		"Vagrant",
+		"Volt",
+		"WordCount"
 	]
 }
