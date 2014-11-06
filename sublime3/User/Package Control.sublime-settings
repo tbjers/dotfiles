@@ -2,6 +2,7 @@
 	"installed_packages":
 	[
 		"Grunt",
+		"Inc-Dec-Value",
 		"LESS",
 		"PhpDoc",
 		"Pretty YAML",
