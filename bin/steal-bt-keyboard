@@ -6,7 +6,7 @@
 blueutil off
  
 #disable imac bluetooth
-ssh user@imac.local '/usr/local/bin/blueutil off'
+ssh tbjers@imac.local '/usr/local/bin/blueutil off'
  
 #enable local bluetooth
 blueutil on
