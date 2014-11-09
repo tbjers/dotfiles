@@ -87,3 +87,5 @@ bind -t vi-copy y copy-selection
 bind -t vi-copy Escape cancel
 bind y run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 
+# Scrollback size
+set-option -g history-limit 30000
