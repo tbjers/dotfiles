@@ -1,6 +1,7 @@
 {
 	"installed_packages":
 	[
+		"DashDoc",
 		"Grunt",
 		"Inc-Dec-Value",
 		"LESS",

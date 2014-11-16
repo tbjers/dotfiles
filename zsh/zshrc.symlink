@@ -5,13 +5,16 @@ DEFAULT_USER=torgny
 
 export PROJECTS=~/git
 PATH=/usr/local/bin:$PATH
-PATH=$PATH:$HOME/.dotfiles/bin:$HOME/.dotfiles/phalcon-tools/bin:$HOME/bin:$PATH
+PATH=$HOME/.dotfiles/bin:$HOME/.dotfiles/phalcon-tools/bin:$HOME/bin:$PATH
+export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
 export PTOOLSPATH=$HOME/.dotfiles/phalcon-tools/bin
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
-eval "$(rbenv init -)"
 alias subl='open -a "Sublime Text"'
 alias vim="stty stop '' -ixoff ; vim"
 ttyctl -f
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -43,3 +46,6 @@ EOBUNDLES
 antigen theme tbjers/zsh-plugins themes/agnoster
 
 antigen apply
+
+# added by travis gem
+[ -f /Users/tbjers/.travis/travis.sh ] && source /Users/tbjers/.travis/travis.sh

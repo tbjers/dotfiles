@@ -30,7 +30,7 @@
 		"*.db",
 		"*.sublime-workspace"
 	],
-	"font_face": "Meslo LG S Regular for Powerline",
+	"font_face": "InputMono-Regular",
 	"font_size": 16,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
