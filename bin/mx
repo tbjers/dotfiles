@@ -58,12 +58,12 @@ _safe_window() {
 }
 
 if ! (tmux has-session -t "$SESSION" >/dev/null 2>&1); then
-  LIST=`find $PROJECTS -mindepth 1 -maxdepth 3 -type d -name $SESSIONDIR`
+  LIST=`find $PROJECTS -mindepth 1 -maxdepth 4 -type d -name $SESSIONDIR`
   if [ -n "$LIST" ]; then
     if [[ `echo "$LIST" | wc -l | tr -d ' '` == "1" ]]; then
       cd $LIST
     else
-      echo "Several projects with the same name detected."
+      echo "Several projects with the same name detected:"
       echo "$LIST"
       exit 1
     fi
