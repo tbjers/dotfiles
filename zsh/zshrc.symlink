@@ -11,10 +11,13 @@ export PTOOLSPATH=$HOME/.dotfiles/phalcon-tools/bin
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
 alias subl='open -a "Sublime Text"'
 alias vim="stty stop '' -ixoff ; vim"
+alias be='bundle exec'
 ttyctl -f
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
 
 DISABLE_AUTO_UPDATE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
