@@ -53,3 +53,9 @@ antigen apply
 
 # added by travis gem
 [ -f /Users/tbjers/.travis/travis.sh ] && source /Users/tbjers/.travis/travis.sh
+
+# Check to see if there are changes to the dotfiles
+numchanges="`cd ~/.dotfiles && expr $(git status --porcelain 2>/dev/null| egrep "^(M| M)" | wc -l)`"
+if [ $numchanges > 0 ]; then
+  echo "Dotfiles changed: $numchanges"
+fi
