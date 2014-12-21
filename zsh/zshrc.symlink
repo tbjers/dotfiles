@@ -6,6 +6,7 @@ DEFAULT_USER=torgny
 export PROJECTS=~/git
 PATH=/usr/local/bin:$PATH
 PATH=$HOME/.dotfiles/bin:$HOME/.dotfiles/phalcon-tools/bin:$HOME/bin:$PATH
+PATH=$HOME/Library/android-sdk-macosx/platform-tools:$HOME/Library/android-sdk-macosx/tools:$PATH
 export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
 export PTOOLSPATH=$HOME/.dotfiles/phalcon-tools/bin
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
