@@ -1,2 +1,2 @@
 #!/bin/sh
-curl -# https://raw.github.com/creationix/nvm/v0.4.0/install.sh | sh
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.4/install.sh | bash
