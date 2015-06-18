@@ -37,3 +37,6 @@
 [submodule "vim/vim.symlink/bundle/vim-jsx"]
 	path = vim/vim.symlink/bundle/vim-jsx
 	url = git@github.com:mxw/vim-jsx.git
+[submodule "vim/vim.symlink/bundle/vim-clojure-static"]
+	path = vim/vim.symlink/bundle/vim-clojure-static
+	url = git@github.com:guns/vim-clojure-static.git
