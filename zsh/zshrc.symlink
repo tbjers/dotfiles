@@ -1,6 +1,6 @@
 source $HOME/.dotfiles/zsh/antigen.zsh
 
-export EDITOR=vim
+export EDITOR=atom
 DEFAULT_USER=torgny
 
 export PROJECTS=~/git
@@ -55,6 +55,17 @@ eval "$(rbenv init -)"
 
 # added by travis gem
 [ -f /Users/tbjers/.travis/travis.sh ] && source /Users/tbjers/.travis/travis.sh
+
+nvm_switch_if_needed() { 
+  local NVM_RC_VERSION
+  local REAL_VERSION
+  if [ -f "$(nvm_find_nvmrc)" ]; then
+    read NVM_RC_VERSION < $(nvm_find_nvmrc)
+    REAL_VERSION=$(nvm_version $NVM_RC_VERSION)
+    [ "$(nvm_version_path $REAL_VERSION)/bin" == "$NVM_BIN" ] || nvm use
+  fi
+}
+cd() { builtin cd "$@"; time nvm_switch_if_needed; }
 
 # Check to see if there are changes to the dotfiles
 numchanges="`cd ~/.dotfiles && expr $(git status --porcelain 2>/dev/null| egrep "^(M| M)" | wc -l)`"
