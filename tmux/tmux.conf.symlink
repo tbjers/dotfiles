@@ -51,9 +51,11 @@ bind ^A select-pane -t :.+
 # Window options
 #
 
-#set -g mode-mouse on
-#setw -g mouse-select-window on
-#setw -g mouse-select-pane on
+set-option -g mouse on
+set -g mode-mouse on
+setw -g mouse-select-window on
+setw -g mouse-resize-pane on
+setw -g mouse-select-pane on
 
 setw -g aggressive-resize on
 
