@@ -67,8 +67,11 @@ nvm_switch_if_needed() {
 }
 cd() { builtin cd "$@"; time nvm_switch_if_needed; }
 
+fortune | cowsay | lolcat -F 0.3
+
 # Check to see if there are changes to the dotfiles
 numchanges="`cd ~/.dotfiles && expr $(git status --porcelain 2>/dev/null| egrep "^(M| M)" | wc -l)`"
 if [ $numchanges != 0 ]; then
-  echo "Dotfiles changed: $numchanges"
+  printf '.%.0s' {1..42}
+  echo "\nDotfiles changed: $numchanges"
 fi
