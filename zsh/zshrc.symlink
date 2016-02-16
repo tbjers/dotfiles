@@ -1,29 +1,47 @@
 source $HOME/.dotfiles/zsh/antigen.zsh
 
-export EDITOR=atom
-DEFAULT_USER=torgny
+export VISUAL=vim
+export EDITOR="$VISUAL"
+DEFAULT_USER=tbjers
 
 export PROJECTS=~/git
+
 PATH=/usr/local/bin:/usr/local/sbin:$PATH
 PATH=$HOME/.dotfiles/bin:$HOME/.dotfiles/phalcon-tools/bin:$HOME/bin:$PATH
 PATH=/Volumes/Storage/android-sdk-macosx/platform-tools:/Volumes/Storage/android-sdk-macosx/tools:$PATH
-PATH=/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH
-#export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
+PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
+PATH="$HOME/.rbenv/bin:$PATH"
+export PATH
+
 export PTOOLSPATH=$HOME/.dotfiles/phalcon-tools/bin
+
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
+
 alias subl='open -a "Sublime Text"'
 alias vim="stty stop '' -ixoff ; vim"
 alias be='bundle exec'
+
 ttyctl -f
 
-export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
+# added by travis gem
+[ -f /Users/tbjers/.travis/travis.sh ] && source /Users/tbjers/.travis/travis.sh
 
-DISABLE_AUTO_UPDATE="true"
-DISABLE_UNTRACKED_FILES_DIRTY="true"
+nvm_switch_if_needed() { 
+  local NVM_RC_VERSION
+  local REAL_VERSION
+  if [ -f "$(nvm_find_nvmrc)" ]; then
+    read NVM_RC_VERSION < $(nvm_find_nvmrc)
+    REAL_VERSION=$(nvm_version $NVM_RC_VERSION)
+    [ "$(nvm_version_path $REAL_VERSION)/bin" == "$NVM_BIN" ] || nvm use
+  fi
+}
+cd() { builtin cd "$@"; time nvm_switch_if_needed; }
 
-ANTIGEN_DEFAULT_REPO_URL=https://github.com/tbjers/oh-my-zsh.git
+DISABLE_AUTO_UPDATE="false"
+DISABLE_UNTRACKED_FILES_DIRTY="false"
 
 antigen use oh-my-zsh
 
@@ -43,6 +61,7 @@ antigen bundles <<EOBUNDLES
   ruby
   vagrant
   common-aliases
+  ssh-agent
   tbjers/zsh-plugins plugins/cl
   tbjers/zsh-plugins plugins/gibo
 EOBUNDLES
@@ -50,24 +69,6 @@ EOBUNDLES
 antigen theme tbjers/zsh-plugins themes/agnoster
 
 antigen apply
-
-eval "$(rbenv init -)"
-
-# added by travis gem
-[ -f /Users/tbjers/.travis/travis.sh ] && source /Users/tbjers/.travis/travis.sh
-
-nvm_switch_if_needed() { 
-  local NVM_RC_VERSION
-  local REAL_VERSION
-  if [ -f "$(nvm_find_nvmrc)" ]; then
-    read NVM_RC_VERSION < $(nvm_find_nvmrc)
-    REAL_VERSION=$(nvm_version $NVM_RC_VERSION)
-    [ "$(nvm_version_path $REAL_VERSION)/bin" == "$NVM_BIN" ] || nvm use
-  fi
-}
-cd() { builtin cd "$@"; time nvm_switch_if_needed; }
-
-fortune | cowsay | lolcat -F 0.3
 
 # Check to see if there are changes to the dotfiles
 numchanges="`cd ~/.dotfiles && expr $(git status --porcelain 2>/dev/null| egrep "^(M| M)" | wc -l)`"
