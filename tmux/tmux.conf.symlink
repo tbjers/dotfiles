@@ -3,30 +3,21 @@ set-option -g default-command "reattach-to-user-namespace -l zsh"
 
 set -g status-interval 1
 set -g default-terminal "screen-256color"
+set -g status-utf8 on
 
-# color scheme (styled as vim-powerline)
-set -g status-left-length 52
-set -g status-right-length 451
-set -g status-fg brightgreen
-set -g status-bg black
-set -g pane-border-fg colour245
-set -g pane-active-border-fg blue
-set -g message-fg colour16
-set -g message-bg colour221
-set -g message-attr bold
-set -g status-left '#[fg=black,bg=white,bold] ❐ #S #[fg=white,bg=brightgreen,nobold]#[fg=white,bg=brightgreen,nobold] #(whoami) #[fg=brightgreen,bg=black,nobold]'
-set -g window-status-format "#[fg=black,bg=blue,nobold] #I #W "
-set -g window-status-current-format "#[fg=black,bg=yellow]#[fg=black,bg=yellow,noreverse,nobold] #I: #W #[fg=yellow,bg=black,nobold]"
-set -g status-right '#H #(date +%D) #(date +%T)'
-set-option -g display-panes-colour brightred
+set -g status-bg 'colour235'
+set -g status-fg white
+set -g status-left-length 30
+set -g status-right-length 60
+set -g status-left ' #[default]'
+set -g status-right ' #[fg=colour198]#(date +%D) #(date +%T)#[default] '
+
+setw -g window-status-format '#[fg=colour10]#I #[fg=colour110]#W#[default]  '
+setw -g window-status-current-format '#[bg=white,fg=black] #W #[bg=black,fg=white]'
 
 # Reset window numbering to start at 1
 set -g base-index 1
 setw -g pane-base-index 1
-
-#
-# Key bindings
-#
 
 # Set up resize pane keys
 bind-key + resize-pane -D 3
@@ -34,10 +25,10 @@ bind-key / resize-pane -L 3
 bind-key - resize-pane -U 3
 bind-key * resize-pane -R 3
 
-# remap prefix to Control + a
-set -g prefix C-a
-unbind-key C-b
-bind-key C-a send-prefix
+# Set the prefix to ^A.
+unbind C-b
+set -g prefix ^A
+bind a send-prefix
 
 bind -n C-k clear-history
 
@@ -52,13 +43,7 @@ bind ^A select-pane -t :.+
 #
 # Window options
 #
-
 set-option -g mouse on
-set -g mode-mouse on
-setw -g mouse-select-window on
-setw -g mouse-resize-pane on
-setw -g mouse-select-pane on
-
 setw -g aggressive-resize on
 
 # Disable auto-renaming
@@ -93,3 +78,13 @@ bind y run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 
 # Scrollback size
 set-option -g history-limit 15000
+
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'seebi/tmux-colors-solarized'
+
+# Set up color scheme
+set -g @colors-solarized 'dark'
+
+run '~/.dotfiles/tmux/tpm/tpm'
+

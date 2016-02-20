@@ -7,18 +7,12 @@ DEFAULT_USER=tbjers
 export PROJECTS=~/git
 
 PATH=/usr/local/bin:/usr/local/sbin:$PATH
-PATH=$HOME/.dotfiles/bin:$HOME/.dotfiles/phalcon-tools/bin:$HOME/bin:$PATH
-PATH=/Volumes/Storage/android-sdk-macosx/platform-tools:/Volumes/Storage/android-sdk-macosx/tools:$PATH
-PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
-PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin
 PATH="$HOME/.rbenv/bin:$PATH"
 export PATH
 
-export PTOOLSPATH=$HOME/.dotfiles/phalcon-tools/bin
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # This loads NVM
-
-alias subl='open -a "Sublime Text"'
 alias vim="stty stop '' -ixoff ; vim"
 alias be='bundle exec'
 
@@ -26,53 +20,28 @@ ttyctl -f
 
 eval "$(rbenv init -)"
 
-# added by travis gem
 [ -f /Users/tbjers/.travis/travis.sh ] && source /Users/tbjers/.travis/travis.sh
-
-nvm_switch_if_needed() { 
-  local NVM_RC_VERSION
-  local REAL_VERSION
-  if [ -f "$(nvm_find_nvmrc)" ]; then
-    read NVM_RC_VERSION < $(nvm_find_nvmrc)
-    REAL_VERSION=$(nvm_version $NVM_RC_VERSION)
-    [ "$(nvm_version_path $REAL_VERSION)/bin" == "$NVM_BIN" ] || nvm use
-  fi
-}
-cd() { builtin cd "$@"; time nvm_switch_if_needed; }
-
-DISABLE_AUTO_UPDATE="false"
-DISABLE_UNTRACKED_FILES_DIRTY="false"
 
 antigen use oh-my-zsh
 
 antigen bundles <<EOBUNDLES
   git
-  composer
-  bower
+  git-flow
   gem
-  git-extras
-  github
-  jake-node
-  node
-  npm
-  nvm
-  rbenv
   rake
   ruby
-  vagrant
   common-aliases
-  ssh-agent
   tbjers/zsh-plugins plugins/cl
   tbjers/zsh-plugins plugins/gibo
+  ssh-agent
 EOBUNDLES
 
-antigen theme tbjers/zsh-plugins themes/agnoster
+antigen theme theunraveler
 
 antigen apply
 
 # Check to see if there are changes to the dotfiles
 numchanges="`cd ~/.dotfiles && expr $(git status --porcelain 2>/dev/null| egrep "^(M| M)" | wc -l)`"
 if [ $numchanges != 0 ]; then
-  printf '.%.0s' {1..42}
-  echo "\nDotfiles changed: $numchanges"
+  echo "Dotfiles changed: $numchanges"
 fi
