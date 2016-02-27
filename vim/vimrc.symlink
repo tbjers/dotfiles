@@ -86,5 +86,3 @@ let g:netrw_liststyle=3
 set autochdir
 
 let g:jsx_ext_required = 0
-
-vnoremap <C-r> "hy:%s/\(<C-r>h\)/{{__ "\1" req.language req.session.language}}/gc<CR>
