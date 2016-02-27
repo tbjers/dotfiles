@@ -8,6 +8,10 @@ export PROJECTS=~/git
 
 PATH=/usr/local/bin:/usr/local/sbin:$PATH
 PATH="$HOME/.rbenv/bin:$PATH"
+
+POSTGRES_PATH=/Applications/Postgres.app/Contents/Versions/latest/bin
+[ -d "$POSTGRES_PATH" ] && PATH="$POSTGRES_PATH:$PATH"
+
 export PATH
 
 export NVM_DIR="$HOME/.nvm"
