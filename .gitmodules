@@ -52,3 +52,12 @@
 [submodule "tmux/tpm"]
 	path = tmux/tpm
 	url = git@github.com:tmux-plugins/tpm.git
+[submodule "vim/vim.symlink/bundle/onedark.vim"]
+	path = vim/vim.symlink/bundle/onedark.vim
+	url = git@github.com:joshdick/onedark.vim.git
+[submodule "vim/vim.symlink/bundle/airline-onedark.vim"]
+	path = vim/vim.symlink/bundle/airline-onedark.vim
+	url = git@github.com:joshdick/airline-onedark.vim.git
+[submodule "vim/vim.symlink/bundle/vim-airline-themes"]
+	path = vim/vim.symlink/bundle/vim-airline-themes
+	url = git@github.com:vim-airline/vim-airline-themes.git

@@ -2,20 +2,18 @@ execute pathogen#infect()
 execute pathogen#helptags()
 
 filetype plugin indent on
-syntax enable
+syntax on
 
 set encoding=utf8
 set termencoding=utf8
 
-let g:solarized_termcolors = 16
-let g:solarized_termtrans = 1
-let g:solarized_degrade = 0
-set background=dark
-colorscheme solarized
+colorscheme onedark
+let g:onedark_termcolors=16
 
-let g:airline_powerline_fonts = 1
-let g:airline_enable_fugitive = 1
-let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts=1
+let g:airline_enable_fugitive=1
+let g:airline#extensions#tabline#enabled=1
+let g:airline_theme='onedark'
 
 let g:vim_markdown_folding_disabled=1
 
@@ -88,3 +86,5 @@ let g:netrw_liststyle=3
 set autochdir
 
 let g:jsx_ext_required = 0
+
+vnoremap <C-r> "hy:%s/\(<C-r>h\)/{{__ "\1" req.language req.session.language}}/gc<CR>
