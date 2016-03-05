@@ -24,7 +24,7 @@ ttyctl -f
 
 eval "$(rbenv init -)"
 
-[ -f /Users/tbjers/.travis/travis.sh ] && source /Users/tbjers/.travis/travis.sh
+[ -f "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
 
 antigen use oh-my-zsh
 
