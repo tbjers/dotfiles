@@ -49,3 +49,5 @@ numchanges="`cd ~/.dotfiles && expr $(git status --porcelain 2>/dev/null| egrep 
 if [ $numchanges != 0 ]; then
   echo "Dotfiles changed: $numchanges"
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
