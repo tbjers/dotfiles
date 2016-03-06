@@ -13,7 +13,7 @@ set -g status-left ' #[default]'
 set -g status-right ' #[fg=colour198]#(date +%D) #(date +%T)#[default] '
 
 setw -g window-status-format '#[fg=colour10]#I #[fg=colour110]#W#[default]  '
-setw -g window-status-current-format '#[bg=white,fg=black] #W #[bg=black,fg=white]'
+setw -g window-status-current-format '#[bg=white,fg=black] #I #W #[bg=black,fg=white]'
 
 # Reset window numbering to start at 1
 set -g base-index 1
