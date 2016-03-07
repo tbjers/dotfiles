@@ -23,6 +23,7 @@ alias be='bundle exec'
 ttyctl -f
 
 eval "$(rbenv init -)"
+eval "$(direnv hook zsh)"
 
 [ -f "$HOME/.travis/travis.sh" ] && source "$HOME/.travis/travis.sh"
 
