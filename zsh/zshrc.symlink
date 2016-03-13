@@ -7,7 +7,7 @@ DEFAULT_USER=tbjers
 export PROJECTS=~/git
 
 PATH=/usr/local/bin:/usr/local/sbin:$PATH
-PATH="$HOME/.rbenv/bin:$HOME/.packer/bin:$PATH"
+PATH="$HOME/.dotfiles/bin:$HOME/.rbenv/bin:$HOME/.packer/bin:$PATH"
 
 POSTGRES_PATH=/Applications/Postgres.app/Contents/Versions/latest/bin
 [ -d "$POSTGRES_PATH" ] && PATH="$POSTGRES_PATH:$PATH"
