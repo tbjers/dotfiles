@@ -51,4 +51,4 @@ if [ $numchanges != 0 ]; then
   echo "Dotfiles changed: $numchanges"
 fi
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+[ -f "$HOME/.iterm2_shell_integration.`basename $SHELL`" ] && source "$HOME/.iterm2_shell_integration.`basename $SHELL`"
