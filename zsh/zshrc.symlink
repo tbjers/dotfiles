@@ -12,6 +12,11 @@ PATH="$HOME/.dotfiles/bin:$HOME/.rbenv/bin:$HOME/.packer/bin:$PATH"
 POSTGRES_PATH=/Applications/Postgres.app/Contents/Versions/latest/bin
 [ -d "$POSTGRES_PATH" ] && PATH="$POSTGRES_PATH:$PATH"
 
+ANDROID_NDK_PATH=$HOME/Library/android-ndk-macosx
+ANDROID_SDK_PATH=$HOME/Library/android-sdk-macosx/platform-tools
+[ -d "$ANDROID_NDK_PATH" ] && PATH="$ANDROID_NDK_PATH:$PATH"
+[ -d "$ANDROID_SDK_PATH" ] && PATH="$ANDROID_SDK_PATH:$PATH"
+
 export PATH
 
 export NVM_DIR="$HOME/.nvm"
