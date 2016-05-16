@@ -58,3 +58,5 @@ fi
 
 [ -f "$HOME/.iterm2_shell_integration.`basename $SHELL`" ] && source "$HOME/.iterm2_shell_integration.`basename $SHELL`"
 [ -f "$HOME/.credentials.`basename $SHELL`" ] && source "$HOME/.credentials.`basename $SHELL`"
+
+alias gf='git flow'
