@@ -1,0 +1,88 @@
+"*":
+  Zen:
+    showWordCount: "Right"
+    softWrap: true
+    width: 80
+  "atom-beautify":
+    css:
+      align_assignments: true
+      convert_quotes: "single"
+      preserve_newlines: true
+    general:
+      _analyticsUserId: "f68a47bc-f76d-45eb-ad01-ffbbf5c48bbc"
+    js:
+      end_with_newline: true
+      jslint_happy: true
+      keep_array_indentation: true
+      space_after_anon_function: true
+  core:
+    audioBeep: false
+    disabledPackages: [
+      "spell-check"
+      "language-markdown"
+      "activate-power-mode"
+    ]
+    projectHome: "/Users/tbjers/git"
+  editor:
+    fontFamily: "Input"
+    invisibles: {}
+    preferredLineLength: 120
+    scrollPastEnd: true
+    showInvisibles: true
+    softTabs: true
+    softWrapAtPreferredLineLength: true
+  "exception-reporting":
+    userId: "babcdb8a-44ab-7fe0-4524-b0a65e5910d7"
+  "git-log": {}
+  linter: {}
+  "linter-js-standard":
+    checkStyleDevDependencies: true
+    honorStyleSettings: true
+    style: "semi-standard"
+  "markdown-preview": {}
+  "markdown-preview-plus": {}
+  minimap:
+    plugins:
+      pigments: true
+      pigmentsDecorationsZIndex: 0
+  "one-dark-ui": {}
+  "one-light-ui": {}
+  pigments:
+    supportedFiletypes: [
+      "*.css"
+      "*.sass"
+      "*.styl"
+      "*.scss"
+      "*.stylus"
+      "*.less"
+    ]
+  "project-manager": {}
+  react: {}
+  "spell-check": {}
+  "tree-view":
+    hideIgnoredNames: true
+  welcome:
+    showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false
+".alloyxml.text":
+  editor:
+    preferredLineLength: 120
+".css.source.tss":
+  editor:
+    preferredLineLength: 120
+".git-commit.text":
+  editor:
+    preferredLineLength: 78
+".git-config.source":
+  editor:
+    preferredLineLength: 78
+".git-rebase.text":
+  editor:
+    preferredLineLength: 78
+".md.text":
+  editor:
+    preferredLineLength: 120
+"text.md":
+  editor:
+    softWrap: true
