@@ -34,7 +34,8 @@
   "exception-reporting":
     userId: "babcdb8a-44ab-7fe0-4524-b0a65e5910d7"
   "git-log": {}
-  linter: {}
+  linter:
+    showErrorPanel: false
   "linter-js-standard":
     checkStyleDevDependencies: true
     honorStyleSettings: true
