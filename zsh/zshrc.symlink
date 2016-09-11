@@ -4,10 +4,11 @@ export VISUAL=vim
 export EDITOR="$VISUAL"
 DEFAULT_USER=tbjers
 
-export PROJECTS=~/git
+export PROJECTS=$HOME/git
+export GOPATH=$HOME/go
 
 PATH=/usr/local/bin:/usr/local/sbin:$PATH
-PATH="$HOME/.dotfiles/bin:$HOME/.rbenv/bin:$HOME/.packer/bin:$HOME/.composer/vendor/bin:$PATH"
+PATH="$HOME/.dotfiles/bin:$HOME/.rbenv/bin:$HOME/.packer/bin:$HOME/.composer/vendor/bin:$PATH:$GOPATH/bin"
 
 POSTGRES_PATH=/Applications/Postgres.app/Contents/Versions/latest/bin
 [ -d "$POSTGRES_PATH" ] && PATH="$POSTGRES_PATH:$PATH"
