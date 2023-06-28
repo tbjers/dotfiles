@@ -1,0 +1,53 @@
+---
+# -*-mode:yaml-*- vim:ft=yaml
+env:
+  TERM: xterm-256color
+
+window:
+  padding:
+    x: 6
+    y: 6
+  opacity: 1
+  decorations: none
+  startup_mode: Maximized
+  title: Alacritty
+  class:
+    instance: Alacritty
+    general: Alacritty
+  scrolling:
+    history: 10000
+    multiplier: 3
+
+font:
+  builtin_box_drawing: false
+  normal:
+    family: CaskaydiaCoveNerdFont
+    style: Regular
+  bold:
+    style: SemiBold
+  italic:
+    style: Italic
+  bold_italic:
+    style: SemiBoldItalic
+  size: 14
+
+draw_bold_text_with_bright_colors: true
+
+mouse:
+  hide_when_typing: true
+
+cursor:
+  blink_interval: 750
+  blink_timeout: 5
+  unfocused_hollow: true
+  style:
+    shape: Block
+    blinking: On
+
+bell:
+  animation: EaseOutExpo
+  duration: 0
+  color: "#ffffff"
+
+import:
+  - ~/.config/alacritty/themes/{{ .colortheme }}.yml

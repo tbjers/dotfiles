@@ -1,0 +1,40 @@
+# -*-mode:toml-*- vim:ft=toml
+# -*-mode:go-template-*- vim:ft=toml
+
+# ~/.local/share/chezmoi/.chezmoi.toml.tmpl
+# =============================================================================
+# Used to customize configuration when doing a `chezmoi init`.
+#
+# This template file will trigger prompts to fill-in machine-specific
+# templateable values. The resulting file is then created at
+# `~/.config/chezmoi/chezmoi.toml`
+# See https://www.chezmoi.io/docs/how-to/
+#
+# {{- /* This file supports Go's text/template language. */}}
+
+{{ $email := promptStringOnce . "email" "Email address" -}}
+{{ $name := promptStringOnce . "name" "Name" -}}
+{{ $signingkey := promptStringOnce . "signingkey" "Signing key" -}}
+{{ $colortheme := promptString "Color theme (nord/dracula)" }}
+
+{{- $osid := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+format = "json"
+color = "on"
+umask = 0o022
+
+[data]
+  email = {{ $email | quote }}
+  name = {{ $name | quote }}
+  signingkey = {{ $signingkey | quote }}
+  osid = {{ $osid | quote }}
+  colortheme = {{ $colortheme | quote }}
+
+[diff]
+  exclude = ["scripts"]
+
+[status]
+  exclude = ["scripts"]

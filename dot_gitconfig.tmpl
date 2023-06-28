@@ -1,0 +1,42 @@
+# -*-mode:gitconfig-*- vim:ft=gitconfig
+# -*-mode:ini-*- vim:ft=gitconfig
+
+# ~/.gitconfig
+# =============================================================================
+# User-specific Git configuration file.
+#
+# See https://git-scm.com/docs/git-config
+#
+# {{- /* This file supports Go's text/template language. */}}
+
+[init]
+  defaultBranch = main
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/opt/1Password/op-ssh-sign"
+  allowedSignersFile = {{ .chezmoi.homeDir }}/.ssh/allowed_signers
+
+[commit]
+  gpgsign = true
+
+[user]
+  signingkey = {{ .signingkey | quote }}
+  email = {{ .email | quote }}
+  name = {{ .name | quote }}
+
+[credential "https://github.com"]
+  helper =
+  helper = !/usr/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+  helper =
+  helper = !/usr/bin/gh auth git-credential
+
+[color]
+  ui = true
+
+[include]
+  path = {{ .chezmoi.homeDir }}/.gitinclude

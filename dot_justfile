@@ -1,0 +1,5 @@
+default:
+	@just --unstable --list
+
+update:
+	sudo dnf update -y

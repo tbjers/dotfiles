@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+# exit on error
+set -Eeuo pipefail
+
+# Set secure permissions on created directories and files
+umask 077
+
+# Define version and architecture for op
+op_email="{{ .email }}"
+op_arch="{{ .chezmoi.arch }}"
+
+# Set up colors
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+reset=$(tput sgr0)
+
+verlte() {
+    printf '%s\n%s' "$1" "$2" | sort -C -V
+}
+
+verlt() {
+    ! verlte "$2" "$1"
+}
+
+echo "${green}Enabling COPR repositories${reset}"
+sudo dnf copr enable atim/bottom -y
+sudo dnf copr enable atim/lazygit -y
+sudo dnf copr enable varlad/zellij -y
+
+echo "${green}Installing dependencies${reset}"
+sudo dnf install -y \
+    bottom \
+    exa \
+    gh \
+    git \
+    golang \
+    jq \
+    lazygit \
+    mc \
+    neovim \
+    nodejs \
+    python3 \
+    python3-pip \
+    ranger \
+    ripgrep \
+    zellij
+
+echo "${green}Installing development environment${reset}"
+sudo dnf group install -y "Development Tools" "C Development Tools and Libraries"
+sudo dnf install -y lua-devel
+
+if [ ! -d "${HOME}/.config/nvim" ]; then
+    echo "${green}Cloning AstroNvim${reset}"
+    git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+fi
+
+echo "${green}Installing LSP/lint/formatters${reset}"
+pip install --user beautysh black
+
+# -*-mode:shellscript-*- vim:ft=bash:

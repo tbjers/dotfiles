@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+if command -v bat &>/dev/null; then
+	export BAT_THEME="{{ .colortheme | trim | title }}"
+fi

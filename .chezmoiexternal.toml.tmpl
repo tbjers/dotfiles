@@ -1,0 +1,47 @@
+# -*-mode: toml;-*- vim:ft=toml
+# file: chezmoi/.chezmoiexternal.toml.tmpl
+
+[".local/bin/mdloader"]
+    type = "file"
+    url = "https://github.com/Massdrop/mdloader/releases/download/1.0.7/mdloader-Linux.zip"
+    executable = true
+    refreshPeriod = "720h"
+    [".local/bin/mdloader".checksum]
+        sha256 = "4b40c816827a947861fbb04a1f18595f133a746e45be4b9087e41b021f371908"
+    [".local/bin/mdloader".filter]
+        command = "zcat"
+
+[".local/bin/atuin"]
+    type = "file"
+    url = "https://github.com/ellie/atuin/releases/download/v15.0.0/atuin-v15.0.0-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu.tar.gz"
+    executable = true
+    refreshPeriod = "168h"
+    [".local/bin/atuin".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "atuin-v15.0.0-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu/atuin"]
+
+[".local/bin/bat"]
+    type = "file"
+    url = "https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-v0.23.0-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu.tar.gz"
+    executable = true
+    refreshPeriod = "168h"
+    [".local/bin/bat".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "bat-v0.23.0-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu/bat"]
+
+[".local/bin/stylua"]
+    type = "file"
+    url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v0.18.0/stylua-linux-x86_64.zip"
+    executable = true
+    refreshPeriod = "720h"
+    [".local/bin/stylua".checksum]
+        sha256 = "6f3d72d23433857c917507fe780eaf16ba1d5aa0304cae588b181db9282e3dd3"
+    [".local/bin/stylua".filter]
+        command = "zcat"
+
+[".local/share/fonts/c/CascadiaCode"]
+    type = "archive"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.tar.xz"
+    refreshPeriod = "168h"
+    [".local/share/fonts/c/CascadiaCode".checksum]
+        sha256 = "d21d11c3703287663d5c5e72b3f75269fd8adc9f87f03c091b6c71805094bf2e"
