@@ -28,6 +28,9 @@ sudo dnf copr enable atim/bottom -y
 sudo dnf copr enable atim/lazygit -y
 sudo dnf copr enable varlad/zellij -y
 
+echo "${green}Enabling Puppet repository${reset}"
+sudo rpm -Uvh https://yum.puppet.com/puppet-tools-release-fedora-34.noarch.rpm
+
 echo "${green}Installing dependencies${reset}"
 sudo dnf install -y \
     bottom \
@@ -40,6 +43,7 @@ sudo dnf install -y \
     mc \
     neovim \
     nodejs \
+    puppet-bolt \
     python3 \
     python3-pip \
     ranger \
