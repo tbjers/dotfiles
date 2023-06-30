@@ -24,16 +24,19 @@ verlt() {
 }
 
 echo "${green}Enabling COPR repositories${reset}"
-sudo dnf copr enable atim/bottom -y
-sudo dnf copr enable atim/lazygit -y
-sudo dnf copr enable varlad/zellij -y
+sudo dnf --quiet copr enable atim/bottom -y &> /dev/null
+sudo dnf --quiet copr enable atim/lazygit -y &> /dev/null
+sudo dnf --quiet copr enable varlad/zellij -y &> /dev/null
 
-echo "${green}Enabling Puppet repository${reset}"
-sudo rpm -Uvh https://yum.puppet.com/puppet-tools-release-fedora-34.noarch.rpm
+if ! rpm -q puppet-tools-release &> /dev/null; then
+    echo "${green}Enabling Puppet repository${reset}"
+    sudo rpm -Uvh https://yum.puppet.com/puppet-tools-release-fedora-34.noarch.rpm
+fi
 
 echo "${green}Installing dependencies${reset}"
-sudo dnf install -y \
+sudo dnf --quiet install -y \
     bottom \
+    cargo \
     exa \
     gh \
     git \
@@ -48,11 +51,12 @@ sudo dnf install -y \
     python3-pip \
     ranger \
     ripgrep \
+    ruby \
     zellij
 
 echo "${green}Installing development environment${reset}"
-sudo dnf group install -y "Development Tools" "C Development Tools and Libraries"
-sudo dnf install -y lua-devel
+sudo dnf --quiet group install -y "Development Tools" "C Development Tools and Libraries"
+sudo dnf --quiet install -y lua-devel
 
 if [ ! -d "${HOME}/.config/nvim" ]; then
     echo "${green}Cloning AstroNvim${reset}"
@@ -60,6 +64,6 @@ if [ ! -d "${HOME}/.config/nvim" ]; then
 fi
 
 echo "${green}Installing LSP/lint/formatters${reset}"
-pip install --user beautysh black
+pip install --quiet --no-input --user beautysh black
 
 # -*-mode:shellscript-*- vim:ft=bash:
