@@ -64,6 +64,9 @@ if [ ! -d "${HOME}/.config/nvim" ]; then
 fi
 
 echo "${green}Installing LSP/lint/formatters${reset}"
-pip install --quiet --no-input --user beautysh black
+pip install --quiet --no-input --user --upgrade beautysh black
+
+echo "${green}Installing CI/CD Python tools${reset}"
+pip install --quiet --no-input --user --upgrade ggshield pre-commit
 
 # -*-mode:shellscript-*- vim:ft=bash:
