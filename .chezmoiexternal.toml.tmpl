@@ -45,3 +45,9 @@
     refreshPeriod = "168h"
     [".local/share/fonts/c/CascadiaCode".checksum]
         sha256 = "d21d11c3703287663d5c5e72b3f75269fd8adc9f87f03c091b6c71805094bf2e"
+
+[".local/bin/kubectl"]
+    type = "file"
+    url = "https://dl.k8s.io/release/{{ .kubectlVersion }}/bin/linux/amd64/kubectl"
+    executable = true
+    refreshPeriod = "168h"

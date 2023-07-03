@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# exit on error
+set -Eeuo pipefail
+
+# Set secure permissions on created directories and files
+umask 077
+
+kubectl_version="$(curl -L -s https://dl.k8s.io/release/stable.txt)"
+
+cat << EOF > {{ joinPath .chezmoi.sourceDir ".chezmoidata" "versions.toml" | quote }}
+kubectlVersion = "${kubectl_version}"
+EOF
+
+# -*-mode:shellscript-*- vim:ft=bash:
