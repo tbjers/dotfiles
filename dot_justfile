@@ -3,3 +3,4 @@ default:
 
 update:
 	sudo dnf update -y
+	sudo flatpak update --noninteractive
