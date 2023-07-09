@@ -1,6 +1,10 @@
 default:
-	@just --unstable --list
+    @just --unstable --list
 
 update:
-	sudo dnf update -y
-	sudo flatpak update --noninteractive
+    sudo dnf update -y
+    sudo flatpak update --noninteractive
+
+fix-gpg:
+    sudo systemctl restart pcscd.service
+    gpg --card-status
