@@ -8,3 +8,6 @@ update:
 fix-gpg:
     sudo systemctl restart pcscd.service
     gpg --card-status
+
+fdroid:
+    op run --env-file=$HOME/git/F-Droid/fdroid/.env -- distrobox-enter fdroid

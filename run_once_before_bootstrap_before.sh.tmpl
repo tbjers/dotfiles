@@ -47,25 +47,45 @@ sudo dnf --quiet install -y \
     mc \
     neovim \
     nodejs \
+    poetry \
     puppet-bolt \
     python3 \
     python3-pip \
     ranger \
     ripgrep \
-    ruby \
     zellij
 
 echo "${green}Installing development environment${reset}"
 sudo dnf --quiet group install -y "Development Tools" "C Development Tools and Libraries"
-sudo dnf --quiet install -y lua-devel
+sudo dnf --quiet install -y rbenv lua-devel luajit luajit-devel
 
 if [ ! -d "${HOME}/.config/nvim" ]; then
     echo "${green}Cloning AstroNvim${reset}"
     git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+elif [ -f "${HOME}/.config/nvim/config.ld" ]; then
+    echo "${green}Updating AstroNvim${reset}"
+    git -C "${HOME}/.config/nvim" pull --ff-only
 fi
 
 echo "${green}Installing LSP/lint/formatters${reset}"
-pip install --quiet --no-input --user --upgrade beautysh black
+pip install --quiet --no-input --user --upgrade beautysh black isort
+if ! command -v puppet-languageserver &>/dev/null; then
+    curr_dir="${PWD}"
+    dir=$(mktemp -d)
+    git clone https://github.com/puppetlabs/puppet-editor-services.git ${dir}
+    cd "${dir}"
+    if [ "$(rbenv versions --bare --skip-aliases | grep 3.1.2)" != "3.1.2" ]; then
+        rbenv install 3.1.2
+    fi
+    source <(rbenv init - bash)
+    rbenv global 3.1.2
+    rbenv local 3.1.2
+    gem install bundler
+    bundle install
+    bundle exec rake gem_revendor
+    cd "${curr_dir}"
+    mv "${dir}" "${HOME}/.local/share/puppet-languageserver"
+fi
 
 echo "${green}Installing CI/CD Python tools${reset}"
 pip install --quiet --no-input --user --upgrade ggshield pre-commit
