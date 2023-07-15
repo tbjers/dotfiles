@@ -9,10 +9,12 @@ return {
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.markdown" },
+  { import = "astrocommunity.pack.nix" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.terraform" },
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.yaml" },
   { import = "astrocommunity.git.git-blame-nvim" },
+  { import = "astrocommunity.editing-support.refactoring-nvim" },
 }

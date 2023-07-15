@@ -36,36 +36,48 @@ fi
 echo "${green}Installing dependencies${reset}"
 sudo dnf --quiet install -y \
     bottom \
-    cargo \
     distrobox \
     exa \
     gh \
     git \
-    golang \
     jq \
     lazygit \
     mc \
     neovim \
+    ranger \
+    ripgrep \
+    zellij \
+    # /end
+
+echo "${green}Installing development environment${reset}"
+sudo dnf --quiet group install -y "Development Tools" "C Development Tools and Libraries"
+sudo dnf --quiet install -y \
+    cargo \
+    golang \
+    llvm \
+    lua-devel \
+    luajit \
+    luajit-devel \
     nodejs \
     poetry \
     puppet-bolt \
     python3 \
     python3-pip \
-    ranger \
-    ripgrep \
-    zellij
-
-echo "${green}Installing development environment${reset}"
-sudo dnf --quiet group install -y "Development Tools" "C Development Tools and Libraries"
-sudo dnf --quiet install -y rbenv lua-devel luajit luajit-devel
+    rbenv \
+    ruby \
+    ruby-build \
+    # /end
 
 if [ ! -d "${HOME}/.config/nvim" ]; then
     echo "${green}Cloning AstroNvim${reset}"
-    git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+    git clone --depth 1 -q https://github.com/AstroNvim/AstroNvim "${HOME}/.config/nvim"
 elif [ -f "${HOME}/.config/nvim/config.ld" ]; then
     echo "${green}Updating AstroNvim${reset}"
-    git -C "${HOME}/.config/nvim" pull --ff-only
+    git -C "${HOME}/.config/nvim" pull --ff-only --depth 1 -q
 fi
+
+echo "${green}Upgrading pip${reset}"
+python3 -m pip install --quiet --no-input --upgrade pip
 
 echo "${green}Installing LSP/lint/formatters${reset}"
 pip install --quiet --no-input --user --upgrade beautysh black isort
@@ -80,11 +92,14 @@ if ! command -v puppet-languageserver &>/dev/null; then
     source <(rbenv init - bash)
     rbenv global 3.1.2
     rbenv local 3.1.2
-    gem install bundler
-    bundle install
-    bundle exec rake gem_revendor
+    gem install bundler puppet-lint
+    bundle install --quiet
+    bundle exec rake gem_revendor &>/dev/null
     cd "${curr_dir}"
     mv "${dir}" "${HOME}/.local/share/puppet-languageserver"
+fi
+if ! command -v dotenv-linter &>/dev/null; then
+    curl -sSfL https://git.io/JLbXn | sh -s -- -b "${HOME}/.local/bin"
 fi
 
 echo "${green}Installing CI/CD Python tools${reset}"
