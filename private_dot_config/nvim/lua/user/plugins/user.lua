@@ -9,4 +9,12 @@ return {
 	--     require("lsp_signature").setup()
 	--   end,
 	-- },
+	-- "IndianBoy42/tree-sitter-just",
+	{
+		"IndianBoy42/tree-sitter-just",
+		event = "BufRead",
+		config = function()
+			require("tree-sitter-just").setup({})
+		end,
+	},
 }
