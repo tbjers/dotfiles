@@ -27,7 +27,7 @@ return {
 			-- null_ls.builtins.formatting.rustfmt,
 			-- null_ls.builtins.formatting.stylua,
 			-- null_ls.builtins.formatting.taplo,
-			-- null_ls.builtins.formatting.terraform_fmt,
+			null_ls.builtins.formatting.terraform_fmt,
 			-- null_ls.builtins.formatting.textlint,
 		}
 		return config -- return final config table

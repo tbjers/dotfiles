@@ -50,6 +50,8 @@ sudo dnf --quiet install -y \
     # /end
 
 echo "${green}Installing development environment${reset}"
+sudo dnf --quiet install -y dnf-plugins-core
+sudo dnf --quiet config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repository
 sudo dnf --quiet group install -y "Development Tools" "C Development Tools and Libraries"
 sudo dnf --quiet install -y \
     cargo \
@@ -67,6 +69,7 @@ sudo dnf --quiet install -y \
     rbenv \
     ruby \
     ruby-build \
+    terraform \
     # /end
 
 if [ ! -d "${HOME}/.config/nvim" ]; then
