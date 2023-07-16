@@ -68,3 +68,12 @@
     url = "https://static.snyk.io/cli/latest/snyk-linux"
     executable = true
     refreshPeriod = "720h"
+
+[".local/bin/terraform"]
+    type = "file"
+    url = "https://releases.hashicorp.com/terraform/1.5.3/terraform_1.5.3_linux_amd64.zip"
+    executable = true
+    refreshPeriod = "720h"
+    [".local/bin/terraform".filter]
+        command = "zcat"
+
