@@ -7,6 +7,7 @@ return {
   { import = "astrocommunity.colorscheme.nord-nvim" },
   { import = "astrocommunity.editing-support.refactoring-nvim" },
   { import = "astrocommunity.git.git-blame-nvim" },
+  { import = "astrocommunity.note-taking.obsidian-nvim" },
   { import = "astrocommunity.pack.bash" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.lua" },
@@ -18,4 +19,5 @@ return {
   { import = "astrocommunity.pack.terraform" },
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.yaml" },
+  { import = "astrocommunity.project.projectmgr-nvim" },
 }

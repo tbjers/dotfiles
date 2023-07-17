@@ -9,8 +9,9 @@ return {
 		-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 		config.sources = {
 			-- Set a formatter
-			-- null_ls.builtins.diagnostics.dotenv_linter,
+			null_ls.builtins.diagnostics.dotenv_linter,
 			-- null_ls.builtins.diagnostics.eslint_d,
+			null_ls.builtins.diagnostics.editorconfig_checker,
 			-- null_ls.builtins.diagnostics.puppet_lint,
 			-- null_ls.builtins.diagnostics.luacheck,
 			-- null_ls.builtins.formatting.beautysh,
