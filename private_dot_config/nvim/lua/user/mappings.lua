@@ -22,6 +22,13 @@ return {
 		["<leader>b"] = { name = "Buffers" },
 		-- quick save
 		-- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+		-- Add Projects to the Find menu
+		["<leader>fp"] = {
+			function()
+				require("telescope").extensions.projects.projects({})
+			end,
+			desc = "Projects",
+		},
 	},
 	t = {
 		-- setting a mapping to false will disable it
