@@ -33,7 +33,7 @@ if ! rpm -q puppet-tools-release &> /dev/null; then
     sudo rpm -Uvh https://yum.puppet.com/puppet-tools-release-fedora-34.noarch.rpm
 fi
 
-echo "${green}Installing dependencies${reset}"
+echo "${green}Installing core tools${reset}"
 sudo dnf --quiet install -y \
     bottom \
     distrobox \
@@ -53,6 +53,7 @@ echo "${green}Installing development environment${reset}"
 sudo dnf --quiet install -y dnf-plugins-core
 sudo dnf --quiet group install -y "Development Tools" "C Development Tools and Libraries"
 sudo dnf --quiet install -y \
+    bzip2-devel \
     cargo \
     golang \
     llvm \
@@ -65,10 +66,12 @@ sudo dnf --quiet install -y \
     puppet-bolt \
     python3 \
     python3-devel \
+    python3-tkinter \
     python3-pip \
     rbenv \
     ruby \
     ruby-build \
+    tk \
     # /end
 
 if [ ! -d "${HOME}/.config/nvim" ]; then
@@ -101,6 +104,11 @@ if ! command -v puppet-languageserver &>/dev/null; then
     cd "${curr_dir}"
     mv "${dir}" "${HOME}/.local/share/puppet-languageserver"
 fi
+
+if ! command -v pyenv &>/dev/null; then
+    curl https://pyenv.run | bash
+fi
+
 if ! command -v dotenv-linter &>/dev/null; then
     curl -sSfL https://git.io/JLbXn | sh -s -- -b "${HOME}/.local/bin"
 fi
