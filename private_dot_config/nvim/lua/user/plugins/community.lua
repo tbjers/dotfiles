@@ -21,6 +21,13 @@ return {
 	{ import = "astrocommunity.pack.yaml" },
 	{ import = "astrocommunity.project.project-nvim" },
 	{
+		"dracula.nvim",
+		opts = {
+			transparent_bg = true,
+			italic_comment = true,
+		},
+	},
+	{
 		"project_nvim",
 		opts = {
 			-- Manual mode doesn't automatically change your root directory, so you have
