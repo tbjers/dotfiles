@@ -46,11 +46,20 @@
     [".local/share/fonts/c/CascadiaCode".checksum]
         sha256 = "d21d11c3703287663d5c5e72b3f75269fd8adc9f87f03c091b6c71805094bf2e"
 
+[".local/share/fonts/f/FantasqueSansMono"]
+    type = "archive"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/FantasqueSansMono.tar.xz"
+    refreshPeriod = "168h"
+    [".local/share/fonts/f/FantasqueSansMono".checksum]
+        sha256 = "12d496d7ace33a6d620fdfa84ce081c271875148375ab1ac8132264e2be58b33"
+
 [".local/bin/kubectl"]
     type = "file"
-    url = "https://dl.k8s.io/release/{{ .kubectlVersion }}/bin/linux/amd64/kubectl"
+    url = "https://dl.k8s.io/release/v1.27.4/bin/linux/amd64/kubectl"
     executable = true
     refreshPeriod = "168h"
+    [".local/bin/kubectl".checksum]
+        sha256 = "4685bfcf732260f72fce58379e812e091557ef1dfc1bc8084226c7891dd6028f"
 
 [".local/bin/helm"]
     type = "file"

@@ -3,19 +3,47 @@
 
 # ~/.local/share/chezmoi/.chezmoi.toml.tmpl
 # =============================================================================
-# Used to customize configuration when doing a `chezmoi init`.
+# Used to customize configuration when doing a `chezmoi init`.{{- /*
 #
 # This template file will trigger prompts to fill-in machine-specific
 # templateable values. The resulting file is then created at
 # `~/.config/chezmoi/chezmoi.toml`
 # See https://www.chezmoi.io/docs/how-to/
 #
-# {{- /* This file supports Go's text/template language. */}}
+# This file supports Go's text/template language. */}}
 
-{{ $email := promptStringOnce . "email" "Email address" -}}
-{{ $name := promptStringOnce . "name" "Name" -}}
-{{ $signingkey := promptStringOnce . "signingkey" "Signing key" -}}
-{{ $colortheme := promptString "Color theme (nord/dracula)" }}
+{{ $install_onepassword := false -}}
+{{ $install_astronvim := false -}}
+{{ $install_emacs := false -}}
+{{ $install_ruby := false -}}
+{{ $install_python := false -}}
+{{ $install_golang := false -}}
+{{ $install_rust := false -}}
+{{ $install_puppet := false -}}
+{{ $install_starship := false -}}
+{{ $install_obsidian := false -}}
+{{ $install_alacritty := false -}}
+{{ $email := "" -}}
+{{ $name := "" -}}
+{{ $signingkey := "" -}}
+{{ $colortheme := "" }}
+{{- if stdinIsATTY -}}
+{{    $install_onepassword = promptBoolOnce .install "onepassword" "Install 1Password" -}}
+{{    $install_astronvim = promptBoolOnce .install "astronvim" "Install AstroNvim" -}}
+{{    $install_emacs = promptBoolOnce .install "emacs" "Install Doom Emacs" -}}
+{{    $install_ruby = promptBoolOnce .install "ruby" "Install Ruby" -}}
+{{    $install_python = promptBoolOnce .install "python" "Install Python" -}}
+{{    $install_golang = promptBoolOnce .install "golang" "Install Go" -}}
+{{    $install_rust = promptBoolOnce .install "rust" "Install Rust" -}}
+{{    $install_puppet = promptBoolOnce .install "puppet" "Install Puppet" -}}
+{{    $install_starship = promptBoolOnce .install "starship" "Install Starship" -}}
+{{    $install_obsidian = promptBoolOnce .install "obsidian" "Install Obsidian" -}}
+{{    $install_alacritty = promptBoolOnce .install "alacritty" "Install Alacritty" -}}
+{{    $email = promptStringOnce . "email" "Email address" -}}
+{{    $name = promptStringOnce . "name" "Name" -}}
+{{    $signingkey = promptStringOnce . "signingkey" "Signing key" -}}
+{{    $colortheme = promptStringOnce . "colortheme" "Color theme (nord/dracula)" }}
+{{- end -}}
 
 {{- $osid := .chezmoi.os -}}
 {{- if hasKey .chezmoi.osRelease "id" -}}
@@ -33,6 +61,18 @@ progress = true
   signingkey = {{ $signingkey | quote }}
   osid = {{ $osid | quote }}
   colortheme = {{ $colortheme | quote }}
+[data.install]
+  onepassword = {{ $install_onepassword }}
+  astronvim = {{ $install_astronvim }}
+  emacs = {{ $install_emacs }}
+  ruby = {{ $install_ruby }}
+  python = {{ $install_python }}
+  golang = {{ $install_golang }}
+  rust = {{ $install_rust }}
+  puppet = {{ $install_puppet }}
+  starship = {{ $install_starship }}
+  obsidian = {{ $install_obsidian }}
+  alacritty = {{ $install_alacritty }}
 
 [diff]
   exclude = ["scripts"]

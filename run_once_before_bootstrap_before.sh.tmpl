@@ -1,27 +1,10 @@
 #!/usr/bin/env bash
 
-# exit on error
-set -Eeuo pipefail
-
-# Set secure permissions on created directories and files
-umask 077
+. "{{ .chezmoi.sourceDir | quote }}/script_utils.sh"
 
 # Define version and architecture for op
 op_email="{{ .email }}"
 op_arch="{{ .chezmoi.arch }}"
-
-# Set up colors
-red=$(tput setaf 1)
-green=$(tput setaf 2)
-reset=$(tput sgr0)
-
-verlte() {
-    printf '%s\n%s' "$1" "$2" | sort -C -V
-}
-
-verlt() {
-    ! verlte "$2" "$1"
-}
 
 echo "${green}Enabling COPR repositories${reset}"
 sudo dnf --quiet copr enable atim/bottom -y &> /dev/null
@@ -66,8 +49,8 @@ sudo dnf --quiet install -y \
     puppet-bolt \
     python3 \
     python3-devel \
-    python3-tkinter \
     python3-pip \
+    python3-tkinter \
     rbenv \
     ruby \
     ruby-build \
@@ -90,26 +73,31 @@ pip install --quiet --no-input --user --upgrade beautysh black isort
 if ! command -v puppet-languageserver &>/dev/null; then
     curr_dir="${PWD}"
     dir=$(mktemp -d)
-    git clone https://github.com/puppetlabs/puppet-editor-services.git ${dir}
+    git clone https://github.com/puppetlabs/puppet-editor-services.git --depth 1 -q ${dir}
     cd "${dir}"
     if [ "$(rbenv versions --bare --skip-aliases | grep 3.1.2)" != "3.1.2" ]; then
+        echo "${green}Installing Ruby${reset}"
         rbenv install 3.1.2
     fi
     source <(rbenv init - bash)
     rbenv global 3.1.2
     rbenv local 3.1.2
+    echo "${green}Installing Puppet Lint${reset}"
     gem install bundler puppet-lint
     bundle install --quiet
+    echo "${green}Installing Puppet language server${reset}"
     bundle exec rake gem_revendor &>/dev/null
     cd "${curr_dir}"
     mv "${dir}" "${HOME}/.local/share/puppet-languageserver"
 fi
 
 if ! command -v pyenv &>/dev/null; then
+    echo "${green}Installing pyenv${reset}"
     curl https://pyenv.run | bash
 fi
 
 if ! command -v dotenv-linter &>/dev/null; then
+    echo "${green}Installing dotenv-linter${reset}"
     curl -sSfL https://git.io/JLbXn | sh -s -- -b "${HOME}/.local/bin"
 fi
 

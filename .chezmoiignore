@@ -1,3 +1,6 @@
 README.md
 .editorconfig
 .chezmoiignore
+.chezmoidata
+.pre-commit-config.yaml
+script_utils.sh
