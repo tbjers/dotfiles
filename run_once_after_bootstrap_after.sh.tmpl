@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. "{{ .chezmoi.sourceDir | quote }}/script_utils.sh"
+. "{{ .chezmoi.sourceDir }}/script_utils.sh"
 
 {{- if .install.onepassword }}
 if ! command -v op &>/dev/null; then
@@ -8,6 +8,79 @@ if ! command -v op &>/dev/null; then
   sudo rpm --import https://downloads.1password.com/linux/keys/1password.asc
   sudo sh -c 'echo -e "[1password]\nname=1Password Stable Channel\nbaseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=\"https://downloads.1password.com/linux/keys/1password.asc\"" > /etc/yum.repos.d/1password.repo'
   sudo dnf install -y -q 1password 1password-cli
+fi
+{{ end -}}
+
+{{- if .install.astronvim }}
+echo "${green}Installing Neovim${reset}"
+sudo dnf --quiet install -y \
+    git \
+    lazygit \
+    lua-devel \
+    luajit \
+    luajit-devel \
+    luarocks \
+    neovim \
+    # /end
+if [ ! -d "${HOME}/.config/nvim" ]; then
+    echo "${green}Cloning AstroNvim${reset}"
+    git clone --depth 1 -q https://github.com/AstroNvim/AstroNvim "${HOME}/.config/nvim"
+elif [ -f "${HOME}/.config/nvim/config.ld" ]; then
+    echo "${green}Updating AstroNvim${reset}"
+    git -C "${HOME}/.config/nvim" pull --rebase --update-shallow -q
+fi
+{{ end -}}
+
+{{- if .install.ruby }}
+echo "${green}Installing Ruby${reset}"
+sudo dnf --quiet install -y \
+    rbenv \
+    ruby \
+    ruby-build \
+    # /end
+if [ "$(rbenv versions --bare --skip-aliases | grep 3.1.2)" != "3.1.2" ]; then
+    rbenv install 3.1.2
+fi
+source <(rbenv init - bash)
+rbenv global 3.1.2
+rbenv local 3.1.2
+{{ end -}}
+
+{{- if .install.puppet }}
+if ! rpm -q puppet-tools-release &> /dev/null; then
+    echo "${green}Enabling Puppet repository${reset}"
+    sudo rpm -Uvh https://yum.puppet.com/puppet-tools-release-fedora-34.noarch.rpm
+fi
+echo "${green}Installing Puppet Bolt${reset}"
+sudo dnf --quiet install -y \
+    puppet-bolt \
+{{ if not .install.ruby -}}
+    rbenv \
+    ruby \
+    ruby-build \
+{{ end -}}
+    # /end
+if ! command -v puppet-languageserver &>/dev/null; then
+    curr_dir="${PWD}"
+    dir=$(mktemp -d)
+    git clone https://github.com/puppetlabs/puppet-editor-services.git --depth 1 -q ${dir}
+    cd "${dir}"
+{{ if not .install.ruby -}}
+    if [ "$(rbenv versions --bare --skip-aliases | grep 3.1.2)" != "3.1.2" ]; then
+        echo "${green}Installing Ruby${reset}"
+        rbenv install 3.1.2
+    fi
+    source <(rbenv init - bash)
+    rbenv global 3.1.2
+    rbenv local 3.1.2
+{{ end -}}
+    echo "${green}Installing Puppet Lint${reset}"
+    gem install bundler puppet-lint
+    bundle install --quiet
+    echo "${green}Installing Puppet language server${reset}"
+    bundle exec rake gem_revendor &>/dev/null
+    cd "${curr_dir}"
+    mv "${dir}" "${HOME}/.local/share/puppet-languageserver"
 fi
 {{ end -}}
 

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
 if command -v kind &>/dev/null; then
-    source <(kind completion bash)
+	# shellcheck disable=SC1090
+	source <(kind completion bash)
 fi

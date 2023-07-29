@@ -6,6 +6,8 @@ if [ -f "${HOME}/.pyenv/bin/pyenv" ]; then
 fi
 
 if command -v pyenv &>/dev/null; then
+	# shellcheck disable=SC1090
 	source <(pyenv init -)
+	# shellcheck disable=SC1090
 	source <(pyenv virtualenv-init -)
 fi

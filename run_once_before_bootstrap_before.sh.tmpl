@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. "{{ .chezmoi.sourceDir | quote }}/script_utils.sh"
+. "{{ .chezmoi.sourceDir }}/script_utils.sh"
 
 # Define version and architecture for op
 op_email="{{ .email }}"
@@ -10,11 +10,6 @@ echo "${green}Enabling COPR repositories${reset}"
 sudo dnf --quiet copr enable atim/bottom -y &> /dev/null
 sudo dnf --quiet copr enable atim/lazygit -y &> /dev/null
 sudo dnf --quiet copr enable varlad/zellij -y &> /dev/null
-
-if ! rpm -q puppet-tools-release &> /dev/null; then
-    echo "${green}Enabling Puppet repository${reset}"
-    sudo rpm -Uvh https://yum.puppet.com/puppet-tools-release-fedora-34.noarch.rpm
-fi
 
 echo "${green}Installing core tools${reset}"
 sudo dnf --quiet install -y \
@@ -40,57 +35,20 @@ sudo dnf --quiet install -y \
     cargo \
     golang \
     llvm \
-    lua-devel \
-    luajit \
-    luajit-devel \
-    luarocks \
     nodejs \
     poetry \
-    puppet-bolt \
     python3 \
     python3-devel \
     python3-pip \
     python3-tkinter \
-    rbenv \
-    ruby \
-    ruby-build \
     tk \
     # /end
-
-if [ ! -d "${HOME}/.config/nvim" ]; then
-    echo "${green}Cloning AstroNvim${reset}"
-    git clone --depth 1 -q https://github.com/AstroNvim/AstroNvim "${HOME}/.config/nvim"
-elif [ -f "${HOME}/.config/nvim/config.ld" ]; then
-    echo "${green}Updating AstroNvim${reset}"
-    git -C "${HOME}/.config/nvim" pull --ff-only --depth 1 -q
-fi
 
 echo "${green}Upgrading pip${reset}"
 python3 -m pip install --quiet --no-input --upgrade pip
 
 echo "${green}Installing LSP/lint/formatters${reset}"
 pip install --quiet --no-input --user --upgrade beautysh black isort
-if ! command -v puppet-languageserver &>/dev/null; then
-    curr_dir="${PWD}"
-    dir=$(mktemp -d)
-    git clone https://github.com/puppetlabs/puppet-editor-services.git --depth 1 -q ${dir}
-    cd "${dir}"
-    if [ "$(rbenv versions --bare --skip-aliases | grep 3.1.2)" != "3.1.2" ]; then
-        echo "${green}Installing Ruby${reset}"
-        rbenv install 3.1.2
-    fi
-    source <(rbenv init - bash)
-    rbenv global 3.1.2
-    rbenv local 3.1.2
-    echo "${green}Installing Puppet Lint${reset}"
-    gem install bundler puppet-lint
-    bundle install --quiet
-    echo "${green}Installing Puppet language server${reset}"
-    bundle exec rake gem_revendor &>/dev/null
-    cd "${curr_dir}"
-    mv "${dir}" "${HOME}/.local/share/puppet-languageserver"
-fi
-
 if ! command -v pyenv &>/dev/null; then
     echo "${green}Installing pyenv${reset}"
     curl https://pyenv.run | bash

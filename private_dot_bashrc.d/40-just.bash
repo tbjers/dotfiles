@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
 if command -v just &>/dev/null; then
-    source <(just --completions bash)
+	# shellcheck disable=SC1090
+	source <(just --completions bash)
 fi
