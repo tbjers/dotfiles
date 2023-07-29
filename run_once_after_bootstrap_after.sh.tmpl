@@ -42,7 +42,6 @@ if [ "$(rbenv versions --bare --skip-aliases | grep 3.1.2)" != "3.1.2" ]; then
 fi
 source <(rbenv init - bash)
 rbenv global 3.1.2
-rbenv local 3.1.2
 {{ end -}}
 
 {{- if .install.puppet }}
