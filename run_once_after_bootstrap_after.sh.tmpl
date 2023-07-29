@@ -14,7 +14,6 @@ fi
 {{- if .install.astronvim }}
 echo "${green}Installing Neovim${reset}"
 sudo dnf --quiet install -y \
-    git \
     lazygit \
     lua-devel \
     luajit \
