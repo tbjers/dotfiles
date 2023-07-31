@@ -1,5 +1,6 @@
 ---
 # -*-mode:yaml-*- vim:ft=yaml
+# -*-mode:go-template-*- vim:ft=yaml
 env:
   TERM: xterm-256color
 
@@ -29,7 +30,7 @@ font:
     style: Italic
   bold_italic:
     style: SemiBoldItalic
-  size: 16
+  size: {{if eq .chezmoi.hostname "prime-mover"}}16{{else}}14{{end}}
 
 draw_bold_text_with_bright_colors: true
 
