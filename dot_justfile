@@ -3,7 +3,7 @@ default:
 
 update:
     sudo dnf update -y
-    sudo flatpak update --noninteractive
+    flatpak update --noninteractive
 
 fix-gpg:
     sudo systemctl restart pcscd.service
