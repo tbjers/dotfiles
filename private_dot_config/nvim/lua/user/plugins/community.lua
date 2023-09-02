@@ -6,9 +6,11 @@ return {
 	{ import = "astrocommunity.colorscheme.dracula-nvim" },
 	{ import = "astrocommunity.colorscheme.nord-nvim" },
 	{ import = "astrocommunity.editing-support.refactoring-nvim" },
-	{ import = "astrocommunity.git.git-blame-nvim" },
+	{ import = "astrocommunity.git.blame-nvim" },
+	{ import = "astrocommunity.lsp.lsp-signature-nvim" },
 	{ import = "astrocommunity.note-taking.obsidian-nvim" },
 	{ import = "astrocommunity.pack.bash" },
+	{ import = "astrocommunity.pack.docker" },
 	{ import = "astrocommunity.pack.go" },
 	{ import = "astrocommunity.pack.lua" },
 	{ import = "astrocommunity.pack.markdown" },
@@ -20,6 +22,18 @@ return {
 	{ import = "astrocommunity.pack.toml" },
 	{ import = "astrocommunity.pack.yaml" },
 	{ import = "astrocommunity.project.project-nvim" },
+	{ import = "astrocommunity.syntax.hlargs-nvim" },
+	{ import = "astrocommunity.syntax.vim-cool" },
+	{ import = "astrocommunity.test.neotest" },
+	{ import = "astrocommunity.test.nvim-coverage" },
+	{ import = "astrocommunity.utility.transparent-nvim" },
+	{
+		"blame.nvim",
+		opts = {
+			virtual_style = "right_align",
+			merge_consecutive = true,
+		},
+	},
 	{
 		"dracula.nvim",
 		opts = {
