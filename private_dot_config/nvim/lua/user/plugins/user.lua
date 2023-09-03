@@ -1,31 +1,35 @@
 return {
-	-- You can also add new plugins here as well:
 	-- Add plugins, the lazy syntax
-	-- "andweeb/presence.nvim",
-	-- {
-	--   "ray-x/lsp_signature.nvim",
-	--   event = "BufRead",
-	--   config = function()
-	--     require("lsp_signature").setup()
-	--   end,
-	-- },
+	{
+		"andweeb/presence.nvim",
+		event = "VeryLazy",
+	},
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "BufRead",
+		config = function() require("lsp_signature").setup {} end,
+	},
 	{
 		"IndianBoy42/tree-sitter-just",
 		event = "BufRead",
-		config = function()
-			require("tree-sitter-just").setup({})
-		end,
+		config = function() require("tree-sitter-just").setup {} end,
 	},
-	-- configure Telescope to load the Projects extension
 	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = {
-			"ahmedkhalf/project.nvim",
+		"FabijanZulj/blame.nvim",
+		event = "User AstroGitFile",
+		opts = {
+			virtual_style = "right_align",
+			merge_consecutive = true,
 		},
-		config = function(plugin, opts)
-			require("plugins.configs.telescope")(plugin, opts)
-			local telescope = require("telescope")
-			telescope.load_extension("projects")
-		end,
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		build = "cd app && npm install",
+		ft = "markdown",
+	},
+	{
+		"linux-cultist/venv-selector.nvim",
+		opts = {},
+		keys = { { "<leader>lv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" } },
 	},
 }
