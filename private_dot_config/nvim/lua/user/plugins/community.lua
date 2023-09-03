@@ -8,6 +8,7 @@ return {
 	{ import = "astrocommunity.colorscheme.dracula-nvim" },
 	{ import = "astrocommunity.colorscheme.nord-nvim" },
 	{ import = "astrocommunity.diagnostics.trouble-nvim" },
+	{ import = "astrocommunity.editing-support.text-case-nvim" },
 	{ import = "astrocommunity.note-taking.obsidian-nvim" },
 	{ import = "astrocommunity.syntax.hlargs-nvim" },
 	{ import = "astrocommunity.syntax.vim-cool" },

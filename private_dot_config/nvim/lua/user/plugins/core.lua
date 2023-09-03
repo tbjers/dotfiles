@@ -20,14 +20,14 @@ return {
       return opts
     end,
   },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    enabled = false,
-  },
-  {
-    "jay-babu/mason-null-ls.nvim",
-    enabled = false,
-  },
+  -- {
+  --   "jose-elias-alvarez/null-ls.nvim",
+  --   enabled = false,
+  -- },
+  -- {
+  --   "jay-babu/mason-null-ls.nvim",
+  --   enabled = false,
+  -- },
   -- You can disable default plugins as follows:
   -- { "max397574/better-escape.nvim", enabled = false },
   --
