@@ -88,3 +88,13 @@
     [".local/bin/terraform".checksum]
         sha256 = "5ce4e0fc73d42b79f26ebb8c8d192bdbcff75bdc44e3d66895a48945b6ff5d48"
 
+[".local/bin/doctl"]
+    type = "file"
+    url = "https://github.com/digitalocean/doctl/releases/download/v1.98.1/doctl-1.98.1-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
+    executable = true
+    refreshPeriod = "168h"
+    [".local/bin/doctl".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "doctl"]
+    [".local/bin/doctl".checksum]
+        sha256 = "c48c9b3922d6339aca919b7e4b966740d40d0fca7e0695ec5eb466097d5f1ac5"

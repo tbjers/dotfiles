@@ -26,6 +26,7 @@ return {
       opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
         "black",
         "editorconfig_checker",
+        "prettierd",
         "puppet_lint",
       })
     end,
