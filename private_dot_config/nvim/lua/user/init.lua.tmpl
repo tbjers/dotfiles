@@ -89,11 +89,19 @@ return {
       return "yaml"
     end
 
+    require("transparent").clear_prefix("NeoTree")
+
     vim.filetype.add {
       extension = {
         yml = yaml_ft,
         yaml = yaml_ft,
       },
+    }
+
+    vim.filetype.add {
+      extension = {
+        dbml = "dbml",
+      }
     }
   end,
 }

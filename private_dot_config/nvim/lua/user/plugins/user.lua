@@ -15,6 +15,10 @@ return {
 		config = function() require("tree-sitter-just").setup {} end,
 	},
 	{
+		"buildpeak/vim-dbml",
+		event = "BufRead",
+	},
+	{
 		"FabijanZulj/blame.nvim",
 		event = "User AstroGitFile",
 		opts = {
