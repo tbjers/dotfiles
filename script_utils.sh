@@ -14,9 +14,9 @@ green=$(tput setaf 2)
 reset=$(tput sgr0)
 
 verlte() {
-	printf '%s\n%s' "$1" "$2" | sort -C -V
+  printf '%s\n%s' "$1" "$2" | sort -C -V
 }
 
 verlt() {
-	! verlte "$2" "$1"
+  ! verlte "$2" "$1"
 }

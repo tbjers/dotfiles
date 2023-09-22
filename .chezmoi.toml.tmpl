@@ -56,30 +56,30 @@ umask = 0o022
 progress = true
 
 [data]
-  email = {{ $email | quote }}
-  name = {{ $name | quote }}
-  signingkey = {{ $signingkey | quote }}
-  osid = {{ $osid | quote }}
-  colortheme = {{ $colortheme | quote }}
+    email = {{ $email | quote }}
+    name = {{ $name | quote }}
+    signingkey = {{ $signingkey | quote }}
+    osid = {{ $osid | quote }}
+    colortheme = {{ $colortheme | quote }}
 [data.install]
-  onepassword = {{ $install_onepassword }}
-  astronvim = {{ $install_astronvim }}
-  emacs = {{ $install_emacs }}
-  ruby = {{ $install_ruby }}
-  python = {{ $install_python }}
-  golang = {{ $install_golang }}
-  rust = {{ $install_rust }}
-  puppet = {{ $install_puppet }}
-  starship = {{ $install_starship }}
-  obsidian = {{ $install_obsidian }}
-  alacritty = {{ $install_alacritty }}
+    onepassword = {{ $install_onepassword }}
+    astronvim = {{ $install_astronvim }}
+    emacs = {{ $install_emacs }}
+    ruby = {{ $install_ruby }}
+    python = {{ $install_python }}
+    golang = {{ $install_golang }}
+    rust = {{ $install_rust }}
+    puppet = {{ $install_puppet }}
+    starship = {{ $install_starship }}
+    obsidian = {{ $install_obsidian }}
+    alacritty = {{ $install_alacritty }}
 
 [diff]
-  exclude = ["scripts"]
+    exclude = ["scripts"]
 
 [merge]
-  command = "nvim"
-  args = ["-d"]
+    command = "nvim"
+    args = ["-d"]
 
 [status]
-  exclude = ["scripts"]
+    exclude = ["scripts"]
