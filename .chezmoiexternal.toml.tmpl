@@ -13,25 +13,21 @@
 
 [".local/bin/atuin"]
     type = "file"
-    url = "https://github.com/ellie/atuin/releases/download/v16.0.0/atuin-v16.0.0-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu.tar.gz"
+    url = "https://github.com/atuinsh/atuin/releases/download/{{ .install.versions.atuin }}/atuin-{{ .install.versions.atuin }}-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu.tar.gz"
     executable = true
     refreshPeriod = "168h"
-    [".local/bin/atuin".checksum]
-        sha512 = "6dc34d48656014e0a11c61ceb3a49d18a1363556e056efd32f42641af835fa86bd13dce29d848810bab4b5ca2fd1f3c16fff0ac889991acb9318a446c2dec316"
     [".local/bin/atuin".filter]
         command = "tar"
-        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "atuin-v16.0.0-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu/atuin"]
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "atuin-{{ .install.versions.atuin }}-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu/atuin"]
 
 [".local/bin/bat"]
     type = "file"
-    url = "https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-v0.23.0-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu.tar.gz"
+    url = "https://github.com/sharkdp/bat/releases/download/{{ .install.versions.bat }}/bat-{{ .install.versions.bat }}-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu.tar.gz"
     executable = true
     refreshPeriod = "168h"
-    [".local/bin/bat".checksum]
-        sha512 = "0ef0ac2da418c1a16bb03b79740dd4051e7a4a9f92749bc6bd712341b4a9d052ebe823f940dab2f698c7c23c5ac5450c7a7bf8a5fabf3bf51df4e30a633ef7d8"
     [".local/bin/bat".filter]
         command = "tar"
-        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "bat-v0.23.0-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu/bat"]
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "bat-{{ .install.versions.bat }}-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu/bat"]
 
 [".local/bin/stylua"]
     type = "file"

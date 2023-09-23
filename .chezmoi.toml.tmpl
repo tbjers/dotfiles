@@ -73,6 +73,9 @@ progress = true
     starship = {{ $install_starship }}
     obsidian = {{ $install_obsidian }}
     alacritty = {{ $install_alacritty }}
+[data.install.versions]
+    atuin = "{{ (gitHubLatestRelease "atuinsh/atuin").TagName }}"
+    bat = "{{ (gitHubLatestRelease "sharkdp/bat").TagName }}"
 
 [diff]
     exclude = ["scripts"]
