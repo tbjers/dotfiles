@@ -29,6 +29,13 @@
         command = "tar"
         args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "bat-{{ .install.versions.bat }}-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu/bat"]
 
+[".local/bin/kustomize"]
+    type = "archive-file"
+    url = "https://github.com/kubernetes-sigs/kustomize/releases/download/{{ .install.versions.kustomize }}/{{ .install.versions.kustomize | replaceAllRegex "/" "_" }}_{{ .chezmoi.os }}_{{ .chezmoi.arch }}.tar.gz"
+    path = "kustomize"
+    executable = true
+    refreshPeriod = "168h"
+
 [".local/bin/stylua"]
     type = "file"
     url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v0.18.0/stylua-linux-x86_64.zip"
