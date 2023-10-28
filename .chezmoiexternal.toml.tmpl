@@ -36,6 +36,12 @@
     executable = true
     refreshPeriod = "168h"
 
+[".local/bin/argocd"]
+    type = "file"
+    url = "https://github.com/argoproj/argo-cd/releases/download/{{ .install.versions.argocd }}/argocd-{{ .chezmoi.os }}-{{ .chezmoi.arch }}"
+    executable = true
+    refreshPeriod = "168h"
+
 [".local/bin/stylua"]
     type = "file"
     url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v0.18.0/stylua-linux-x86_64.zip"
