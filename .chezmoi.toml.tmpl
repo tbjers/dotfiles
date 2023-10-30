@@ -74,10 +74,11 @@ progress = true
     obsidian = {{ $install_obsidian }}
     alacritty = {{ $install_alacritty }}
 [data.install.versions]
+    argocd = "{{ (gitHubLatestRelease "argoproj/argo-cd").TagName }}"
     atuin = "{{ (gitHubLatestRelease "atuinsh/atuin").TagName }}"
     bat = "{{ (gitHubLatestRelease "sharkdp/bat").TagName }}"
+    kubeseal = "{{ (gitHubLatestRelease "bitnami-labs/sealed-secrets").TagName }}"
     kustomize = "{{ (gitHubLatestRelease "kubernetes-sigs/kustomize").TagName }}"
-    argocd = "{{ (gitHubLatestRelease "argoproj/argo-cd").TagName }}"
 
 [diff]
     exclude = ["scripts"]

@@ -36,6 +36,13 @@
     executable = true
     refreshPeriod = "168h"
 
+[".local/bin/kubeseal"]
+    type = "archive-file"
+    url = "https://github.com/bitnami-labs/sealed-secrets/releases/download/{{ .install.versions.kubeseal }}/kubeseal-{{ .install.versions.kubeseal | replaceAllRegex "v" "" }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
+    path = "kubeseal"
+    executable = true
+    refreshPeriod = "168h"
+
 [".local/bin/argocd"]
     type = "file"
     url = "https://github.com/argoproj/argo-cd/releases/download/{{ .install.versions.argocd }}/argocd-{{ .chezmoi.os }}-{{ .chezmoi.arch }}"
