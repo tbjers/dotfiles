@@ -17,6 +17,7 @@ path=(
     ${HOME}/.pyenv/bin
     ${HOME}/.yarn/bin
     ${HOME}/.yarn/global/node_modules/global/bin
+    ${HOME}/.krew/bin
     ${path}
     /usr/local/{bin,sbin}
 )

@@ -23,6 +23,7 @@
 {{ $install_starship := false -}}
 {{ $install_obsidian := false -}}
 {{ $install_alacritty := false -}}
+{{ $install_krew := false -}}
 {{ $email := "" -}}
 {{ $name := "" -}}
 {{ $signingkey := "" -}}
@@ -39,6 +40,7 @@
 {{    $install_starship = promptBoolOnce .install "starship" "Install Starship" -}}
 {{    $install_obsidian = promptBoolOnce .install "obsidian" "Install Obsidian" -}}
 {{    $install_alacritty = promptBoolOnce .install "alacritty" "Install Alacritty" -}}
+{{    $install_krew = promptBoolOnce .install "krew" "Install Krew" -}}
 {{    $email = promptStringOnce . "email" "Email address" -}}
 {{    $name = promptStringOnce . "name" "Name" -}}
 {{    $signingkey = promptStringOnce . "signingkey" "Signing key" -}}
@@ -73,6 +75,7 @@ progress = true
     starship = {{ $install_starship }}
     obsidian = {{ $install_obsidian }}
     alacritty = {{ $install_alacritty }}
+    krew = {{ $install_krew }}
 [data.install.versions]
     argocd = "{{ (gitHubLatestRelease "argoproj/argo-cd").TagName }}"
     atuin = "{{ (gitHubLatestRelease "atuinsh/atuin").TagName }}"
