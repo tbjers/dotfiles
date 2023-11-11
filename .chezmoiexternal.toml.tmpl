@@ -43,6 +43,13 @@
     executable = true
     refreshPeriod = "168h"
 
+[".local/bin/hugo"]
+    type = "archive-file"
+    url = "https://github.com/gohugoio/hugo/releases/download/{{ .install.versions.hugo }}/hugo_extended_{{ .install.versions.hugo | replaceAllRegex "v" "" }}_{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
+    path = "hugo"
+    executable = true
+    refreshPeriod = "168h"
+
 [".local/bin/argocd"]
     type = "file"
     url = "https://github.com/argoproj/argo-cd/releases/download/{{ .install.versions.argocd }}/argocd-{{ .chezmoi.os }}-{{ .chezmoi.arch }}"
