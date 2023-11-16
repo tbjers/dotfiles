@@ -1,6 +1,6 @@
----
 # -*-mode:yaml-*- vim:ft=yaml
 # -*-mode:go-template-*- vim:ft=yaml
+
 env:
   TERM: xterm-256color
 
@@ -43,7 +43,10 @@ cursor:
   unfocused_hollow: true
   style:
     shape: Block
-    blinking: On
+    blinking: "On"
+  vi_mode_style:
+    shape: Beam
+    blinking: "On"
 
 bell:
   animation: EaseOutExpo
