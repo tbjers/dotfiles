@@ -5,6 +5,7 @@ default:
 update:
     sudo dnf update -y
     flatpak update --noninteractive
+    brew update && brew upgrade
 
 fix-gpg:
     sudo systemctl restart pcscd.service
