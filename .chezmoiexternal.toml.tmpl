@@ -107,7 +107,7 @@
 
 [".local/bin/terraform"]
     type = "file"
-    url = "https://releases.hashicorp.com/terraform/1.6.4/terraform_1.6.4_linux_amd64.zip"
+    url = "https://releases.hashicorp.com/terraform/{{ .install.versions.terraform }}/terraform_{{ .install.versions.terraform }}_{{ .chezmoi.os }}_{{ .chezmoi.arch }}.zip"
     executable = true
     refreshPeriod = "720h"
     [".local/bin/terraform".filter]
@@ -117,7 +117,7 @@
 
 [".local/bin/tflint"]
     type = "file"
-    url = "https://github.com/terraform-linters/tflint/releases/download/v0.48.0/tflint_linux_amd64.zip"
+    url = "https://github.com/terraform-linters/tflint/releases/download/v0.48.0/tflint_{{ .chezmoi.os }}_{{ .chezmoi.arch }}.zip"
     executable = true
     refreshPeriod = "720h"
     [".local/bin/tflint".filter]

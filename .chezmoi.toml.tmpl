@@ -85,6 +85,7 @@ progress = true
     hugo = "{{ (gitHubLatestRelease "gohugoio/hugo").TagName }}"
     kubeseal = "{{ (gitHubLatestRelease "bitnami-labs/sealed-secrets").TagName }}"
     kustomize = "{{ (gitHubLatestRelease "kubernetes-sigs/kustomize").TagName }}"
+    terraform = "{{ (gitHubLatestRelease "hashicorp/terraform").TagName | replaceAllRegex "v" "" }}"
 
 [diff]
     exclude = ["scripts"]
