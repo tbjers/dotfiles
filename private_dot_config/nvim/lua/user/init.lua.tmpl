@@ -89,7 +89,7 @@ return {
       return "yaml"
     end
 
-    require("transparent").clear_prefix("NeoTree")
+    require("transparent").clear_prefix "NeoTree"
 
     vim.filetype.add {
       extension = {
@@ -101,7 +101,19 @@ return {
     vim.filetype.add {
       extension = {
         dbml = "dbml",
-      }
+      },
+    }
+
+    -- Several stubborn upstreams went to this bar and had some drinks...
+    -- HashiCorp: "Not our fault that Neovim can't handle dashes in plugin names."
+    -- nvim-lspconfig: "Well, then who's fucking fault is it?"
+    -- Neovim: "Y'all are some lazy fucks. Hashi, it's your turn to buy a round of shots."
+    -- u/gerrazor: [from one of the tables in the back] `au BufRead,BufNewFile *.tfvars set filetype=terraform`
+    -- Everyone else: "Thanks, Ger!"
+    vim.filetype.add {
+      extension = {
+        tfvars = "terraform",
+      },
     }
   end,
 }
