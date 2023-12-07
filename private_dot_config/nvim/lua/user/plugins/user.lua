@@ -19,6 +19,10 @@ return {
     event = "BufRead",
   },
   {
+    "imsnif/kdl.vim",
+    event = "BufRead",
+  },
+  {
     "FabijanZulj/blame.nvim",
     event = "User AstroGitFile",
     opts = {
