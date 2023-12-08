@@ -1,0 +1,18 @@
+layout {
+    pane_template name="nvim" {
+        command "nvim"
+        borderless true
+        close_on_exit true
+    }
+
+    default_tab_template {
+        // the default zellij tab-bar and status bar plugins
+        pane size=1 borderless=true {
+            plugin location="zellij:compact-bar"
+        }
+        nvim focus=true size="80%"
+        pane {
+            size "20%"
+        }
+    }
+}

@@ -1,3 +1,5 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator
+
 env:
   TERM: xterm-256color
 
@@ -21,9 +23,9 @@ window:
     multiplier: 3
 
 font:
-  builtin_box_drawing: false
+  builtin_box_drawing: true
   normal:
-    family: FantasqueSansMNerdFont
+    family: FantasqueSansM Nerd Font
     style: Regular
   bold:
     style: SemiBold
@@ -53,6 +55,8 @@ bell:
   animation: EaseOutExpo
   duration: 0
   color: "#ffffff"
+
+live_config_reload: true
 
 import:
   - ~/.config/alacritty/themes/{{ .colortheme }}.yml

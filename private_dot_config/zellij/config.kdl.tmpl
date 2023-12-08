@@ -210,22 +210,23 @@ themes {
     }
 }
 
-on_force_close "detach"
-simplified_ui false
-default_shell "bash"
-pane_frames true
 auto_layout true
-theme "{{ .colortheme }}"
 default_layout "default"
 default_mode "normal"
-mouse_mode true
+default_shell "bash"
 mirror_session true
-
+mouse_mode false
+on_force_close "detach"
+pane_frames true
+simplified_ui false
+styled_underlines true
+theme "{{ .colortheme }}"
 scroll_buffer_size 250000
+
 {{- if lookPath "wl-copy"}}
 copy_command "wl-copy"
 {{- else if lookPath "xclip"}}
-copy_command "xclip"
+copy_command "xclip -selection clipboard"
 {{- end }}
 copy_clipboard "system"
 
