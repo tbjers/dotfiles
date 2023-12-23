@@ -86,6 +86,7 @@ progress = true
     kubeseal = "{{ gitHubReleases "bitnami-labs/sealed-secrets" | toJson | fromJson | jq ".[] | select(.tag_name | startswith(\"v\")).tag_name" | first | trim }}"
     kustomize = "{{ (gitHubLatestRelease "kubernetes-sigs/kustomize").TagName }}"
     terraform = "{{ (gitHubLatestRelease "hashicorp/terraform").TagName | replaceAllRegex "v" "" }}"
+    terrascan = "{{ (gitHubLatestRelease "tenable/terrascan").TagName | replaceAllRegex "v" "" }}"
 
 [diff]
     exclude = ["scripts"]

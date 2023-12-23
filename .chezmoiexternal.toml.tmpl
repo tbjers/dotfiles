@@ -162,3 +162,10 @@
     refreshPeriod = "168h"
     [".local/bin/xcaddy".checksum]
         sha512 = "9e87261a4ca4144bf25105e0cb3b3eb0fb0b8564fe4fa5c126e25a926baea2d16868cb4e88cafc419dc69db3e692894bc7ebcb25434c0bbb74362c2f3a696db5"
+
+[".local/bin/terrascan"]
+    type = "archive-file"
+    url = "https://github.com/tenable/terrascan/releases/download/v{{ .install.versions.terrascan }}/terrascan_{{ .install.versions.terrascan }}_{{ .chezmoi.os | title }}_{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}.tar.gz"
+    path = "terrascan"
+    executable = true
+    refreshPeriod = "168h"
