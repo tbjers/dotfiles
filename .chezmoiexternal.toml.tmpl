@@ -169,3 +169,10 @@
     path = "terrascan"
     executable = true
     refreshPeriod = "168h"
+
+[".local/bin/infracost"]
+    type = "archive-file"
+    url = "https://github.com/infracost/infracost/releases/download/{{ .install.versions.infracost }}/infracost-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
+    path = "infracost-{{ .chezmoi.os }}-{{ .chezmoi.arch }}"
+    executable = true
+    refreshPeriod = "168h"

@@ -87,6 +87,7 @@ progress = true
     kustomize = "{{ (gitHubLatestRelease "kubernetes-sigs/kustomize").TagName }}"
     terraform = "{{ (gitHubLatestRelease "hashicorp/terraform").TagName | replaceAllRegex "v" "" }}"
     terrascan = "{{ (gitHubLatestRelease "tenable/terrascan").TagName | replaceAllRegex "v" "" }}"
+    infracost = "{{ (gitHubLatestRelease "infracost/infracost").TagName }}"
 
 [diff]
     exclude = ["scripts"]
