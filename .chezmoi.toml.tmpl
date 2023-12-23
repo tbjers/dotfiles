@@ -83,7 +83,7 @@ progress = true
     atuin = "{{ (gitHubLatestRelease "atuinsh/atuin").TagName }}"
     bat = "{{ (gitHubLatestRelease "sharkdp/bat").TagName }}"
     hugo = "{{ (gitHubLatestRelease "gohugoio/hugo").TagName }}"
-    kubeseal = "{{ (gitHubLatestRelease "bitnami-labs/sealed-secrets").TagName }}"
+    kubeseal = "{{ gitHubReleases "bitnami-labs/sealed-secrets" | toJson | fromJson | jq ".[] | select(.tag_name | startswith(\"v\")).tag_name" | first | trim }}"
     kustomize = "{{ (gitHubLatestRelease "kubernetes-sigs/kustomize").TagName }}"
     terraform = "{{ (gitHubLatestRelease "hashicorp/terraform").TagName | replaceAllRegex "v" "" }}"
 
