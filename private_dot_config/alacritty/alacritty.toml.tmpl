@@ -1,0 +1,70 @@
+# -*-mode:toml-*- vim:ft=toml.gotexttmpl
+# Configuration for Alacritty, the GPU enhanced terminal emulator
+
+import = ["{{ .chezmoi.homeDir }}/.config/alacritty/themes/{{ .colortheme }}.toml"]
+live_config_reload = true
+
+[bell]
+animation = "EaseOutExpo"
+color = "#ffffff"
+duration = 0
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[cursor]
+blink_interval = 750
+blink_timeout = 5
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "On"
+shape = "Block"
+
+[cursor.vi_mode_style]
+blinking = "On"
+shape = "Beam"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+builtin_box_drawing = true
+size = 14
+
+[font.bold]
+style = "SemiBold"
+
+[font.bold_italic]
+style = "SemiBoldItalic"
+
+[font.italic]
+style = "Italic"
+
+[font.normal]
+family = "FantasqueSansM Nerd Font"
+style = "Regular"
+
+[mouse]
+hide_when_typing = true
+
+[window]
+decorations = "none"
+decorations_theme_variant = "Dark"
+dynamic_padding = true
+dynamic_title = true
+opacity = 0.86
+startup_mode = "Windowed"
+title = "Alacritty"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+x = 6
+y = 6
+
+[scrolling]
+history = 100000
+multiplier = 3

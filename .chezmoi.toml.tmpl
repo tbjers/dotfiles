@@ -44,7 +44,7 @@
 {{    $email = promptStringOnce . "email" "Email address" -}}
 {{    $name = promptStringOnce . "name" "Name" -}}
 {{    $signingkey = promptStringOnce . "signingkey" "Signing key" -}}
-{{    $colortheme = promptStringOnce . "colortheme" "Color theme (nord/dracula)" }}
+{{    $colortheme = promptStringOnce . "colortheme" "Color theme (nord/dracula/dracula-pro)" }}
 {{- end -}}
 
 {{- $osid := .chezmoi.os -}}
@@ -98,3 +98,6 @@ progress = true
 
 [status]
     exclude = ["scripts"]
+
+[template]
+    options = ["missingkey=error"]
