@@ -1,5 +1,51 @@
 # -*-mode: toml;-*- vim:ft=toml
-# file: chezmoi/.chezmoiexternal.toml.tmpl
+# file: chezmoi/.chezmoiexternal.toml
+
+# ~/.local/share/chezmoi/.chezmoiexternal.toml.tmpl
+# =============================================================================
+# External binaries and libraries to download from GitHub and elsewhere.{{- /*
+# 
+# The $variables below by and large use the gitHubLatestRelease function to
+# fetch the latest release and tag name from GitHub.
+# 
+# TODO: Use data in release information to fetch URL and hash for downloads.
+# TODO: Look into caching of these values.
+# 
+# This file supports Go's text/template language. */}}
+
+{{- $argocd := (gitHubLatestRelease "argoproj/argo-cd").TagName }}
+{{- $atuin := (gitHubLatestRelease "atuinsh/atuin").TagName }}
+{{- $bat := (gitHubLatestRelease "sharkdp/bat").TagName }}
+{{- $hugo := (gitHubLatestRelease "gohugoio/hugo").TagName }}
+{{- $kubeseal := gitHubReleases "bitnami-labs/sealed-secrets" | toJson | fromJson | jq ".[] | select(.tag_name | startswith(\"v\")).tag_name" | first | trim }}
+{{- $kustomize := (gitHubLatestRelease "kubernetes-sigs/kustomize").TagName }}
+{{- $terraform := (gitHubLatestRelease "hashicorp/terraform").TagName | replaceAllRegex "v" "" }}
+{{- $terrascan := (gitHubLatestRelease "tenable/terrascan").TagName | replaceAllRegex "v" "" }}
+{{- $infracost := (gitHubLatestRelease "infracost/infracost").TagName }}
+{{- $nerdFonts := gitHubLatestRelease "ryanoasis/nerd-fonts" | toJson | fromJson }}
+{{- $nerdFontFantasque := $nerdFonts | jq ".assets[] | select(.name | startswith(\"FantasqueSansMono.tar.xz\")).browser_download_url" | first | trim }}
+{{- $nerdFontCascadia := $nerdFonts | jq ".assets[] | select(.name | startswith(\"CascadiaCode.tar.xz\")).browser_download_url" | first | trim }}
+{{- $snykJson := (output "curl" "-s" "https://static.snyk.io/cli/latest/release.json") | fromJson }}
+{{- $snykUrl := $snykJson | jq ".assets.\"snyk-linux\".url" | first | trim }}
+{{- $snykSha256 := $snykJson | jq ".assets.\"snyk-linux\".sha256" | first | trim | splitList "  " | first }}
+
+[".local/share/fonts/c/CascadiaCode"]
+    type = "archive"
+    url = {{ $nerdFontCascadia | quote }}
+    refreshPeriod = "168h"
+
+[".local/share/fonts/f/FantasqueSansMono"]
+    type = "archive"
+    url = {{ $nerdFontFantasque | quote }}
+    refreshPeriod = "168h"
+
+[".local/bin/snyk"]
+    type = "file"
+    url = {{ $snykUrl | quote }}
+    executable = true
+    refreshPeriod = "720h"
+    [".local/bin/snyk".checksum]
+        sha256 = {{ $snykSha256 | quote }}
 
 [".local/bin/mdloader"]
     type = "file"
@@ -13,72 +59,58 @@
 
 [".local/bin/atuin"]
     type = "file"
-    url = "https://github.com/atuinsh/atuin/releases/download/{{ .install.versions.atuin }}/atuin-{{ .install.versions.atuin }}-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu.tar.gz"
+    url = 'https://github.com/atuinsh/atuin/releases/download/{{ $atuin }}/atuin-{{ $atuin }}-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu.tar.gz'
     executable = true
     refreshPeriod = "168h"
     [".local/bin/atuin".filter]
         command = "tar"
-        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "atuin-{{ .install.versions.atuin }}-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu/atuin"]
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", 'atuin-{{ $atuin }}-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu/atuin']
 
 [".local/bin/bat"]
     type = "file"
-    url = "https://github.com/sharkdp/bat/releases/download/{{ .install.versions.bat }}/bat-{{ .install.versions.bat }}-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu.tar.gz"
+    url = 'https://github.com/sharkdp/bat/releases/download/{{ $bat }}/bat-{{ $bat }}-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu.tar.gz'
     executable = true
     refreshPeriod = "168h"
     [".local/bin/bat".filter]
         command = "tar"
-        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "bat-{{ .install.versions.bat }}-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu/bat"]
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", 'bat-{{ $bat }}-{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}-unknown-{{ .chezmoi.os }}-gnu/bat']
 
 [".local/bin/kustomize"]
     type = "archive-file"
-    url = "https://github.com/kubernetes-sigs/kustomize/releases/download/{{ .install.versions.kustomize }}/{{ .install.versions.kustomize | replaceAllRegex "/" "_" }}_{{ .chezmoi.os }}_{{ .chezmoi.arch }}.tar.gz"
+    url = 'https://github.com/kubernetes-sigs/kustomize/releases/download/{{ $kustomize }}/{{ $kustomize | replaceAllRegex "/" "_" }}_{{ .chezmoi.os }}_{{ .chezmoi.arch }}.tar.gz'
     path = "kustomize"
     executable = true
     refreshPeriod = "168h"
 
 [".local/bin/kubeseal"]
     type = "archive-file"
-    url = "https://github.com/bitnami-labs/sealed-secrets/releases/download/{{ .install.versions.kubeseal }}/kubeseal-{{ .install.versions.kubeseal | replaceAllRegex "v" "" }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
+    url = 'https://github.com/bitnami-labs/sealed-secrets/releases/download/{{ $kubeseal }}/kubeseal-{{ $kubeseal | replaceAllRegex "v" "" }}-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz'
     path = "kubeseal"
     executable = true
     refreshPeriod = "168h"
 
 [".local/bin/hugo"]
     type = "archive-file"
-    url = "https://github.com/gohugoio/hugo/releases/download/{{ .install.versions.hugo }}/hugo_extended_{{ .install.versions.hugo | replaceAllRegex "v" "" }}_{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
+    url = 'https://github.com/gohugoio/hugo/releases/download/{{ $hugo }}/hugo_extended_{{ $hugo | replaceAllRegex "v" "" }}_{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz'
     path = "hugo"
     executable = true
     refreshPeriod = "168h"
 
 [".local/bin/argocd"]
     type = "file"
-    url = "https://github.com/argoproj/argo-cd/releases/download/{{ .install.versions.argocd }}/argocd-{{ .chezmoi.os }}-{{ .chezmoi.arch }}"
+    url = 'https://github.com/argoproj/argo-cd/releases/download/{{ $argocd }}/argocd-{{ .chezmoi.os }}-{{ .chezmoi.arch }}'
     executable = true
     refreshPeriod = "168h"
 
 [".local/bin/stylua"]
     type = "file"
-    url = "https://github.com/JohnnyMorganz/StyLua/releases/download/v0.18.0/stylua-linux-x86_64.zip"
+    url = 'https://github.com/JohnnyMorganz/StyLua/releases/download/v0.18.0/stylua-linux-x86_64.zip'
     executable = true
     refreshPeriod = "720h"
     [".local/bin/stylua".checksum]
         sha256 = "6f3d72d23433857c917507fe780eaf16ba1d5aa0304cae588b181db9282e3dd3"
     [".local/bin/stylua".filter]
         command = "zcat"
-
-[".local/share/fonts/c/CascadiaCode"]
-    type = "archive"
-    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/CascadiaCode.tar.xz"
-    refreshPeriod = "168h"
-    [".local/share/fonts/c/CascadiaCode".checksum]
-        sha256 = "d21d11c3703287663d5c5e72b3f75269fd8adc9f87f03c091b6c71805094bf2e"
-
-[".local/share/fonts/f/FantasqueSansMono"]
-    type = "archive"
-    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/FantasqueSansMono.tar.xz"
-    refreshPeriod = "168h"
-    [".local/share/fonts/f/FantasqueSansMono".checksum]
-        sha256 = "12d496d7ace33a6d620fdfa84ce081c271875148375ab1ac8132264e2be58b33"
 
 [".local/bin/kubectl"]
     type = "file"
@@ -97,17 +129,9 @@
 [".local/bin/helm".checksum]
     sha256 = "1b2313cd198d45eab00cc37c38f6b1ca0a948ba279c29e322bdf426d406129b5"
 
-[".local/bin/snyk"]
-    type = "file"
-    url = "{{ .install.versions.snyk.url }}"
-    executable = true
-    refreshPeriod = "720h"
-    [".local/bin/snyk".checksum]
-        sha256 = "{{ .install.versions.snyk.sha256 }}"
-
 [".local/bin/terraform"]
     type = "file"
-    url = "https://releases.hashicorp.com/terraform/{{ .install.versions.terraform }}/terraform_{{ .install.versions.terraform }}_{{ .chezmoi.os }}_{{ .chezmoi.arch }}.zip"
+    url = 'https://releases.hashicorp.com/terraform/{{ $terraform }}/terraform_{{ $terraform }}_{{ .chezmoi.os }}_{{ .chezmoi.arch }}.zip'
     executable = true
     refreshPeriod = "720h"
     [".local/bin/terraform".filter]
@@ -115,7 +139,7 @@
 
 [".local/bin/tflint"]
     type = "file"
-    url = "https://github.com/terraform-linters/tflint/releases/download/v0.48.0/tflint_{{ .chezmoi.os }}_{{ .chezmoi.arch }}.zip"
+    url = 'https://github.com/terraform-linters/tflint/releases/download/v0.48.0/tflint_{{ .chezmoi.os }}_{{ .chezmoi.arch }}.zip'
     executable = true
     refreshPeriod = "720h"
     [".local/bin/tflint".filter]
@@ -125,7 +149,7 @@
 
 [".local/bin/tfsec"]
     type = "file"
-    url = "https://github.com/aquasecurity/tfsec/releases/download/v1.28.1/tfsec-linux-amd64"
+    url = 'https://github.com/aquasecurity/tfsec/releases/download/v1.28.1/tfsec-linux-amd64'
     executable = true
     refreshPeriod = "720h"
     [".local/bin/tfsec".checksum]
@@ -133,7 +157,7 @@
 
 [".local/bin/doctl"]
     type = "archive-file"
-    url = "https://github.com/digitalocean/doctl/releases/download/v1.98.1/doctl-1.98.1-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
+    url = 'https://github.com/digitalocean/doctl/releases/download/v1.98.1/doctl-1.98.1-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz'
     path = "doctl"
     executable = true
     refreshPeriod = "168h"
@@ -142,21 +166,21 @@
 
 [".local/bin/adb"]
     type = "archive-file"
-    url = "https://dl.google.com/android/repository/platform-tools-latest-{{ .chezmoi.os }}.zip"
+    url = 'https://dl.google.com/android/repository/platform-tools-latest-{{ .chezmoi.os }}.zip'
     path = "platform-tools/adb"
     executable = true
     refreshPeriod = "168h"
 
 [".local/bin/fastboot"]
     type = "archive-file"
-    url = "https://dl.google.com/android/repository/platform-tools-latest-{{ .chezmoi.os }}.zip"
+    url = 'https://dl.google.com/android/repository/platform-tools-latest-{{ .chezmoi.os }}.zip'
     path = "platform-tools/fastboot"
     executable = true
     refreshPeriod = "168h"
 
 [".local/bin/xcaddy"]
     type = "archive-file"
-    url = "https://github.com/caddyserver/xcaddy/releases/download/v0.3.5/xcaddy_0.3.5_{{ .chezmoi.os }}_{{ .chezmoi.arch }}.tar.gz"
+    url = 'https://github.com/caddyserver/xcaddy/releases/download/v0.3.5/xcaddy_0.3.5_{{ .chezmoi.os }}_{{ .chezmoi.arch }}.tar.gz'
     path = "xcaddy"
     executable = true
     refreshPeriod = "168h"
@@ -165,14 +189,14 @@
 
 [".local/bin/terrascan"]
     type = "archive-file"
-    url = "https://github.com/tenable/terrascan/releases/download/v{{ .install.versions.terrascan }}/terrascan_{{ .install.versions.terrascan }}_{{ .chezmoi.os | title }}_{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}.tar.gz"
+    url = 'https://github.com/tenable/terrascan/releases/download/v{{ $terrascan }}/terrascan_{{ $terrascan }}_{{ .chezmoi.os | title }}_{{ eq .chezmoi.arch "amd64" | ternary "x86_64" .chezmoi.arch }}.tar.gz'
     path = "terrascan"
     executable = true
     refreshPeriod = "168h"
 
 [".local/bin/infracost"]
     type = "archive-file"
-    url = "https://github.com/infracost/infracost/releases/download/{{ .install.versions.infracost }}/infracost-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
+    url = 'https://github.com/infracost/infracost/releases/download/{{ $infracost }}/infracost-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz'
     path = "infracost-{{ .chezmoi.os }}-{{ .chezmoi.arch }}"
     executable = true
     refreshPeriod = "168h"

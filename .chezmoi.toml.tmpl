@@ -78,16 +78,6 @@ progress = true
     obsidian = {{ $install_obsidian }}
     alacritty = {{ $install_alacritty }}
     krew = {{ $install_krew }}
-[data.install.versions]
-    argocd = "{{ (gitHubLatestRelease "argoproj/argo-cd").TagName }}"
-    atuin = "{{ (gitHubLatestRelease "atuinsh/atuin").TagName }}"
-    bat = "{{ (gitHubLatestRelease "sharkdp/bat").TagName }}"
-    hugo = "{{ (gitHubLatestRelease "gohugoio/hugo").TagName }}"
-    kubeseal = "{{ gitHubReleases "bitnami-labs/sealed-secrets" | toJson | fromJson | jq ".[] | select(.tag_name | startswith(\"v\")).tag_name" | first | trim }}"
-    kustomize = "{{ (gitHubLatestRelease "kubernetes-sigs/kustomize").TagName }}"
-    terraform = "{{ (gitHubLatestRelease "hashicorp/terraform").TagName | replaceAllRegex "v" "" }}"
-    terrascan = "{{ (gitHubLatestRelease "tenable/terrascan").TagName | replaceAllRegex "v" "" }}"
-    infracost = "{{ (gitHubLatestRelease "infracost/infracost").TagName }}"
 
 [diff]
     exclude = ["scripts"]
