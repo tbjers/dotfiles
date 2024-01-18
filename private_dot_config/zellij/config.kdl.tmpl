@@ -191,7 +191,7 @@ on_force_close "detach"
 pane_frames true
 simplified_ui false
 styled_underlines true
-theme "{{ .colortheme }}"
+theme {{ .colortheme | replace "-" "_" | quote }}
 scroll_buffer_size 250000
 
 {{- if lookPath "wl-copy"}}
