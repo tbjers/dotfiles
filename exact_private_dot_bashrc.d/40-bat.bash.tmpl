@@ -2,6 +2,6 @@
 # -*-mode:bash-*- vim:ft=bash
 
 if command -v bat &>/dev/null; then
-  export BAT_THEME="{{ .colortheme | trim | title }}"
+  export BAT_THEME='{{ .colortheme | trim | title | replace "-" " " }}'
   alias cat=bat
 fi
