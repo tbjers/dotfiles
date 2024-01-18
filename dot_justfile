@@ -1,15 +1,20 @@
+# -*-mode:just-*- vim:ft=just
+
 [private]
 default:
     @just --unstable --list
 
+# Update system packages
 update:
     sudo dnf update -y
     flatpak update --noninteractive
     brew update && brew upgrade
 
+# Fix the GPG card service
 fix-gpg:
     sudo systemctl restart pcscd.service
     gpg --card-status
 
+# Start the fdroid distrobox
 fdroid:
     op run --env-file=$HOME/git/F-Droid/fdroid/.env -- distrobox-enter fdroid
