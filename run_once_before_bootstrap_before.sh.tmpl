@@ -25,7 +25,6 @@ sudo dnf --quiet install -y \
     ranger \
     ripgrep \
     zellij \
-    zsh \
     # /end
 
 echo "${green}Installing development environment${reset}"
@@ -50,7 +49,7 @@ echo "${green}Upgrading pip${reset}"
 python3 -m pip install --quiet --no-input --upgrade pip
 
 echo "${green}Installing LSP/lint/formatters${reset}"
-pip install --quiet --no-input --user --upgrade beautysh black isort
+pip install --quiet --no-input --upgrade beautysh black isort
 if ! command -v pyenv &>/dev/null; then
     echo "${green}Installing pyenv${reset}"
     curl https://pyenv.run | bash
@@ -62,6 +61,6 @@ if ! command -v dotenv-linter &>/dev/null; then
 fi
 
 echo "${green}Installing CI/CD Python tools${reset}"
-pip install --quiet --no-input --user --upgrade ggshield pre-commit
+pip install --quiet --no-input --upgrade ggshield pre-commit
 
 # -*-mode:shellscript-*- vim:ft=bash:

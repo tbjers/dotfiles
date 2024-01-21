@@ -10,11 +10,6 @@ return {
     config = function() require("lsp_signature").setup {} end,
   },
   {
-    "IndianBoy42/tree-sitter-just",
-    event = "BufRead",
-    config = function() require("tree-sitter-just").setup {} end,
-  },
-  {
     "buildpeak/vim-dbml",
     event = "BufRead",
   },
@@ -39,5 +34,9 @@ return {
     "linux-cultist/venv-selector.nvim",
     opts = {},
     keys = { { "<leader>lv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv" } },
+  },
+  {
+    "NoahTheDuke/vim-just",
+    ft = { "just" },
   },
 }

@@ -29,7 +29,6 @@
 {{ $signingkey := "" -}}
 {{ $colortheme := "" }}
 {{- if stdinIsATTY -}}
-{{    $install_onepassword = promptBoolOnce .install "onepassword" "Install 1Password" -}}
 {{    $install_astronvim = promptBoolOnce .install "astronvim" "Install AstroNvim" -}}
 {{    $install_emacs = promptBoolOnce .install "emacs" "Install Doom Emacs" -}}
 {{    $install_ruby = promptBoolOnce .install "ruby" "Install Ruby" -}}
@@ -64,9 +63,8 @@ progress = true
     osid = {{ $osid | quote }}
     colortheme = {{ $colortheme | quote }}
 [data.enable]
-    zellij_autostart = false
+    zellij_autostart = true
 [data.install]
-    onepassword = {{ $install_onepassword }}
     astronvim = {{ $install_astronvim }}
     emacs = {{ $install_emacs }}
     ruby = {{ $install_ruby }}
@@ -91,3 +89,6 @@ progress = true
 
 [template]
     options = ["missingkey=error"]
+
+[hooks.read-source-state.pre]
+    command = ".local/share/chezmoi/.hook-scripts/pre-source-state.sh"

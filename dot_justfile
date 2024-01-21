@@ -8,7 +8,6 @@ default:
 update:
     sudo dnf update -y
     flatpak update --noninteractive
-    brew update && brew upgrade
 
 # Fix the GPG card service
 fix-gpg:
