@@ -1,0 +1,68 @@
+---
+packages:
+
+  darwin:
+    brews:
+      - antidote
+      - atuin
+      - babel
+      - bat
+      - bottom
+      - eza
+      - git
+      - gnupg
+      - jq
+      - lazygit
+      - mc
+      - neovim
+      - pnpm
+      - ripgrep
+      - starship
+      - tree-sitter
+      - yq
+      - zellij
+    casks:
+      - 1password
+      - 1password-cli
+      - alacritty
+      - google-chrome
+      - slack
+
+  linux_fedora:
+    copr:
+      - atim/bottom
+      - atim/lazygit
+      - varlad/zellij
+    groups:
+      - Development Tools
+      - C Development Tools and Libraries
+    packages:
+      - bottom
+      - bzip2-devel
+      - cargo
+      - distrobox
+      - dnf-plugins-core
+      - eza
+      - fzf
+      - gh
+      - git
+      - golang
+      - jq
+      - lazygit
+      - llvm
+      - lua-devel
+      - luajit
+      - luajit-devel
+      - luarocks
+      - mc
+      - neovim
+      - nodejs
+      - poetry
+      - python3
+      - python3-devel
+      - python3-pip
+      - python3-tkinter
+      - ranger
+      - ripgrep
+      - tk
+      - zellij

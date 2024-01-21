@@ -78,4 +78,4 @@ $RECYCLE.BIN/
 
 .cache
 .cache*
-.chezmoidata
+.chezmoidata/externals.yaml

@@ -4,7 +4,9 @@
 if command -v zellij &>/dev/null; then
 {{ if .enable.zellij_autostart -}}
   # shellcheck disable=SC1090
-  source <(zellij setup --generate-completion bash --generate-auto-start bash)
+  source <(zellij setup --generate-completion bash)
+  # shellcheck disable=SC1090
+  source <(zellij setup --generate-auto-start bash)
 {{ else }}
   # shellcheck disable=SC1090
   source <(zellij setup --generate-completion bash)

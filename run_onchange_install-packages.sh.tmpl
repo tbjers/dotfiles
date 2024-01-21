@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+. "{{ .chezmoi.sourceDir }}/script_utils.sh"
+
+{{ if eq .osid "darwin" -}}
+# Mac OS X installation of Homebrew packages
+echo "${green}Installing Homebrew packages${reset}"
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range .packages.darwin.brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ range .packages.darwin.casks -}}
+cask {{ . | quote }}
+{{ end -}}
+EOF
+{{ else if eq .osid "linux-fedora" -}}
+# Fedora installation of packages
+echo "${green}Adding Fedora COPR repositories${reset}"
+{{ range .packages.linux_fedora.copr -}}
+sudo dnf --quiet copr enable {{ . | quote }} -y &> /dev/null
+{{ end -}}
+echo "${green}Installing Fedora groups${reset}"
+{{ range .packages.linux_fedora.groups -}}
+sudo dnf --quiet group install -y {{ . | quote }}
+{{ end -}}
+echo "${green}Installing Fedora packages${reset}"
+{{ range .packages.linux_fedora.packages -}}
+sudo dnf --quiet install -y {{ . | quote }}
+{{ end -}}
+{{ end -}}
+
+# -*-mode:shellscript-*- vim:ft=bash:

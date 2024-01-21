@@ -2,49 +2,6 @@
 
 . "{{ .chezmoi.sourceDir }}/script_utils.sh"
 
-# Define version and architecture for op
-op_email="{{ .email }}"
-op_arch="{{ .chezmoi.arch }}"
-
-echo "${green}Enabling COPR repositories${reset}"
-sudo dnf --quiet copr enable atim/bottom -y &> /dev/null
-sudo dnf --quiet copr enable atim/lazygit -y &> /dev/null
-sudo dnf --quiet copr enable varlad/zellij -y &> /dev/null
-
-echo "${green}Installing core tools${reset}"
-sudo dnf --quiet install -y \
-    bottom \
-    distrobox \
-    eza \
-    gh \
-    git \
-    jq \
-    lazygit \
-    mc \
-    neovim \
-    ranger \
-    ripgrep \
-    zellij \
-    # /end
-
-echo "${green}Installing development environment${reset}"
-sudo dnf --quiet install -y dnf-plugins-core
-sudo dnf --quiet group install -y "Development Tools" "C Development Tools and Libraries"
-sudo dnf --quiet install -y \
-    bzip2-devel \
-    cargo \
-    fzf \
-    golang \
-    llvm \
-    nodejs \
-    poetry \
-    python3 \
-    python3-devel \
-    python3-pip \
-    python3-tkinter \
-    tk \
-    # /end
-
 echo "${green}Upgrading pip${reset}"
 python3 -m pip install --quiet --no-input --upgrade pip
 
