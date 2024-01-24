@@ -4,3 +4,4 @@ README.md
 .chezmoidata
 .pre-commit-config.yaml
 script_utils.sh
+.hook-scripts

@@ -8,7 +8,7 @@ echo "${green}Running source-state.pre scripts${reset}"
 
 # User specific aliases and functions
 if [ -d "${BASE_DIR}/.hook-scripts/pre-source-state" ]; then
-	for rc in "${BASE_DIR}/.hook-scripts/pre-source-state/"*; do
+	for rc in "${BASE_DIR}/.hook-scripts/pre-source-state/"*.sh; do
 		if [ -f "$rc" ]; then
 			bash "$rc"
 		fi
