@@ -1,0 +1,378 @@
+{
+  "lockfile-version": 0,
+  "manifest": {
+    "hook": {
+      "script": "# aliases\nalias vim=nvim\n# shell activations\nsource <(starship init bash)\n"
+    },
+    "install": {
+      "atuin": {
+        "path": "atuin"
+      },
+      "bat": {
+        "path": "bat"
+      },
+      "eza": {
+        "path": "eza"
+      },
+      "go_1_21": {
+        "path": "go_1_21"
+      },
+      "golangci-lint": {
+        "path": "golangci-lint"
+      },
+      "golangci-lint-langserver": {
+        "path": "golangci-lint-langserver"
+      },
+      "neovim": {
+        "path": "neovim"
+      },
+      "nodejs_20": {
+        "path": "nodejs_20"
+      },
+      "starship": {
+        "path": "starship"
+      },
+      "zellij": {
+        "path": "zellij"
+      }
+    },
+    "options": {
+      "systems": [
+        "x86_64-linux"
+      ]
+    },
+    "registry": {
+      "defaults": {
+        "subtrees": null
+      },
+      "inputs": {
+        "nixpkgs": {
+          "from": {
+            "owner": "NixOS",
+            "ref": "release-23.11",
+            "repo": "nixpkgs",
+            "type": "github"
+          },
+          "subtrees": [
+            "legacyPackages"
+          ]
+        }
+      },
+      "priority": [
+        "nixpkgs"
+      ]
+    },
+    "vars": {
+      "EDITOR": "nvim",
+      "GOPATH": "~/.local/share/go",
+      "VISUAL": "nvim"
+    }
+  },
+  "packages": {
+    "x86_64-linux": {
+      "atuin": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "atuin"
+        ],
+        "info": {
+          "broken": false,
+          "description": "Replacement for a shell history which records additional commands context with optional encrypted synchronization between machines",
+          "license": "MIT",
+          "pname": "atuin",
+          "unfree": false,
+          "version": "17.0.1"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
+      "bat": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "bat"
+        ],
+        "info": {
+          "broken": false,
+          "description": "A cat(1) clone with syntax highlighting and Git integration",
+          "license": null,
+          "pname": "bat",
+          "unfree": false,
+          "version": "0.24.0"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
+      "eza": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "eza"
+        ],
+        "info": {
+          "broken": false,
+          "description": "A modern, maintained replacement for ls",
+          "license": "MIT",
+          "pname": "eza",
+          "unfree": false,
+          "version": "0.16.0"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
+      "go_1_21": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "go_1_21"
+        ],
+        "info": {
+          "broken": false,
+          "description": "The Go Programming language",
+          "license": "BSD-3-Clause",
+          "pname": "go",
+          "unfree": false,
+          "version": "1.21.5"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
+      "golangci-lint": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "golangci-lint"
+        ],
+        "info": {
+          "broken": false,
+          "description": "Fast linters Runner for Go",
+          "license": "GPL-3.0-or-later",
+          "pname": "golangci-lint",
+          "unfree": false,
+          "version": "1.55.2"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
+      "golangci-lint-langserver": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "golangci-lint-langserver"
+        ],
+        "info": {
+          "broken": false,
+          "description": "Language server for golangci-lint",
+          "license": "MIT",
+          "pname": "golangci-lint-langserver",
+          "unfree": false,
+          "version": "0.0.8"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
+      "neovim": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "neovim"
+        ],
+        "info": {
+          "broken": false,
+          "description": "Vim text editor fork focused on extensibility and agility",
+          "license": null,
+          "pname": "neovim",
+          "unfree": false,
+          "version": "0.9.4"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
+      "nodejs_20": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "nodejs_20"
+        ],
+        "info": {
+          "broken": false,
+          "description": "Event-driven I/O framework for the V8 JavaScript engine",
+          "license": "MIT",
+          "pname": "nodejs",
+          "unfree": false,
+          "version": "20.9.0"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
+      "starship": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "starship"
+        ],
+        "info": {
+          "broken": false,
+          "description": "A minimal, blazing fast, and extremely customizable prompt for any shell",
+          "license": "ISC",
+          "pname": "starship",
+          "unfree": false,
+          "version": "1.17.1"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
+      "zellij": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "zellij"
+        ],
+        "info": {
+          "broken": false,
+          "description": "A terminal workspace with batteries included",
+          "license": null,
+          "pname": "zellij",
+          "unfree": false,
+          "version": "0.39.2"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      }
+    }
+  },
+  "registry": {
+    "defaults": {
+      "subtrees": null
+    },
+    "inputs": {
+      "nixpkgs": {
+        "from": {
+          "lastModified": 1706665097,
+          "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+          "owner": "NixOS",
+          "repo": "nixpkgs",
+          "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+          "type": "github"
+        },
+        "subtrees": [
+          "legacyPackages"
+        ]
+      }
+    },
+    "priority": [
+      "nixpkgs"
+    ]
+  }
+}
