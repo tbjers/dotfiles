@@ -4,7 +4,14 @@
 # Inserts a blank line between shell prompts
 add_newline = true
 
+# Timeout for commands executed by starship (in milliseconds).
 command_timeout = 750
+
+# Prompt configuration
+format = """
+${custom.flox}\
+$all\
+"""
 
 [os]
 disabled = false
@@ -43,3 +50,9 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = " "
+
+[custom.flox]
+when = ''' test "$FLOX_PROMPT_ENVIRONMENTS" != "" '''
+command = 'echo $FLOX_PROMPT_ENVIRONMENTS'
+symbol = 'flox'
+format = "[$symbol](208) [($output )](166)"

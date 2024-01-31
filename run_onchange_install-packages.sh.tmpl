@@ -15,17 +15,25 @@ cask {{ . | quote }}
 EOF
 {{ else if eq .osid "linux-fedora" -}}
 # Fedora installation of packages
+{{ if hasKey .packages "linux_fedora" -}}
+{{ if hasKey .packages.linux_fedora "copr" -}}
 echo "${green}Adding Fedora COPR repositories${reset}"
 {{ range .packages.linux_fedora.copr -}}
 sudo dnf --quiet copr enable {{ . | quote }} -y &> /dev/null
 {{ end -}}
+{{ end -}}
+{{ if hasKey .packages.linux_fedora "groups" -}}
 echo "${green}Installing Fedora groups${reset}"
 {{ range .packages.linux_fedora.groups -}}
 sudo dnf --quiet group install -y {{ . | quote }}
 {{ end -}}
+{{ end -}}
+{{ if hasKey .packages.linux_fedora "packages" -}}
 echo "${green}Installing Fedora packages${reset}"
 {{ range .packages.linux_fedora.packages -}}
 sudo dnf --quiet install -y {{ . | quote }}
+{{ end -}}
+{{ end -}}
 {{ end -}}
 {{ end -}}
 

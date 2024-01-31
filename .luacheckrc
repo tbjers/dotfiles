@@ -1,1 +1,1 @@
-private_dot_config/nvim/lua/user/dot_luacheckrc
+private_dot_config/nvim/lua/exact_user/dot_luacheckrc

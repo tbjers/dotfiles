@@ -182,7 +182,7 @@ plugins {
 }
 
 auto_layout true
-default_layout "default"
+default_layout "compact"
 default_mode "normal"
 default_shell "bash"
 mirror_session true
@@ -191,7 +191,7 @@ on_force_close "detach"
 pane_frames true
 simplified_ui false
 styled_underlines true
-theme {{ .colortheme | replace "-" "_" | quote }}
+theme {{ .colortheme | quote }}
 scroll_buffer_size 250000
 
 {{- if lookPath "wl-copy"}}

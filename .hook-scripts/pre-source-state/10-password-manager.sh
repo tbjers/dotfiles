@@ -18,6 +18,6 @@ Linux)
   ;;
 *)
   echo "${red}Unsupported OS${reset}"
-  exit 1
+  exit 0
   ;;
 esac
