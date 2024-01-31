@@ -1,4 +1,11 @@
 -- -*-mode:lua-*- vim:ft=lua
+-- {{- $colortheme := .colortheme -}}
+-- {{- if eq $colortheme "gruvbox-dark" -}}
+-- {{- $colortheme = "gruvbox" -}}
+-- {{- else if eq $colortheme "dracula-pro" -}}
+-- {{- $colortheme = "dracula" -}}
+-- {{- end }}
+
 return {
   -- Configure AstroNvim updates
   updater = {
@@ -19,7 +26,7 @@ return {
   },
 
   -- Set colorscheme to use
-  colorscheme = '{{ .colortheme | replace "-pro" "" }}',
+  colorscheme = '{{ $colortheme }}',
 
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
@@ -56,18 +63,10 @@ return {
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
-    -- Set up custom filetypes
-    -- vim.filetype.add {
-    --   extension = {
-    --     foo = "fooscript",
-    --   },
-    --   filename = {
-    --     ["Foofile"] = "fooscript",
-    --   },
-    --   pattern = {
-    --     ["~/%.config/foo/.*"] = "fooscript",
-    --   },
-    -- }
+    require("transparent").clear_prefix("BufferLine")
+    require("transparent").clear_prefix("lualine")
+    require("transparent").clear_prefix("NeoTree")
+
     require("notify").setup {
       background_colour = function() return "#000000" end,
     }

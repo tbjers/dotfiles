@@ -12,38 +12,15 @@
 #
 # This file supports Go's text/template language. */}}
 
-{{ $install_onepassword := false -}}
-{{ $install_astronvim := false -}}
-{{ $install_emacs := false -}}
-{{ $install_ruby := false -}}
-{{ $install_python := false -}}
-{{ $install_golang := false -}}
-{{ $install_rust := false -}}
-{{ $install_puppet := false -}}
-{{ $install_starship := false -}}
-{{ $install_obsidian := false -}}
-{{ $install_alacritty := false -}}
-{{ $install_krew := false -}}
-{{ $email := "" -}}
 {{ $name := "" -}}
+{{ $email := "" -}}
 {{ $signingkey := "" -}}
 {{ $colortheme := "" }}
 {{- if stdinIsATTY -}}
-{{    $install_astronvim = promptBoolOnce .install "astronvim" "Install AstroNvim" -}}
-{{    $install_emacs = promptBoolOnce .install "emacs" "Install Doom Emacs" -}}
-{{    $install_ruby = promptBoolOnce .install "ruby" "Install Ruby" -}}
-{{    $install_python = promptBoolOnce .install "python" "Install Python" -}}
-{{    $install_golang = promptBoolOnce .install "golang" "Install Go" -}}
-{{    $install_rust = promptBoolOnce .install "rust" "Install Rust" -}}
-{{    $install_puppet = promptBoolOnce .install "puppet" "Install Puppet" -}}
-{{    $install_starship = promptBoolOnce .install "starship" "Install Starship" -}}
-{{    $install_obsidian = promptBoolOnce .install "obsidian" "Install Obsidian" -}}
-{{    $install_alacritty = promptBoolOnce .install "alacritty" "Install Alacritty" -}}
-{{    $install_krew = promptBoolOnce .install "krew" "Install Krew" -}}
-{{    $email = promptStringOnce . "email" "Email address" -}}
 {{    $name = promptStringOnce . "name" "Name" -}}
+{{    $email = promptStringOnce . "email" "Email address" -}}
 {{    $signingkey = promptStringOnce . "signingkey" "Signing key" -}}
-{{    $colortheme = promptStringOnce . "colortheme" "Color theme (nord/dracula/dracula-pro)" }}
+{{    $colortheme = promptStringOnce . "colortheme" "Color theme (nord/dracula/dracula-pro/gruvbox-dark)" }}
 {{- end -}}
 
 {{- $osid := .chezmoi.os -}}
@@ -62,20 +39,6 @@ progress = true
     signingkey = {{ $signingkey | quote }}
     osid = {{ $osid | quote }}
     colortheme = {{ $colortheme | quote }}
-[data.enable]
-    zellij_autostart = true
-[data.install]
-    astronvim = {{ $install_astronvim }}
-    emacs = {{ $install_emacs }}
-    ruby = {{ $install_ruby }}
-    python = {{ $install_python }}
-    golang = {{ $install_golang }}
-    rust = {{ $install_rust }}
-    puppet = {{ $install_puppet }}
-    starship = {{ $install_starship }}
-    obsidian = {{ $install_obsidian }}
-    alacritty = {{ $install_alacritty }}
-    krew = {{ $install_krew }}
 
 [diff]
     exclude = ["scripts"]
