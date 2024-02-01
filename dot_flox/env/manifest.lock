@@ -24,6 +24,9 @@
       "golangci-lint-langserver": {
         "path": "golangci-lint-langserver"
       },
+      "just": {
+        "path": "just"
+      },
       "lazygit": {
         "path": "lazygit"
       },
@@ -255,6 +258,34 @@
           "pname": "golangci-lint-langserver",
           "unfree": false,
           "version": "0.0.8"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
+      "just": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "just"
+        ],
+        "info": {
+          "broken": false,
+          "description": "A handy way to save and run project-specific commands",
+          "license": "CC0-1.0",
+          "pname": "just",
+          "unfree": false,
+          "version": "1.23.0"
         },
         "input": {
           "attrs": {
