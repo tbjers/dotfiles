@@ -1,15 +1,16 @@
 {
   "lockfile-version": 0,
   "manifest": {
-    "hook": {
-      "script": "# aliases\nalias vim=nvim\n# shell activations\nsource <(starship init bash)\n"
-    },
+    "hook": {},
     "install": {
       "atuin": {
         "path": "atuin"
       },
       "bat": {
         "path": "bat"
+      },
+      "bottom": {
+        "path": "bottom"
       },
       "eza": {
         "path": "eza"
@@ -22,6 +23,9 @@
       },
       "golangci-lint-langserver": {
         "path": "golangci-lint-langserver"
+      },
+      "lazygit": {
+        "path": "lazygit"
       },
       "neovim": {
         "path": "neovim"
@@ -64,7 +68,7 @@
     },
     "vars": {
       "EDITOR": "nvim",
-      "GOPATH": "~/.local/share/go",
+      "GOPATH": "/home/tbjers/.local/share/go",
       "VISUAL": "nvim"
     }
   },
@@ -111,6 +115,34 @@
           "pname": "bat",
           "unfree": false,
           "version": "0.24.0"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
+      "bottom": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "bottom"
+        ],
+        "info": {
+          "broken": false,
+          "description": "A cross-platform graphical process/system monitor with a customizable interface",
+          "license": "MIT",
+          "pname": "bottom",
+          "unfree": false,
+          "version": "0.9.6"
         },
         "input": {
           "attrs": {
@@ -223,6 +255,34 @@
           "pname": "golangci-lint-langserver",
           "unfree": false,
           "version": "0.0.8"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
+      "lazygit": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "lazygit"
+        ],
+        "info": {
+          "broken": false,
+          "description": "Simple terminal UI for git commands",
+          "license": "MIT",
+          "pname": "lazygit",
+          "unfree": false,
+          "version": "0.40.2"
         },
         "input": {
           "attrs": {

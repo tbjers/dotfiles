@@ -8,25 +8,27 @@
 # the 'install' section
 
 [install]
-neovim.path = "neovim"
-starship.path = "starship"
-bat.path = "bat"
-eza.path = "eza"
-zellij.path = "zellij"
 atuin.path = "atuin"
-nodejs_20.path = "nodejs_20"
+bat.path = "bat"
+bottom.path = "bottom"
+eza.path = "eza"
 go_1_21.path = "go_1_21"
-golangci-lint.path = "golangci-lint"
 golangci-lint-langserver.path = "golangci-lint-langserver"
+golangci-lint.path = "golangci-lint"
+lazygit.path = "lazygit"
+neovim.path = "neovim"
+nodejs_20.path = "nodejs_20"
+starship.path = "starship"
+zellij.path = "zellij"
 
 # Set an environment variable.
-# These variables may not reference once another
+# These variables may not reference one another
 # and are added to the environment without expansion.
 
 [vars]
 EDITOR = "nvim"
 VISUAL = "nvim"
-GOPATH = "~/.local/share/go"
+GOPATH = "/home/tbjers/.local/share/go"
 
 # An activation hook will be run when entering the environment.
 # You can define one in the 'hook' table inline via the 'script' field,
@@ -36,12 +38,8 @@ GOPATH = "~/.local/share/go"
 # only the hook defined in 'file' will be run .
 
 [hook]
-script = """
-# aliases
-alias vim=nvim
-# shell activations
-source <(starship init bash)
-"""
+# script = """
+# """
 
 # An environment that works on one system is guaranteed to work on the
 # same type of system,
