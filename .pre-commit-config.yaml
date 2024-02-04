@@ -1,10 +1,36 @@
+---
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+ci:
+  autofix_prs: true
+  skip:
+    - ggshield
+    - golangci-lint
+default_install_hook_types:
+  - pre-commit
+  - commit-msg
 repos:
   - repo: https://github.com/gitguardian/ggshield
-    rev: v1.17.2
+    rev: v1.24.0
     hooks:
       - id: ggshield
         language_version: python3
         stages: [commit]
+  - repo: https://github.com/compilerla/conventional-pre-commit
+    rev: v3.1.0
+    hooks:
+      - id: conventional-pre-commit
+        stages: [commit-msg]
+        args: [] # optional: list of Conventional Commits types to allow e.g. [feat, fix, ci, chore, test]
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: v3.7.0-4
+    hooks:
+      - id: shfmt
+        exclude: |
+          (?x)^(
+            exact_private_dot_bashrc.d/05-complete-alias.bash|
+            exact_private_dot_bashrc.d/10-bash-preexec.bash
+          )$
   - repo: https://github.com/shellcheck-py/shellcheck-py
     rev: v0.9.0.6
     hooks:
@@ -14,4 +40,14 @@ repos:
             exact_private_dot_bashrc.d/05-complete-alias.bash|
             exact_private_dot_bashrc.d/10-bash-preexec.bash
           )$
-
+  - repo: https://github.com/google/yamlfmt
+    rev: v0.10.0
+    hooks:
+      - id: yamlfmt
+        entry: yamlfmt
+        language: system
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.33.0
+    hooks:
+      - id: yamllint
+        args: [--strict, -c=.yamllint]

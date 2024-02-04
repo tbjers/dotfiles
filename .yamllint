@@ -1,0 +1,36 @@
+---
+extends: default
+
+ignore: |
+  **/templates/*.yaml
+  **/templates/tests/*.yaml
+
+yaml-files:
+  - '*.yaml'
+  - '*.yml'
+  - .yamllint
+  - .yamllint.yml
+  - .pre-commit-config.yaml
+  - .yamlfmt
+
+rules:
+  comments:
+    ignore-shebangs: true
+    min-spaces-from-content: 1
+    require-starting-space: true
+    level: error
+  comments-indentation:
+    level: error
+  document-start:
+    level: error
+  document-end:
+    present: false
+    level: error
+  line-length:
+    max: 150
+    allow-non-breakable-words: true
+    allow-non-breakable-inline-mappings: true
+  octal-values: enable
+  truthy:
+    level: error
+# -*-mode:yaml-*- vim:ft=yaml:
