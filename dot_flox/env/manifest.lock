@@ -12,17 +12,17 @@
       "bottom": {
         "path": "bottom"
       },
+      "deno": {
+        "path": "deno"
+      },
       "eza": {
         "path": "eza"
       },
-      "go_1_21": {
-        "path": "go_1_21"
+      "go": {
+        "path": "go"
       },
       "golangci-lint": {
         "path": "golangci-lint"
-      },
-      "golangci-lint-langserver": {
-        "path": "golangci-lint-langserver"
       },
       "just": {
         "path": "just"
@@ -35,6 +35,9 @@
       },
       "nodejs_20": {
         "path": "nodejs_20"
+      },
+      "pre-commit": {
+        "path": "pre-commit"
       },
       "starship": {
         "path": "starship"
@@ -71,7 +74,6 @@
     },
     "vars": {
       "EDITOR": "nvim",
-      "GOPATH": "/home/tbjers/.local/share/go",
       "VISUAL": "nvim"
     }
   },
@@ -161,6 +163,34 @@
         },
         "priority": 5
       },
+      "deno": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "deno"
+        ],
+        "info": {
+          "broken": false,
+          "description": "A secure runtime for JavaScript and TypeScript",
+          "license": "MIT",
+          "pname": "deno",
+          "unfree": false,
+          "version": "1.38.2"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
       "eza": {
         "attr-path": [
           "legacyPackages",
@@ -189,11 +219,11 @@
         },
         "priority": 5
       },
-      "go_1_21": {
+      "go": {
         "attr-path": [
           "legacyPackages",
           "x86_64-linux",
-          "go_1_21"
+          "go"
         ],
         "info": {
           "broken": false,
@@ -230,34 +260,6 @@
           "pname": "golangci-lint",
           "unfree": false,
           "version": "1.55.2"
-        },
-        "input": {
-          "attrs": {
-            "lastModified": 1706665097,
-            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
-            "owner": "NixOS",
-            "repo": "nixpkgs",
-            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
-            "type": "github"
-          },
-          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
-          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
-        },
-        "priority": 5
-      },
-      "golangci-lint-langserver": {
-        "attr-path": [
-          "legacyPackages",
-          "x86_64-linux",
-          "golangci-lint-langserver"
-        ],
-        "info": {
-          "broken": false,
-          "description": "Language server for golangci-lint",
-          "license": "MIT",
-          "pname": "golangci-lint-langserver",
-          "unfree": false,
-          "version": "0.0.8"
         },
         "input": {
           "attrs": {
@@ -370,6 +372,34 @@
           "pname": "nodejs",
           "unfree": false,
           "version": "20.9.0"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
+      "pre-commit": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "pre-commit"
+        ],
+        "info": {
+          "broken": false,
+          "description": "A framework for managing and maintaining multi-language pre-commit hooks",
+          "license": "MIT",
+          "pname": "pre-commit",
+          "unfree": false,
+          "version": "3.3.3"
         },
         "input": {
           "attrs": {

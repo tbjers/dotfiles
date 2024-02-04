@@ -3,13 +3,13 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+        . /etc/bashrc
 fi
 
 # User specific environment
 # shellcheck disable=SC2076
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
-	PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+        PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH
 
@@ -18,12 +18,12 @@ export SYSTEMD_PAGER=
 
 # User specific aliases and functions
 if [ -d "${HOME}/.bashrc.d" ]; then
-	for rc in "${HOME}/.bashrc.d/"*; do
-		if [ -f "$rc" ]; then
-			# shellcheck disable=SC1090
-			source "$rc"
-		fi
-	done
+  for rc in "${HOME}/.bashrc.d/"*; do
+  if [ -f "$rc" ]; then
+          # shellcheck disable=SC1090
+          source "$rc"
+  fi
+  done
 fi
 
 unset rc

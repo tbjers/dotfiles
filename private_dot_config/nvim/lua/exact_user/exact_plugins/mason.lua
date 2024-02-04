@@ -7,8 +7,22 @@ return {
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
-        -- "golangci_lint_ls",
-        -- "gopls",
+        "ansiblels",
+        "bashls",
+        "bufls",
+        "cssls",
+        "golangci_lint_ls",
+        "gopls",
+        "jsonls",
+        "lua_ls",
+        "marksman",
+        "powershell_es",
+        "pyright",
+        "ruff_lsp",
+        "svelte",
+        "tailwindcss",
+        "taplo",
+        "yamlls",
       })
     end,
   },
@@ -19,9 +33,22 @@ return {
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
-        -- "prettier",
-        -- "stylua",
+        "ansiblelint",
+        "buf",
+        "gofumpt",
+        "goimports",
+        "gomodifytags",
+        "iferr",
+        "impl",
+        "luacheck",
+        "prettierd",
+        "ruff",
+        "shellcheck",
+        "shfmt",
+        "stylua",
       })
+      if not opts.handlers then opts.handlers = {} end
+      opts.handlers.taplo = function() end -- prevent mason-null-ls from setting up taplo
     end,
   },
   {
@@ -30,8 +57,12 @@ return {
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
-        -- "python",
+        "bash",
+        "js",
+        "python",
       })
+      if not opts.handlers then opts.handlers = {} end
+      opts.handlers.python = function() end -- prevent mason-nvim-dap from setting up python
     end,
   },
 }

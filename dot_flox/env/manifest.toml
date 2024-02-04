@@ -11,14 +11,15 @@
 atuin.path = "atuin"
 bat.path = "bat"
 bottom.path = "bottom"
+deno.path = "deno"
 eza.path = "eza"
-go_1_21.path = "go_1_21"
-golangci-lint-langserver.path = "golangci-lint-langserver"
+go.path = "go"
 golangci-lint.path = "golangci-lint"
 just.path = "just"
 lazygit.path = "lazygit"
 neovim.path = "neovim"
 nodejs_20.path = "nodejs_20"
+pre-commit.path = "pre-commit"
 starship.path = "starship"
 zellij.path = "zellij"
 
@@ -29,7 +30,6 @@ zellij.path = "zellij"
 [vars]
 EDITOR = "nvim"
 VISUAL = "nvim"
-GOPATH = "/home/tbjers/.local/share/go"
 
 # An activation hook will be run when entering the environment.
 # You can define one in the 'hook' table inline via the 'script' field,
