@@ -1,5 +1,7 @@
 # dotfiles
 
+[![Lint](https://github.com/tbjers/dotfiles/actions/workflows/lint.yml/badge.svg)](https://github.com/tbjers/dotfiles/actions/workflows/lint.yml)
+
 These dotfiles can be installed with a one-line shell command:
 
 ```shell
