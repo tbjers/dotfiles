@@ -13,6 +13,7 @@ Darwin) ;;
 Linux)
   # shellcheck disable=SC2154
   echo "${green}Installing Flox${reset}"
+  sudo rpm --import https://flox-installers.s3.amazonaws.com/by-channel/nightly/deb/flox-archive-keyring.asc
   sudo rpm -i https://flox-installers.s3.amazonaws.com/by-channel/nightly/rpm/flox.x86_64-linux.rpm
   ;;
 *)

@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
 # -*-mode:bash-*- vim:ft=bash
+{{- /* bat theme names just had to be special */ -}}
+{{- $lct := list "gruvbox-dark" "gruvbox-light" "ansi" "base16" "base16-256" "zenburn" -}}
+{{- $theme := .colortheme -}}
+{{ if not (has $theme $lct) -}}
+{{- /* if the theme is not a lower case theme, we title and space it */ -}}
+{{ $theme = .colortheme | trim | title | replace "-" " " -}}
+{{ end }}
 
 if command -v bat &>/dev/null; then
-  export BAT_THEME='{{ .colortheme | trim | title | replace "-" " " }}'
+  export BAT_THEME='{{ $theme }}'
   alias cat=bat
   complete -F _complete_alias cat
 fi
