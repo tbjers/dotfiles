@@ -15,6 +15,9 @@
       "eza": {
         "path": "eza"
       },
+      "gcc-unwrapped": {
+        "path": "gcc-unwrapped"
+      },
       "go": {
         "path": "go"
       },
@@ -47,6 +50,9 @@
       },
       "virtualenv": {
         "path": "virtualenv"
+      },
+      "yamlfmt": {
+        "path": "yamlfmt"
       },
       "zellij": {
         "path": "zellij"
@@ -182,6 +188,34 @@
           "pname": "eza",
           "unfree": false,
           "version": "0.16.0"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
+      "gcc-unwrapped": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "gcc-unwrapped"
+        ],
+        "info": {
+          "broken": false,
+          "description": "GNU Compiler Collection, version 12.3.0",
+          "license": "GPL-3.0-or-later",
+          "pname": "gcc",
+          "unfree": false,
+          "version": "12.3.0"
         },
         "input": {
           "attrs": {
@@ -490,6 +524,34 @@
           "pname": "virtualenv",
           "unfree": false,
           "version": "20.24.5"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
+      "yamlfmt": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "yamlfmt"
+        ],
+        "info": {
+          "broken": false,
+          "description": "An extensible command line tool or library to format yaml files.",
+          "license": "Apache-2.0",
+          "pname": "yamlfmt",
+          "unfree": false,
+          "version": "0.10.0"
         },
         "input": {
           "attrs": {
