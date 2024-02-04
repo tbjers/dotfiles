@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. "{{ .chezmoi.sourceDir }}/script_utils.sh"
+source "{{ .chezmoi.sourceDir }}/script_utils.sh"
 
 {{ if eq .osid "darwin" -}}
 # Mac OS X installation of Homebrew packages
@@ -30,9 +30,7 @@ sudo dnf --quiet group install -y {{ . | quote }}
 {{ end -}}
 {{ if hasKey .packages.linux_fedora "packages" -}}
 echo "${green}Installing Fedora packages${reset}"
-{{ range .packages.linux_fedora.packages -}}
-sudo dnf --quiet install -y {{ . | quote }}
-{{ end -}}
+sudo dnf --quiet install -y {{ .packages.linux_fedora.packages | join " " }}
 {{ end -}}
 {{ end -}}
 {{ end -}}
