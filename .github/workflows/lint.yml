@@ -1,0 +1,15 @@
+---
+name: Lint
+'on':
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: pre-commit
+        uses: pre-commit/action@v3.0.0
