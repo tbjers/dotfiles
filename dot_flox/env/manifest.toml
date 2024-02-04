@@ -8,7 +8,6 @@
 # the 'install' section
 
 [install]
-atuin.path = "atuin"
 bat.path = "bat"
 bottom.path = "bottom"
 deno.path = "deno"
@@ -20,7 +19,10 @@ lazygit.path = "lazygit"
 neovim.path = "neovim"
 nodejs_20.path = "nodejs_20"
 pre-commit.path = "pre-commit"
+pyenv.path = "pyenv"
 starship.path = "starship"
+tk.path = "tk"
+virtualenv.path = "virtualenv"
 zellij.path = "zellij"
 
 # Set an environment variable.

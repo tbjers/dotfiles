@@ -3,9 +3,6 @@
   "manifest": {
     "hook": {},
     "install": {
-      "atuin": {
-        "path": "atuin"
-      },
       "bat": {
         "path": "bat"
       },
@@ -39,8 +36,17 @@
       "pre-commit": {
         "path": "pre-commit"
       },
+      "pyenv": {
+        "path": "pyenv"
+      },
       "starship": {
         "path": "starship"
+      },
+      "tk": {
+        "path": "tk"
+      },
+      "virtualenv": {
+        "path": "virtualenv"
       },
       "zellij": {
         "path": "zellij"
@@ -79,34 +85,6 @@
   },
   "packages": {
     "x86_64-linux": {
-      "atuin": {
-        "attr-path": [
-          "legacyPackages",
-          "x86_64-linux",
-          "atuin"
-        ],
-        "info": {
-          "broken": false,
-          "description": "Replacement for a shell history which records additional commands context with optional encrypted synchronization between machines",
-          "license": "MIT",
-          "pname": "atuin",
-          "unfree": false,
-          "version": "17.0.1"
-        },
-        "input": {
-          "attrs": {
-            "lastModified": 1706665097,
-            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
-            "owner": "NixOS",
-            "repo": "nixpkgs",
-            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
-            "type": "github"
-          },
-          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
-          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
-        },
-        "priority": 5
-      },
       "bat": {
         "attr-path": [
           "legacyPackages",
@@ -415,6 +393,34 @@
         },
         "priority": 5
       },
+      "pyenv": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "pyenv"
+        ],
+        "info": {
+          "broken": false,
+          "description": "Simple Python version management",
+          "license": "MIT",
+          "pname": "pyenv",
+          "unfree": false,
+          "version": "2.3.32"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
       "starship": {
         "attr-path": [
           "legacyPackages",
@@ -428,6 +434,62 @@
           "pname": "starship",
           "unfree": false,
           "version": "1.17.1"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
+      "tk": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "tk"
+        ],
+        "info": {
+          "broken": false,
+          "description": "A widget toolkit that provides a library of basic elements for building a GUI in many different programming languages",
+          "license": "TCL",
+          "pname": "tk",
+          "unfree": false,
+          "version": "8.6.13"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1706665097,
+            "narHash": "sha256-7u16B7S1OY4xGHBgiq94iSeSRKHmm1j3mxuuDz8tVF8=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "b5a5d1ce79f97e18790f2b42e48901e44be08e5b",
+            "type": "github"
+          },
+          "fingerprint": "c8ed8be4b8d941fec25aa1ede353e8c8c9ff19172a8d70b5329c81b0fd9034d8",
+          "url": "github:NixOS/nixpkgs/b5a5d1ce79f97e18790f2b42e48901e44be08e5b"
+        },
+        "priority": 5
+      },
+      "virtualenv": {
+        "attr-path": [
+          "legacyPackages",
+          "x86_64-linux",
+          "virtualenv"
+        ],
+        "info": {
+          "broken": false,
+          "description": "A tool to create isolated Python environments",
+          "license": "MIT",
+          "pname": "virtualenv",
+          "unfree": false,
+          "version": "20.24.5"
         },
         "input": {
           "attrs": {

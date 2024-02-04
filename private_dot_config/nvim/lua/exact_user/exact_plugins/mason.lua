@@ -22,7 +22,6 @@ return {
         "svelte",
         "tailwindcss",
         "taplo",
-        "yamlls",
       })
     end,
   },

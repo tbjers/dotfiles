@@ -16,7 +16,6 @@ return {
       "python",
       "svelte",
       "toml",
-      "yaml",
     })
   end,
 }
