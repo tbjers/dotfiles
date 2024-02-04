@@ -1,5 +1,5 @@
 ---
-name: Lint
+name: CI
 'on':
   push:
     branches: ["main"]
@@ -7,7 +7,7 @@ name: Lint
     branches: ["main"]
 
 jobs:
-  build:
+  security:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Go Environment
