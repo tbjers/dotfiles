@@ -1,6 +1,7 @@
 # dotfiles
 
 [![security](https://github.com/tbjers/dotfiles/actions/workflows/security.yml/badge.svg)](https://github.com/tbjers/dotfiles/actions/workflows/security.yml)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 
 These dotfiles can be installed with a one-line shell command:
