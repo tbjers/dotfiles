@@ -36,6 +36,7 @@ packages:
       - Development Tools
       - C Development Tools and Libraries
     packages:
+      - bottom
       - bzip2-devel
       - cargo
       - distrobox
