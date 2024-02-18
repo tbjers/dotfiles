@@ -16,6 +16,13 @@ EOF
 {{ else if eq .osid "linux-fedora" -}}
 # Fedora installation of packages
 {{ if hasKey .packages "linux_fedora" -}}
+sudo dnf --quiet install -y dnf-plugins-core
+{{ if hasKey .packages.linux_fedora "repos" -}}
+echo "${green}Adding external repositories${reset}"
+{{ range .packages.linux_fedora.repos -}}
+sudo dnf --quiet config-manager --add-repo {{ . | quote }}
+{{ end -}}
+{{ end -}}
 {{ if hasKey .packages.linux_fedora "copr" -}}
 echo "${green}Adding Fedora COPR repositories${reset}"
 {{ range .packages.linux_fedora.copr -}}

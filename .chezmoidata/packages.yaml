@@ -35,12 +35,13 @@ packages:
     groups:
       - Development Tools
       - C Development Tools and Libraries
+    repos:
+      - https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
     packages:
       - bottom
       - bzip2-devel
       - cargo
       - distrobox
-      - dnf-plugins-core
       - eza
       - fzf
       - gh
@@ -57,5 +58,6 @@ packages:
       - neovim
       - ranger
       - ripgrep
+      - terraform
       - tk
       - zellij
