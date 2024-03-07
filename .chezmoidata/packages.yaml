@@ -56,9 +56,7 @@ packages:
       - luarocks
       - mc
       - neovim
-      - opentofu
       - ranger
       - ripgrep
-      - terraform
       - tk
       - zellij

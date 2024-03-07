@@ -22,6 +22,8 @@ return {
         "svelte",
         "tailwindcss",
         "taplo",
+        "terraformls",
+        "tflint",
       })
     end,
   },
@@ -44,7 +46,9 @@ return {
         "ruff",
         "shellcheck",
         "shfmt",
+        "snyk",
         "stylua",
+        "tfsec",
       })
       if not opts.handlers then opts.handlers = {} end
       opts.handlers.taplo = function() end -- prevent mason-null-ls from setting up taplo
