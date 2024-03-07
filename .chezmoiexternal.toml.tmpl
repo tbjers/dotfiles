@@ -1,0 +1,14 @@
+# -*-mode:toml-*- vim:ft=toml
+# -*-mode:go-template-*- vim:ft=toml
+
+# ~/.local/share/chezmoi/.chezmoiexternal.toml.tmpl
+# =============================================================================
+# Used to download external dependencies.{{- /*
+#
+# This file supports Go's text/template language. */}}
+
+[".local/bin/uplink"]
+    type = "archive-file"
+    url = "https://github.com/storj/storj/releases/latest/download/uplink_{{ .chezmoi.os }}_{{ .chezmoi.arch }}.zip"
+    refreshPeriod = "168h"
+    path = "uplink"

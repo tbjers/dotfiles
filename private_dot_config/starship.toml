@@ -8,13 +8,10 @@ add_newline = true
 command_timeout = 750
 
 # Prompt configuration
-format = """
-${custom.flox}\
-$all\
-"""
+format = "${custom.flox}$all"
 
 [os]
-disabled = false
+disabled = true
 format = "[$symbol ]($style)"
 
 [os.symbols]
@@ -52,7 +49,7 @@ truncation_symbol = "…/"
 symbol = " "
 
 [custom.flox]
-when = ''' test "$FLOX_PROMPT_ENVIRONMENTS" != "" '''
+when = '''test "$FLOX_PROMPT_ENVIRONMENTS" != ""'''
 command = 'echo $FLOX_PROMPT_ENVIRONMENTS'
 symbol = 'flox'
-format = "[$symbol](208) [($output )](166)"
+format = "[$symbol ](208)[($output )](166)"
