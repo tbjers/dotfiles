@@ -1,0 +1,55 @@
+// -*-mode:kdl-*- vim:ft=kdl.gotexttmpl
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="file:~/.local/bin/zjstatus.wasm" {
+                format_left   "{mode} #[fg=magenta,bold]{session}"
+                format_center "{tabs}"
+                format_right  "{command_git_branch} #[fg=blue]CPU {command_cpu} #[fg=green]GPU {command_gpu} {datetime}"
+                format_space  ""
+
+                border_enabled  "false"
+                border_char     "─"
+                border_format   "#[fg=magenta]{char}"
+                border_position "top"
+
+                hide_frame_for_single_pane "true"
+
+                mode_normal  "#[bg=magenta] "
+                mode_tmux    "#[bg=red] "
+
+                tab_normal            "#[fg=white] {name} "
+                tab_normal_fullscreen "#[fg=white] {name} {fullscreen_indicator}"
+                tab_normal_sync       "#[fg=white] {name} {sync_indicator}"
+                tab_active            "#[fg=yellow,bold,italic] {name} "
+                tab_active_fullscreen "#[fg=yellow,bold,italic] {name} {fullscreen_indicator}"
+                tab_active_fullscreen "#[fg=yellow,bold,italic] {name} {sync_indicator}"
+
+                // indicators
+                tab_sync_indicator       "<> "
+                tab_fullscreen_indicator "[] "
+                tab_floating_indicator   "⬚ "
+
+                command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
+                command_git_branch_format      "#[fg=blue] {stdout} "
+                command_git_branch_interval    "10"
+                command_git_branch_rendermode  "static"
+
+                command_cpu_command     "{{ .chezmoi.homeDir }}/.local/bin/cpu-temp.sh"
+                command_cpu_format      "#[fg=blue,bold]{stdout}°C"
+                command_cpu_rendermode  "static"
+                command_cpu_interval    "3"
+
+                command_gpu_command     "nvidia-smi --query-gpu temperature.gpu --format='csv,noheader,nounits'"
+                command_gpu_format      "#[fg=green,bold]{stdout}°C"
+                command_gpu_rendermode  "static"
+                command_gpu_interval    "3"
+
+                datetime        "#[fg=black,bold] {format} "
+                datetime_format "%a %d/%m %H:%M"
+                datetime_timezone "America/New_York"
+            }
+        }
+    }
+}

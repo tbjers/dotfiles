@@ -5,9 +5,7 @@ end_of_line = lf
 insert_final_newline = true
 charset = utf-8
 indent_style = space
-
-[*.{sh,bash}]
 indent_size = 2
 
-[*.{toml,py,toml.tmpl}]
+[*.{kdl,toml,py,toml.tmpl,kdl.tmpl}]
 indent_size = 4
