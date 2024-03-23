@@ -6,7 +6,8 @@ layout {
             plugin location="file:~/.local/bin/zjstatus.wasm" {
                 format_left   "{mode} #[fg=magenta,bold]{session}"
                 format_center "{tabs}"
-                format_right  "{command_git_branch} #[fg=blue]CPU {command_cpu} #[fg=green]GPU {command_gpu} {datetime}"
+                // format_right  "{command_git_branch} #[fg=blue]CPU {command_cpu} #[fg=green]GPU {command_gpu} {datetime}"
+                format_right  "{command_git_branch} #[fg=blue]CPU {command_cpu} {datetime}"
                 format_space  ""
 
                 border_enabled  "false"
@@ -41,10 +42,10 @@ layout {
                 command_cpu_rendermode  "static"
                 command_cpu_interval    "3"
 
-                command_gpu_command     "nvidia-smi --query-gpu temperature.gpu --format='csv,noheader,nounits'"
-                command_gpu_format      "#[fg=green,bold]{stdout}°C"
-                command_gpu_rendermode  "static"
-                command_gpu_interval    "3"
+                // command_gpu_command     "nvidia-smi --query-gpu temperature.gpu --format='csv,noheader,nounits'"
+                // command_gpu_format      "#[fg=green,bold]{stdout}°C"
+                // command_gpu_rendermode  "static"
+                // command_gpu_interval    "3"
 
                 datetime        "#[fg=black,bold] {format} "
                 datetime_format "%a %d/%m %H:%M"
