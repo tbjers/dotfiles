@@ -37,16 +37,22 @@ packages:
       - direnv
       - eza
       - fzf
+      - ggshield
       - gh
       - git
+      - golang
+      - golangci-lint
       - htop
       - jq
       - lazygit
       - neofetch
       - neovim
+      - pre-commit
       - ripgrep
       - rsync
       - tree-sitter
+      - yamlfmt
+      - yamllint
       - yq
       - zellij
       - zoxide

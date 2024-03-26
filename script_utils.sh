@@ -21,10 +21,15 @@ verlt() {
   ! verlte "$2" "$1"
 }
 
-join_by() { local IFS="$1"; shift; echo "$*"; }
+join_by() {
+  local IFS="$1"
+  shift
+  echo "$*"
+}
 
 osid() {
   if [ -f /etc/os-release ]; then
+    # shellcheck disable=SC1091
     source /etc/os-release
     join_by '-' "${ID}" "${VARIANT_ID}"
   else
