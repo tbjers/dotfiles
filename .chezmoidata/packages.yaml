@@ -41,6 +41,7 @@ packages:
       - git
       - htop
       - jq
+      - lazygit
       - neofetch
       - neovim
       - ripgrep

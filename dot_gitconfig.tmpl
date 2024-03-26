@@ -9,6 +9,8 @@
 #
 # {{- /* This file supports Go's text/template language. */}}
 
+{{ $gh := findOneExecutable (list "gh") (list "bin" ".local/bin" "/home/linuxbrew/.linuxbrew/bin") -}}
+
 [init]
   defaultBranch = main
 
@@ -29,11 +31,11 @@
 
 [credential "https://github.com"]
   helper =
-  helper = !/usr/bin/gh auth git-credential
+  helper = !{{ $gh }} auth git-credential
 
 [credential "https://gist.github.com"]
   helper =
-  helper = !/usr/bin/gh auth git-credential
+  helper = !{{ $gh }} auth git-credential
 
 [color]
   ui = true
