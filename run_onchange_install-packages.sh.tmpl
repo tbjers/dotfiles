@@ -1,43 +1,82 @@
 #!/usr/bin/env bash
+# -*-mode:bash-*- vim:ft=bash
+# -*-mode:go-template-*- vim:ft=bash
+
+# ~/.local/share/chezmoi/run_onchange_install-packages.sh.tmpl
+# =============================================================================
+# Install packages based on the system.{{- /*
+#
+# This file supports Go's text/template language. */}}
 
 source "{{ .chezmoi.sourceDir }}/script_utils.sh"
 
-{{ if eq .osid "darwin" -}}
+{{ $osid := .osid }}
+
+{{ with .packages -}}
+
+{{ if eq $osid "darwin" -}}
 # Mac OS X installation of Homebrew packages
 echo "${green}Installing Homebrew packages${reset}"
+{{ with .darwin -}}
 brew bundle --no-lock --file=/dev/stdin <<EOF
-{{ range .packages.darwin.brews -}}
+{{ range .brews -}}
 brew {{ . | quote }}
 {{ end -}}
-{{ range .packages.darwin.casks -}}
+{{ range .casks -}}
 cask {{ . | quote }}
 {{ end -}}
 EOF
-{{ else if eq .osid "fedora-workstation" -}}
-# Fedora installation of packages
-{{ if hasKey .packages "linux_fedora" -}}
+{{ end -}}
+
+{{ else if eq $osid "fedora-silverblue" -}}
+{{ if hasKey . "fedora_silverblue" -}}
+# Fedora Silverblue installation of Homebrew packages
+echo "${green}Installing Homebrew packages${reset}"
+{{ with .fedora_silverblue -}}
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ if hasKey . "brews" -}}
+{{ range .brews -}}
+brew {{ . | quote }}
+{{ end -}}
+{{ end -}}
+{{ if hasKey . "casks" -}}
+{{ range .casks -}}
+cask {{ . | quote }}
+{{ end -}}
+{{ end -}}
+EOF
+{{ end -}}
+{{ end -}}
+
+{{ else if eq $osid "fedora-workstation" -}}
+
+# Fedora Workstation installation of packages
+{{ if hasKey . "fedora_workstation" -}}
+{{ with .fedora_workstation -}}
 sudo dnf --quiet install -y dnf-plugins-core
-{{ if hasKey .packages.linux_fedora "repos" -}}
+{{ if hasKey . "repos" -}}
 echo "${green}Adding external repositories${reset}"
-{{ range .packages.linux_fedora.repos -}}
+{{ range .repos -}}
 sudo dnf --quiet config-manager --add-repo {{ . | quote }}
 {{ end -}}
 {{ end -}}
-{{ if hasKey .packages.linux_fedora "copr" -}}
+{{ if hasKey . "copr" -}}
 echo "${green}Adding Fedora COPR repositories${reset}"
-{{ range .packages.linux_fedora.copr -}}
+{{ range .copr -}}
 sudo dnf --quiet copr enable {{ . | quote }} -y &> /dev/null
 {{ end -}}
 {{ end -}}
-{{ if hasKey .packages.linux_fedora "groups" -}}
+{{ if hasKey . "groups" -}}
 echo "${green}Installing Fedora groups${reset}"
-{{ range .packages.linux_fedora.groups -}}
+{{ range .groups -}}
 sudo dnf --quiet group install -y {{ . | quote }}
 {{ end -}}
 {{ end -}}
-{{ if hasKey .packages.linux_fedora "packages" -}}
+{{ if hasKey . "packages" -}}
 echo "${green}Installing Fedora packages${reset}"
-sudo dnf --quiet install -y {{ .packages.linux_fedora.packages | join " " }}
+sudo dnf --quiet install -y {{ .packages | join " " }}
+{{ end -}}
+{{ end -}}
 {{ end -}}
 {{ end -}}
 {{ end -}}

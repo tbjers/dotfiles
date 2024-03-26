@@ -27,7 +27,30 @@ packages:
       - google-chrome
       - slack
 
-  linux_fedora:
+  fedora_silverblue:
+    brews:
+      - atuin
+      - bash-preexec
+      - bat
+      - btop
+      - cheat
+      - direnv
+      - eza
+      - fzf
+      - gh
+      - git
+      - htop
+      - jq
+      - neofetch
+      - neovim
+      - ripgrep
+      - rsync
+      - tree-sitter
+      - yq
+      - zellij
+      - zoxide
+
+  fedora_workstation:
     copr:
       - atim/bottom
       - atim/lazygit
