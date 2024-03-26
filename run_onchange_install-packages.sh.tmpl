@@ -13,7 +13,7 @@ brew {{ . | quote }}
 cask {{ . | quote }}
 {{ end -}}
 EOF
-{{ else if eq .osid "linux-fedora" -}}
+{{ else if eq .osid "fedora-workstation" -}}
 # Fedora installation of packages
 {{ if hasKey .packages "linux_fedora" -}}
 sudo dnf --quiet install -y dnf-plugins-core

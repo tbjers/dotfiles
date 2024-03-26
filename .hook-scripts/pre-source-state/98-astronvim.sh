@@ -5,6 +5,15 @@ BASE_DIR=".local/share/chezmoi"
 # shellcheck disable=SC1091
 source "${BASE_DIR}/script_utils.sh"
 
+case "$(osid)" in
+"fedora-silverblue")
+  if [ ! -f ~/.local/bin/nvim ]; then
+    wget https://github.com/neovim/neovim/releases/latest/download/nvim.appimage -O ~/.local/bin/nvim &&
+      chmod u+x ~/.local/bin/nvim
+  fi
+  ;;
+esac
+
 if [ -f "${HOME}/.config/nvim/config.ld" ]; then
   # shellcheck disable=SC2154
   echo "${green}Updating AstroNvim${reset}"

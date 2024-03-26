@@ -20,3 +20,14 @@ verlte() {
 verlt() {
   ! verlte "$2" "$1"
 }
+
+join_by() { local IFS="$1"; shift; echo "$*"; }
+
+osid() {
+  if [ -f /etc/os-release ]; then
+    source /etc/os-release
+    join_by '-' "${ID}" "${VARIANT_ID}"
+  else
+    uname -s
+  fi
+}

@@ -1,0 +1,31 @@
+# -*-mode:just-*- vim:ft=just
+# -*-mode:go-template-*- vim:ft=just
+
+# ~/.local/share/chezmoi/dot_justfile.tmpl
+# =============================================================================
+# Default commands.{{- /*
+#
+# This file supports Go's text/template language. */}}
+
+{{ if eq .osid "fedora-silverblue" -}}
+
+import "/usr/share/ublue-os/justfile"
+
+{{ else if eq .osid "fedora-workstation" -}}
+
+# Update system packages
+update:
+    sudo dnf update -y
+    flatpak update --noninteractive
+
+# Fix the GPG card service
+fix-gpg:
+    sudo systemctl restart pcscd.service
+    gpg --card-status
+
+{{ end -}}
+
+[private]
+default:
+    @just --unstable --list
+

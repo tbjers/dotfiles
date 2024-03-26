@@ -27,6 +27,9 @@
 {{- if hasKey .chezmoi.osRelease "id" -}}
 {{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
 {{- end -}}
+{{- if hasKey .chezmoi.osRelease "variant" -}}
+{{-   $osid = printf "%s-%s" .chezmoi.osRelease.id .chezmoi.osRelease.variant -}}
+{{- end -}}
 
 format = "json"
 color = "on"
@@ -37,8 +40,9 @@ progress = true
     email = {{ $email | quote }}
     name = {{ $name | quote }}
     signingkey = {{ $signingkey | quote }}
-    osid = {{ $osid | quote }}
+    osid = {{ $osid | lower | quote }}
     colortheme = {{ $colortheme | quote }}
+    lazygit = '{{ (gitHubLatestRelease "jesseduffield/lazygit").TagName | replace "v" "" }}'
 
 [diff]
     exclude = ["scripts"]
