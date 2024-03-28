@@ -28,26 +28,6 @@ cask {{ . | quote }}
 EOF
 {{ end -}}
 
-{{ else if eq $osid "fedora-silverblue" -}}
-{{ if hasKey . "fedora_silverblue" -}}
-# Fedora Silverblue installation of Homebrew packages
-echo "${green}Installing Homebrew packages${reset}"
-{{ with .fedora_silverblue -}}
-brew bundle --no-lock --file=/dev/stdin <<EOF
-{{ if hasKey . "brews" -}}
-{{ range .brews -}}
-brew {{ . | quote }}
-{{ end -}}
-{{ end -}}
-{{ if hasKey . "casks" -}}
-{{ range .casks -}}
-cask {{ . | quote }}
-{{ end -}}
-{{ end -}}
-EOF
-{{ end -}}
-{{ end -}}
-
 {{ else if eq $osid "fedora-workstation" -}}
 
 # Fedora Workstation installation of packages

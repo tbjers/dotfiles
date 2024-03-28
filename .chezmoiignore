@@ -5,3 +5,4 @@ README.md
 .pre-commit-config.yaml
 script_utils.sh
 .hook-scripts
+install.sh

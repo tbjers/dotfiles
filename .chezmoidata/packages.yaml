@@ -7,9 +7,16 @@ packages:
       - babel
       - bat
       - bottom
+      - cheat
+      - direnv
       - eza
+      - fzf
+      - ggshield
+      - gh
       - git
       - gnupg
+      - golang
+      - golangci-lint
       - jq
       - lazygit
       - mc
@@ -18,44 +25,17 @@ packages:
       - ripgrep
       - starship
       - tree-sitter
+      - yamlfmt
+      - yamllint
       - yq
       - zellij
+      - zoxide
     casks:
       - 1password
       - 1password-cli
       - alacritty
       - google-chrome
       - slack
-
-  fedora_silverblue:
-    brews:
-      - atuin
-      - bash-preexec
-      - bat
-      - btop
-      - cheat
-      - direnv
-      - eza
-      - fzf
-      - ggshield
-      - gh
-      - git
-      - golang
-      - golangci-lint
-      - htop
-      - jq
-      - lazygit
-      - neofetch
-      - neovim
-      - pre-commit
-      - ripgrep
-      - rsync
-      - tree-sitter
-      - yamlfmt
-      - yamllint
-      - yq
-      - zellij
-      - zoxide
 
   fedora_workstation:
     copr:

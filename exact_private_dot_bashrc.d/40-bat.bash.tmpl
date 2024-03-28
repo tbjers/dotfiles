@@ -5,7 +5,7 @@
 {{- $theme := .colortheme -}}
 {{ if not (has $theme $lct) -}}
 {{- /* if the theme is not a lower case theme, we title and space it */ -}}
-{{ $theme = .colortheme | trim | title | replace "-" " " -}}
+{{ $theme = .colortheme | trim | title | replace "-" " " | replace " Pro" "" -}}
 {{ end }}
 
 if command -v bat &>/dev/null; then
