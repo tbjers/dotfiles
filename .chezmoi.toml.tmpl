@@ -15,12 +15,14 @@
 {{ $name := "" -}}
 {{ $email := "" -}}
 {{ $signingkey := "" -}}
-{{ $colortheme := "" }}
+{{ $colortheme := "" -}}
+{{ $disable_bash_history := false }}
 {{- if stdinIsATTY -}}
 {{    $name = promptStringOnce . "name" "Name" -}}
 {{    $email = promptStringOnce . "email" "Email address" -}}
 {{    $signingkey = promptStringOnce . "signingkey" "Signing key" -}}
-{{    $colortheme = promptStringOnce . "colortheme" "Color theme (nord/dracula/dracula-pro/gruvbox-dark)" }}
+{{    $colortheme = promptStringOnce . "colortheme" "Color theme (nord/dracula/dracula-pro/gruvbox-dark)" -}}
+{{    $disable_bash_history = promptBoolOnce . "disable_bash_history" "Disable bash history" }}
 {{- end -}}
 
 {{- $osid := .chezmoi.os -}}
@@ -42,6 +44,7 @@ progress = true
     signingkey = {{ $signingkey | quote }}
     osid = {{ $osid | lower | quote }}
     colortheme = {{ $colortheme | quote }}
+    disable_bash_history = {{ $disable_bash_history }}
     lazygit = '{{ (gitHubLatestRelease "jesseduffield/lazygit").TagName | replace "v" "" }}'
 
 [diff]
