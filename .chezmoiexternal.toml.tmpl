@@ -38,3 +38,20 @@
     stripComponents = 1
     [".local/share/go".checksum]
         sha256 = "{{ index $go_checksums .chezmoi.arch }}"
+
+{{ $pop_version := (gitHubLatestRelease "charmbracelet/pop").TagName | replace "v" "" }}
+[".local/bin/pop"]
+    type = "archive-file"
+    url = "https://github.com/charmbracelet/pop/releases/download/v{{ $pop_version }}/pop_{{ $pop_version }}_{{ .chezmoi.os | title }}_{{ $arch }}.tar.gz"
+    executable = true
+    refreshPeriod = "168h"
+    path = "pop"
+
+{{ $gh_version := (gitHubLatestRelease "cli/cli").TagName | replace "v" "" }}
+[".local/bin/gh"]
+    type = "archive-file"
+    url = "https://github.com/cli/cli/releases/download/v{{ $gh_version }}/gh_{{ $gh_version }}_{{ .chezmoi.os }}_{{ .chezmoi.arch }}.tar.gz"
+    executable = true
+    refreshPeriod = "168h"
+    stripComponents = 1
+    path = "bin/gh"
