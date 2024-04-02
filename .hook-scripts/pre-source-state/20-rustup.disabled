@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+BASE_DIR="${CHEZMOI_SOURCE_DIR}"
+
+# shellcheck disable=SC1091
+source "${BASE_DIR}/script_utils.sh"
+
+case "$(osid)" in
+"fedora-silverblue")
+  if [ ! -f ~/.cargo/bin/rustup ]; then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s - --no-modify-path --profile default -q -y
+  fi
+  ;;
+esac

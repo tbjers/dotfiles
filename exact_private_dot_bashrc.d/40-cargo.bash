@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -d "${HOME}/.cargo/bin" ]; then
-  PATH="${HOME}/.cargo/bin:${PATH}"
+if [ -f "${HOME}/.cargo/env" ]; then
+  # shellcheck disable=SC1091
+  source "${HOME}/.cargo/env"
 fi

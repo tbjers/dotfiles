@@ -7,11 +7,11 @@ set -Eeuo pipefail
 umask 077
 
 # shellcheck disable=SC2034
-red=$(tput setaf 1)
+red=$(tput -T xterm setaf 1)
 # shellcheck disable=SC2034
-green=$(tput setaf 2)
+green=$(tput -T xterm setaf 2)
 # shellcheck disable=SC2034
-reset=$(tput sgr0)
+reset=$(tput -T xterm sgr0)
 
 verlte() {
   printf '%s\n%s' "$1" "$2" | sort -C -V
@@ -31,7 +31,11 @@ osid() {
   if [ -f /etc/os-release ]; then
     # shellcheck disable=SC1091
     source /etc/os-release
-    join_by '-' "${ID}" "${VARIANT_ID}"
+    if [ -z ${VARIANT_ID+x} ]; then
+      echo "${ID}"
+    else
+      join_by '-' "${ID}" "${VARIANT_ID:-}"
+    fi
   else
     uname -s
   fi

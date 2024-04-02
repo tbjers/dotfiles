@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-sensors k10temp-pci-00c3 -A -j -n | jq -r '.[].Tctl.temp1_input | round' -
+command -v sensors &>/dev/null || exit 1
+
+sensors k10temp-pci-00c3 -A -j | jq -r '.[].Tctl.temp1_input | round' -

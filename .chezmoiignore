@@ -6,3 +6,4 @@ README.md
 script_utils.sh
 .hook-scripts
 install.sh
+.config/nvim/lazy-lock.json

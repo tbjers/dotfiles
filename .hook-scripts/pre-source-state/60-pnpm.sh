@@ -3,7 +3,7 @@
 # exit if pnpm is already installed
 command -v pnpm &>/dev/null && exit
 
-BASE_DIR=".local/share/chezmoi"
+BASE_DIR="${CHEZMOI_SOURCE_DIR}"
 
 # shellcheck disable=SC1091
 source "${BASE_DIR}/script_utils.sh"

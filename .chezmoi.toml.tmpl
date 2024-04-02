@@ -12,17 +12,26 @@
 #
 # This file supports Go's text/template language. */}}
 
+{{ $codespaces := env "DEVPOD" | not | not -}}
+sourceDir = {{ .chezmoi.sourceDir | quote }}
+
 {{ $name := "" -}}
 {{ $email := "" -}}
 {{ $signingkey := "" -}}
 {{ $colortheme := "" -}}
-{{ $disable_bash_history := false }}
-{{- if stdinIsATTY -}}
+{{ $disable_bash_history := false -}}
+
+{{- if $codespaces -}}
+{{    $name = "Torgny Bjers" -}}
+{{    $email = "tbjers@leaptodigital.com" -}}
+{{    $signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDEVS22aLustrLsDLdrOUJwdOB4UAz9VfmvsWCr9FZYF" -}}
+{{    $colortheme = "dracula" -}}
+{{- else if stdinIsATTY -}}
 {{    $name = promptStringOnce . "name" "Name" -}}
 {{    $email = promptStringOnce . "email" "Email address" -}}
 {{    $signingkey = promptStringOnce . "signingkey" "Signing key" -}}
 {{    $colortheme = promptStringOnce . "colortheme" "Color theme (nord/dracula/dracula-pro/gruvbox-dark)" -}}
-{{    $disable_bash_history = promptBoolOnce . "disable_bash_history" "Disable bash history" }}
+{{    $disable_bash_history = promptBoolOnce . "disable_bash_history" "Disable bash history" -}}
 {{- end -}}
 
 {{- $osid := .chezmoi.os -}}
@@ -36,16 +45,18 @@
 format = "json"
 color = "on"
 umask = 0o022
+{{- if $codespaces }}{{- else }}
 progress = true
+{{- end }}
 
 [data]
+    codespaces = {{ $codespaces }}
     email = {{ $email | quote }}
     name = {{ $name | quote }}
     signingkey = {{ $signingkey | quote }}
     osid = {{ $osid | lower | quote }}
     colortheme = {{ $colortheme | quote }}
     disable_bash_history = {{ $disable_bash_history }}
-    lazygit = '{{ (gitHubLatestRelease "jesseduffield/lazygit").TagName | replace "v" "" }}'
 
 [diff]
     exclude = ["scripts"]
@@ -61,4 +72,4 @@ progress = true
     options = ["missingkey=error"]
 
 [hooks.read-source-state.pre]
-    command = ".local/share/chezmoi/.hook-scripts/pre-source-state.sh"
+    command = "{{ .chezmoi.sourceDir }}/.hook-scripts/pre-source-state.sh"

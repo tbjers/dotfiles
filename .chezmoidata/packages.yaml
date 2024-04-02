@@ -37,6 +37,37 @@ packages:
       - google-chrome
       - slack
 
+  wolfi:
+    brews:
+      - atuin
+      - babel
+      - bat
+      - bottom
+      - cheat
+      - direnv
+      - eza
+      - fzf
+      - ggshield
+      - gh
+      - git
+      - gnupg
+      - golang
+      - golangci-lint
+      - jq
+      - lazygit
+      - lm-sensors
+      - neovim
+      - pnpm
+      - pre-commit
+      - ripgrep
+      - starship
+      - tree-sitter
+      - yamlfmt
+      - yamllint
+      - yq
+      - zellij
+      - zoxide
+
   fedora_workstation:
     copr:
       - atim/bottom

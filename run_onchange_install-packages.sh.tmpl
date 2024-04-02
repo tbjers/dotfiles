@@ -17,6 +17,7 @@ source "{{ .chezmoi.sourceDir }}/script_utils.sh"
 {{ if eq $osid "darwin" -}}
 # Mac OS X installation of Homebrew packages
 echo "${green}Installing Homebrew packages${reset}"
+{{ if hasKey . "darwin" -}}
 {{ with .darwin -}}
 brew bundle --no-lock --file=/dev/stdin <<EOF
 {{ range .brews -}}
@@ -27,6 +28,20 @@ cask {{ . | quote }}
 {{ end -}}
 EOF
 {{ end -}}
+{{ end -}}
+
+{{ else if eq $osid "linux-wolfi" -}}
+
+{{ if hasKey . "wolfi" -}}
+{{ with .wolfi -}}
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range .brews -}}
+brew {{ . | quote }}
+{{ end -}}
+EOF
+{{ end -}}
+{{ end -}}
+
 
 {{ else if eq $osid "fedora-workstation" -}}
 
