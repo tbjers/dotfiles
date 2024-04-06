@@ -7,7 +7,11 @@
 #
 # This file supports Go's text/template language. */}}
 
-{{ if eq .osid "fedora-silverblue" -}}
+[private]
+default:
+    @just --unstable --list
+
+{{ if or (eq .osid "fedora-silverblue") (eq .osid "linux-wolfi") -}}
 
 import "/usr/share/ublue-os/justfile"
 
@@ -24,7 +28,3 @@ fix-gpg:
     gpg --card-status
 
 {{ end -}}
-
-[private]
-default:
-    @just --unstable --list

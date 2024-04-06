@@ -21,7 +21,11 @@
 
 # OS-specific externals
 
-{{ if or .codespaces (eq .osid "linux-wolfi") -}}
+{{ if .codespaces -}}
+
+# Codespaces
+
+{{ else if eq .osid "linux-wolfi" -}}
 
 # Bluefin CLI
 

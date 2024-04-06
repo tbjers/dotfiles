@@ -23,9 +23,9 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 {{- if $codespaces -}}
 {{    $name = "Torgny Bjers" -}}
-{{    $email = "tbjers@leaptodigital.com" -}}
-{{    $signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDEVS22aLustrLsDLdrOUJwdOB4UAz9VfmvsWCr9FZYF" -}}
-{{    $colortheme = "dracula" -}}
+{{    $email = "torgny@bjers.org" -}}
+{{    $signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBGLUiu8RUY+EXN2/7NqoIlr3iQAuJAXAukJgzJMWu5Z" -}}
+{{    $colortheme = "gruvbox-dark" -}}
 {{- else if stdinIsATTY -}}
 {{    $name = promptStringOnce . "name" "Name" -}}
 {{    $email = promptStringOnce . "email" "Email address" -}}

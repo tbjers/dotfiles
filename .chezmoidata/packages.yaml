@@ -39,18 +39,13 @@ packages:
 
   wolfi:
     brews:
-      - atuin
       - babel
       - bat
       - bottom
       - cheat
       - direnv
-      - eza
-      - fzf
       - ggshield
       - gh
-      - git
-      - gnupg
       - golang
       - golangci-lint
       - jq
@@ -60,13 +55,11 @@ packages:
       - pnpm
       - pre-commit
       - ripgrep
-      - starship
       - tree-sitter
       - yamlfmt
       - yamllint
       - yq
       - zellij
-      - zoxide
 
   fedora_workstation:
     copr:
