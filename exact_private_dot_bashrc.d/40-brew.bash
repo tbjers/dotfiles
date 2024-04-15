@@ -6,4 +6,5 @@
 if command -v brew &>/dev/null; then
   export HOMEBREW_AUTO_UPDATE_SECS=900
   export HOMEBREW_NO_ENV_HINTS=1
+  PATH="${HOMEBREW_PREFIX}/bin:${PATH}"
 fi

@@ -4,10 +4,14 @@
 import = ["{{ .chezmoi.homeDir }}/.config/alacritty/themes/{{ .colortheme }}.toml"]
 live_config_reload = true
 
+[shell]
+program = "distrobox"
+args = ["enter", "bluefin-cli"]
+
 [bell]
 animation = "EaseOutExpo"
-color = "#ffffff"
-duration = 0
+color = "#3c3836"
+duration = 75
 
 [colors]
 draw_bold_text_with_bright_colors = true
@@ -30,20 +34,20 @@ TERM = "xterm-256color"
 
 [font]
 builtin_box_drawing = true
-size = 14
+size = 12
 
 [font.bold]
-style = "SemiBold"
+style = "Regular"
 
 [font.bold_italic]
-style = "SemiBoldItalic"
-
-[font.italic]
 style = "Italic"
 
+[font.italic]
+style = "Light Italic"
+
 [font.normal]
-family = "FantasqueSansM Nerd Font"
-style = "Regular"
+family = "JetBrains Mono"
+style = "Light"
 
 [mouse]
 hide_when_typing = true
@@ -54,7 +58,7 @@ decorations_theme_variant = "Dark"
 dynamic_padding = true
 dynamic_title = true
 opacity = 0.95
-startup_mode = "Windowed"
+startup_mode = "Maximized"
 title = "Alacritty"
 
 [window.class]
@@ -62,8 +66,8 @@ general = "Alacritty"
 instance = "Alacritty"
 
 [window.padding]
-x = 6
-y = 6
+x = 4
+y = 4
 
 [scrolling]
 history = 100000

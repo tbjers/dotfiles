@@ -4,7 +4,14 @@
 
 # Specify desired highlighting theme (e.g. "TwoDark"). Run `bat --list-themes`
 # for a list of all available themes
-#--theme="TwoDark"
+{{- /* bat theme names just had to be special */ -}}
+{{- $lct := list "gruvbox-dark" "gruvbox-light" "ansi" "base16" "base16-256" "zenburn" -}}
+{{- $theme := .colortheme -}}
+{{ if not (has $theme $lct) -}}
+{{- /* if the theme is not a lower case theme, we title and space it */ -}}
+{{ $theme = .colortheme | trim | title | replace "-" " " | replace " Pro" "" -}}
+{{ end }}
+--theme="{{$theme}}"
 
 # Enable this to use italic text on the terminal. This is not supported on all
 # terminal emulators (like tmux, by default):
@@ -16,7 +23,7 @@
 # Uncomment the following line if you are using less version >= 551 and want to
 # enable mouse scrolling support in `bat` when running inside tmux. This might
 # disable text selection, unless you press shift.
-#--pager="less --RAW-CONTROL-CHARS --quit-if-one-screen --mouse"
+--pager="less --RAW-CONTROL-CHARS --quit-if-one-screen --mouse"
 
 # Syntax mappings: map a certain filename pattern to a language.
 #   Example 1: use the C++ syntax for Arduino .ino files

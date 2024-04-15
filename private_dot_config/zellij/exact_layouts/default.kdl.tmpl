@@ -1,13 +1,34 @@
 // -*-mode:kdl-*- vim:ft=kdl.gotexttmpl
 layout {
+    swap_tiled_layout name="vertical" {
+        tab max_panes=5 {
+            pane split_direction="vertical" {
+                pane
+                pane { children; }
+            }
+        }
+        tab max_panes=8 {
+            pane split_direction="vertical" {
+                pane { children; }
+                pane { pane; pane; pane; pane; }
+            }
+        }
+        tab max_panes=12 {
+            pane split_direction="vertical" {
+                pane { children; }
+                pane { pane; pane; pane; pane; }
+                pane { pane; pane; pane; pane; }
+            }
+        }
+    }
+
     default_tab_template {
         children
         pane size=1 borderless=true {
             plugin location="file:~/.local/bin/zjstatus.wasm" {
-                format_left   "{mode} #[fg=magenta,bold]{session}"
-                format_center "{tabs}"
-                format_right  "{command_git_branch} #[fg=blue]CPU {command_cpu} #[fg=green]GPU {command_gpu} {datetime}"
-                // format_right  "{command_git_branch} #[fg=blue]CPU {command_cpu} {datetime}"
+                format_left   "{mode}#[fg=magenta,bold]{tabs}"
+                format_center ""
+                format_right  "#[fg=blue]CPU {command_cpu} #[fg=green]GPU {command_gpu} {datetime}"
                 format_space  ""
 
                 border_enabled  "false"
@@ -17,38 +38,46 @@ layout {
 
                 hide_frame_for_single_pane "true"
 
-                mode_normal  "#[bg=magenta] "
-                mode_tmux    "#[bg=red] "
+                mode_normal       "#[bg=magenta] "
+                mode_locked       "#[bg=green,bold,fg=#000000] 󰌾 "
+                mode_resize       "#[bg=magenta,fg=#000000] 󰩨 "
+                mode_pane         "#[bg=magenta,fg=#000000]  "
+                mode_tab          "#[bg=magenta,fg=#000000] 󰓩 "
+                mode_scroll       "#[bg=magenta,fg=#000000]  "
+                mode_enter_search "#[bg=magenta,fg=#000000]  "
+                mode_search       "#[bg=magenta,fg=#000000]  "
+                mode_rename_tab   "#[bg=magenta,fg=#000000] 󰑕 "
+                mode_rename_pane  "#[bg=magenta,fg=#000000] 󰑕 "
+                mode_session      "#[bg=magenta,fg=#000000] 󱑒 "
+                mode_move         "#[bg=magenta,fg=#000000] 󰆾 "
+                mode_prompt       "#[bg=magenta,fg=#000000] 󰗧 "
+                mode_tmux         "#[bg=red,bold,fg=#000000] tmux "
 
                 tab_normal            "#[fg=white] {name} "
                 tab_normal_fullscreen "#[fg=white] {name} {fullscreen_indicator}"
                 tab_normal_sync       "#[fg=white] {name} {sync_indicator}"
-                tab_active            "#[fg=yellow,bold,italic] {name} "
-                tab_active_fullscreen "#[fg=yellow,bold,italic] {name} {fullscreen_indicator}"
-                tab_active_fullscreen "#[fg=yellow,bold,italic] {name} {sync_indicator}"
+
+                tab_active            "#[bg=black,fg=yellow,bold,italic] {name} "
+                tab_active_fullscreen "#[bg=black,fg=yellow,bold,italic] {name} {fullscreen_indicator}"
+                tab_active_sync       "#[bg=black,fg=yellow,bold,italic] {name} {sync_indicator}"
 
                 // indicators
                 tab_sync_indicator       "<> "
                 tab_fullscreen_indicator "[] "
                 tab_floating_indicator   "⬚ "
 
-                command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
-                command_git_branch_format      "#[fg=blue] {stdout} "
-                command_git_branch_interval    "10"
-                command_git_branch_rendermode  "static"
+                command_cpu_command    "{{ .chezmoi.homeDir }}/.local/bin/cpu-temp.sh"
+                command_cpu_format     "#[fg=blue,bold]{stdout}°C"
+                command_cpu_rendermode "static"
+                command_cpu_interval   "3"
 
-                command_cpu_command     "{{ .chezmoi.homeDir }}/.local/bin/cpu-temp.sh"
-                command_cpu_format      "#[fg=blue,bold]{stdout}°C"
-                command_cpu_rendermode  "static"
-                command_cpu_interval    "3"
+                command_gpu_command    "nvidia-smi --query-gpu temperature.gpu --format='csv,noheader,nounits'"
+                command_gpu_format     "#[fg=green,bold]{stdout}°C"
+                command_gpu_rendermode "static"
+                command_gpu_interval   "3"
 
-                command_gpu_command     "nvidia-smi --query-gpu temperature.gpu --format='csv,noheader,nounits'"
-                command_gpu_format      "#[fg=green,bold]{stdout}°C"
-                command_gpu_rendermode  "static"
-                command_gpu_interval    "3"
-
-                datetime        "#[fg=white] {format} "
-                datetime_format "%a %d/%m %H:%M"
+                datetime          "#[fg=white] {format} "
+                datetime_format   "%a %m/%d %H:%M"
                 datetime_timezone "America/New_York"
             }
         }
