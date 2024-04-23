@@ -39,7 +39,6 @@ packages:
 
   wolfi:
     brews:
-      - babel
       - bat
       - bottom
       - cheat
