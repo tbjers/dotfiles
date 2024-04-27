@@ -5,8 +5,15 @@
 -- Set up custom filetypes
 vim.filetype.add {
   extension = {
+    kdl = "kdl",
     dbml = "dbml",
     hujson = "jsonc",
     tfvars = "terraform",
+  },
+  filename = {
+    Justfile = "just",
+  },
+  pattern = {
+    [".devcontainer/devcontainer.json"] = "jsonc",
   },
 }
