@@ -49,6 +49,9 @@ umask = 0o022
 progress = true
 {{- end }}
 
+[add]
+    secrets = "error"
+
 [data]
     codespaces = {{ $codespaces }}
     email = {{ $email | quote }}
@@ -61,15 +64,25 @@ progress = true
 [diff]
     exclude = ["scripts"]
 
+[github]
+    refreshPeriod = "300m"
+
 [merge]
     command = "nvim"
     args = ["-d"]
+
+[onepassword]
+    mode = "service"
+    prompt = false
 
 [status]
     exclude = ["scripts"]
 
 [template]
     options = ["missingkey=error"]
+
+[update]
+    apply = false
 
 [hooks.read-source-state.pre]
     command = "{{ .chezmoi.sourceDir }}/.hook-scripts/pre-source-state.sh"

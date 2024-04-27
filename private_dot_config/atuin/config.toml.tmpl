@@ -33,7 +33,7 @@ update_check = true
 
 ## address of the sync server
 # sync_address = "https://api.atuin.sh"
-sync_address = {{ onepasswordRead "op://Private/atuin/sync_address" | quote }}
+sync_address = {{ onepasswordRead "op://chezmoi/atuin/password" | quote }}
 
 ## how often to sync history. note that this is only triggered when a command
 ## is ran, so sync intervals may well be longer
