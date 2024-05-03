@@ -39,10 +39,10 @@ packages:
 
   wolfi:
     brews:
-      - bat
       - bottom
       - cheat
       - direnv
+      - fzf
       - ggshield
       - gh
       - golang
@@ -51,7 +51,6 @@ packages:
       - lazygit
       - lm-sensors
       - neovim
-      - pnpm
       - pre-commit
       - ripgrep
       - tree-sitter

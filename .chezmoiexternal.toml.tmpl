@@ -29,6 +29,14 @@
 
 # Bluefin CLI
 
+{{ $bat_version := (gitHubLatestRelease "sharkdp/bat").TagName -}}
+[".local/bin/bat"]
+    type = "archive-file"
+    url = "https://github.com/sharkdp/bat/releases/download/{{ $bat_version }}/bat-{{ $bat_version }}-{{ $arch }}-unknown-{{ .chezmoi.os }}-gnu.tar.gz"
+    executable = true
+    refreshPeriod = "168h"
+    path = "bat-{{ $bat_version }}-{{ $arch }}-unknown-{{ .chezmoi.os }}-gnu/bat"
+
 {{ else if has $osid (list "fedora-silverblue" "fedora-workstation") -}}
 
 # Fedora Workstation / Silverblue

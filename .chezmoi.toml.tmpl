@@ -45,9 +45,7 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
 format = "json"
 color = "on"
 umask = 0o022
-{{- if $codespaces }}{{- else }}
-progress = true
-{{- end }}
+progress = false
 
 [add]
     secrets = "error"
@@ -70,10 +68,6 @@ progress = true
 [merge]
     command = "nvim"
     args = ["-d"]
-
-[onepassword]
-    mode = "service"
-    prompt = false
 
 [status]
     exclude = ["scripts"]
