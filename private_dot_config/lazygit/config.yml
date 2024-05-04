@@ -1,0 +1,82 @@
+---
+gui:
+  scrollHeight: 2
+  mainPanelSplitMode: "flexible"
+  enlargedSideViewLocation: "left"
+  language: "en"
+  nerdFontsVersion: "3"
+
+git:
+  paging:
+    colorArg: "always"
+    pager: "delta --dark --paging=never"
+  commit:
+    signoff: false
+    autoWrapCommitMessage: true
+    autoWrapWidth: 72
+
+customCommands:
+  - key: "v"
+    context: "localBranches"
+    loadingText: "Checking out GitHub Pull Request..."
+    command: "gh pr checkout {{.Form.PullRequestNumber}}"
+    prompts:
+      - type: "menuFromCommand"
+        title: "Which PR do you want to check out?"
+        key: "PullRequestNumber"
+        command: >-
+          gh pr list --json number,title,headRefName,updatedAt --template '{{`{{range .}}{{printf "#%v: %s - %s (%s)" .number .title .headRefName
+          (timeago .updatedAt)}}{{end}}`}}'
+        filter: '#(?P<number>[0-9]+): (?P<title>.+) - (?P<ref_name>[^ ]+).*'
+        valueFormat: '{{.number}}'
+        labelFormat: >-
+          {{"#" | black | bold}}{{.number | white | bold}} {{.title | yellow | bold}}{{" [" | black | bold}}{{.ref_name | green}}{{"]" | black
+          | bold}}
+  - key: "n"
+    context: "localBranches"
+    description: "Create new conventional commits branch"
+    loadingText: "Creating branch"
+    command: |
+      git checkout -b {{(printf "%s/%s" .Form.BranchType .Form.BranchName) | quote}}
+    prompts:
+      - type: "menu"
+        title: "Type of change"
+        key: "BranchType"
+        options:
+          - name: "build"
+            description: "build system/external deps"
+            value: "build"
+          - name: "chore"
+            description: "trivial updates and maintenance"
+            value: "chore"
+          - name: "ci"
+            description: "ci/cd configuration changes"
+            value: "ci"
+          - name: "docs"
+            description: "documentation-only changes"
+            value: "docs"
+          - name: "feat"
+            description: "new feature"
+            value: "feat"
+          - name: "fix"
+            description: "bug fix"
+            value: "fix"
+          - name: "perf"
+            description: "performance improvement"
+            value: "perf"
+          - name: "refactor"
+            description: "neither fixes a bug nor adds a feature"
+            value: "refactor"
+          - name: "style"
+            description: "formatting and comments"
+            value: "style"
+          - name: "test"
+            description: "add or update tests"
+            value: "test"
+      - type: "input"
+        title: "Branch name [a-z0-9_-]+"
+        key: "BranchName"
+      - type: "confirm"
+        title: "Create branch?"
+        body: >-
+          Do you want to create branch {{(printf "%s/%s" .Form.BranchType .Form.BranchName)}} from local branch {{.SelectedLocalBranch.Name}}?
