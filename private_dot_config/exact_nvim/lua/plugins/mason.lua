@@ -12,9 +12,6 @@ return {
         "helm_ls",
         "jsonls",
         "lua_ls",
-        "marksman",
-        "svelte",
-        "tailwindcss",
         "terraformls",
         "tsserver",
         -- add more arguments for adding more language servers
@@ -30,8 +27,6 @@ return {
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
         "golangci-lint",
         "hclfmt",
-        "markdownlint",
-        "mdformat",
         "shellcheck",
         "shfmt",
         "tflint",

@@ -6,4 +6,7 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.pack.markdown" },
+  { import = "astrocommunity.pack.svelte" },
+  { import = "astrocommunity.pack.tailwindcss" },
 }
