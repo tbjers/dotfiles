@@ -1,0 +1,25 @@
+EDITOR=nvim
+VISUAL="$EDITOR"
+
+# add custom completions
+FPATH=$HOME/.zsh_completions.d:$FPATH
+autoload -Uz compinit
+compinit
+
+# Lazy-load antidote and generate the static load file only when needed
+zsh_plugins=${ZDOTDIR:-$HOME}/.zsh_plugins
+if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
+  (
+if [ -d "/opt/homebrew/share/antidote" ]; then
+      source /opt/homebrew/share/antidote/antidote.zsh
+    else
+      source /usr/local/share/antidote/antidote.zsh
+    fi
+antidote bundle <${zsh_plugins}.txt >${zsh_plugins}.zsh
+  )
+fi
+source ${zsh_plugins}.zsh
+
+eval "$(starship init zsh)"
+
+# -*-mode: zsh;-*- vim:ft=zsh:

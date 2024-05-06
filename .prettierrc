@@ -1,0 +1,15 @@
+{
+  "printWidth": 80,
+  "trailingComma": "es5",
+  "proseWrap": "always",
+  "overrides": [
+    {
+      "files": [
+        "*.jsonc"
+      ],
+      "options": {
+        "trailingComma": "none"
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+# always sourced first, stuff here is also available in X applications
+
+# pull in my zsh environmental stuff
+CUSTOM=$HOME
+for config_file ($CUSTOM/.zshenv.d/*.zsh(N)); do
+    # (N) is setting NULL_GLOB so we don't complain if there are no matches.
+    source $config_file
+done
+unset config_file
+
+# -*-mode: zsh;-*- vim:ft=zsh:

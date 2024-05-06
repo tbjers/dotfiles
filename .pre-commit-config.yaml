@@ -10,6 +10,11 @@ default_install_hook_types:
   - pre-commit
   - commit-msg
 repos:
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.40.0
+    hooks:
+      - id: markdownlint
+        stages: [commit]
   - repo: https://github.com/compilerla/conventional-pre-commit
     rev: v3.1.0
     hooks:
@@ -23,7 +28,10 @@ repos:
         exclude: |
           (?x)^(
             exact_private_dot_bashrc.d/05-complete-alias.bash|
-            exact_private_dot_bashrc.d/10-bash-preexec.bash
+            exact_private_dot_bashrc.d/10-bash-preexec.bash|
+            exact_private_dot_zprofile.d/.*|
+            exact_private_dot_zshenv.d/.*|
+            exact_private_dot_zshrc.d/.*
           )$
         stages: [commit]
   - repo: https://github.com/shellcheck-py/shellcheck-py
@@ -33,7 +41,10 @@ repos:
         exclude: |
           (?x)^(
             exact_private_dot_bashrc.d/05-complete-alias.bash|
-            exact_private_dot_bashrc.d/10-bash-preexec.bash
+            exact_private_dot_bashrc.d/10-bash-preexec.bash|
+            exact_private_dot_zprofile.d/.*|
+            exact_private_dot_zshenv.d/.*|
+            exact_private_dot_zshrc.d/.*
           )$
         stages: [commit]
   - repo: https://github.com/google/yamlfmt
