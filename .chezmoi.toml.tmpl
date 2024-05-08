@@ -31,8 +31,9 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
 {{    $email = promptStringOnce . "email" "Email address" -}}
 {{    $signingkey = promptStringOnce . "signingkey" "Signing key" -}}
 {{    $themes := list "gruvbox-dark" "catppuccin-mocha" "eldritch" "dracula" "dracula-pro" -}}
-{{    $colortheme = promptChoiceOnce . "colortheme" "Color theme" $themes -}}
-{{    $disable_bash_history = promptBoolOnce . "disable_bash_history" "Disable bash history" -}}
+{{    $defaultColorTheme := "gruvbox-dark" -}}
+{{    $colortheme = promptChoiceOnce . "colortheme" "Color theme" $themes $defaultColorTheme -}}
+{{    $disable_bash_history = promptBoolOnce . "disable_bash_history" "Disable bash history" false -}}
 {{- end -}}
 
 {{- $osid := .chezmoi.os -}}

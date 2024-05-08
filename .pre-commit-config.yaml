@@ -29,6 +29,7 @@ repos:
           (?x)^(
             exact_private_dot_bashrc.d/05-complete-alias.bash|
             exact_private_dot_bashrc.d/10-bash-preexec.bash|
+            exact_private_dot_bashrc.d/20-.*.bash|
             exact_private_dot_zprofile.d/.*|
             exact_private_dot_zshenv.d/.*|
             exact_private_dot_zshrc.d/.*
@@ -42,6 +43,7 @@ repos:
           (?x)^(
             exact_private_dot_bashrc.d/05-complete-alias.bash|
             exact_private_dot_bashrc.d/10-bash-preexec.bash|
+            exact_private_dot_bashrc.d/20-.*.bash|
             exact_private_dot_zprofile.d/.*|
             exact_private_dot_zshenv.d/.*|
             exact_private_dot_zshrc.d/.*
