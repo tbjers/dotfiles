@@ -30,7 +30,8 @@ sourceDir = {{ .chezmoi.sourceDir | quote }}
 {{    $name = promptStringOnce . "name" "Name" -}}
 {{    $email = promptStringOnce . "email" "Email address" -}}
 {{    $signingkey = promptStringOnce . "signingkey" "Signing key" -}}
-{{    $colortheme = promptStringOnce . "colortheme" "Color theme (eldritch/nord/dracula/dracula-pro/gruvbox-dark)" -}}
+{{    $themes := list "gruvbox-dark" "catppuccin-mocha" "eldritch" "dracula" "dracula-pro" -}}
+{{    $colortheme = promptChoiceOnce . "colortheme" "Color theme" $themes -}}
 {{    $disable_bash_history = promptBoolOnce . "disable_bash_history" "Disable bash history" -}}
 {{- end -}}
 
