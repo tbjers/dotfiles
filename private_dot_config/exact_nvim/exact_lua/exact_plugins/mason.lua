@@ -9,6 +9,7 @@ return {
       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
         "ansiblels",
         "bashls",
+        "denols",
         "helm_ls",
         "jsonls",
         "lua_ls",
