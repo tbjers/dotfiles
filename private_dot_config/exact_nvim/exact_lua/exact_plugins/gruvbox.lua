@@ -9,7 +9,18 @@ return {
       transparent_mode = true,
       terminal_colors = true,
       contrast = "",
+      italic = {
+        strings = true,
+        comments = true,
+        folds = true,
+        emphasis = true,
+        operators = false,
+      },
+      bold = true,
+      inverse = false,
       invert_tabline = true,
+      invert_selection = false,
+      strikethrough = true,
       undercurl = true,
       overrides = {
         NotifyBackground = { bg = palette.dark0 },
