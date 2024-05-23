@@ -53,13 +53,28 @@ packages:
       - lm-sensors
       - marksman
       - neovim
-      - pre-commit
       - ripgrep
-      - tree-sitter
       - yamlfmt
       - yamllint
       - yq
       - zellij
+
+  ubuntu:
+    packages:
+      - btop
+      - direnv
+      - eza
+      - fzf
+      - git-delta
+      - libsensors-dev
+      - lm-sensors
+      - neovim
+      - pre-commit
+      - python3
+      - python3-pip
+      - ripgrep
+      - yamllint
+      - zoxide
 
   fedora_workstation:
     copr:

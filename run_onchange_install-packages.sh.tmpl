@@ -73,6 +73,20 @@ sudo dnf --quiet install -y {{ .packages | join " " }}
 {{ end -}}
 {{ end -}}
 {{ end -}}
+
+
+{{ else if eq $osid "linux-ubuntu" -}}
+
+# Fedora Workstation installation of packages
+{{ if hasKey . "ubuntu" -}}
+{{ with .ubuntu -}}
+{{ if hasKey . "packages" -}}
+echo "${green}Installing Ubuntu packages${reset}"
+sudo apt -qqq install -y {{ .packages | join " " }}
+{{ end -}}
+{{ end -}}
+{{ end -}}
+
 {{ end -}}
 {{ end -}}
 

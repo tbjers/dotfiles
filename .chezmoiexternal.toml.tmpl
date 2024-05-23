@@ -45,6 +45,33 @@
     refreshPeriod = "168h"
     path = "yamlfmt"
 
+{{ else if eq .osid "linux-ubuntu" -}}
+
+# Ubuntu
+
+[".local/bin/zellij"]
+    type = "archive-file"
+    url = "https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz"
+    executable = true
+    refreshPeriod = "168h"
+    path = "zellij"
+
+{{ $bat_version := (gitHubLatestRelease "sharkdp/bat").TagName -}}
+[".local/bin/bat"]
+    type = "archive-file"
+    url = "https://github.com/sharkdp/bat/releases/download/{{ $bat_version }}/bat-{{ $bat_version }}-{{ $arch }}-unknown-{{ .chezmoi.os }}-gnu.tar.gz"
+    executable = true
+    refreshPeriod = "168h"
+    path = "bat-{{ $bat_version }}-{{ $arch }}-unknown-{{ .chezmoi.os }}-gnu/bat"
+
+{{ $yamlfmt_version := (gitHubLatestRelease "google/yamlfmt").TagName | replace "v" "" -}}
+[".local/bin/yamlfmt"]
+    type = "archive-file"
+    url = "https://github.com/google/yamlfmt/releases/download/v{{ $yamlfmt_version }}/yamlfmt_{{ $yamlfmt_version }}_{{ .chezmoi.os | title }}_{{ $arch }}.tar.gz"
+    executable = true
+    refreshPeriod = "168h"
+    path = "yamlfmt"
+
 {{ else if has $osid (list "fedora-silverblue" "fedora-workstation") -}}
 
 # Fedora Workstation / Silverblue
