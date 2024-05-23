@@ -66,6 +66,7 @@ packages:
       - eza
       - fzf
       - git-delta
+      - jq
       - libsensors-dev
       - lm-sensors
       - neovim
