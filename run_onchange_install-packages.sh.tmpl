@@ -82,7 +82,7 @@ sudo dnf --quiet install -y {{ .packages | join " " }}
 {{ with .ubuntu -}}
 {{ if hasKey . "packages" -}}
 echo "${green}Installing Ubuntu packages${reset}"
-sudo apt -qqq install -y {{ .packages | join " " }}
+sudo apt-get install -y {{ .packages | join " " }} &>/dev/null
 {{ end -}}
 {{ end -}}
 {{ end -}}
