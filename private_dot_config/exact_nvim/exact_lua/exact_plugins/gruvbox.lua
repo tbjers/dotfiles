@@ -8,7 +8,7 @@ return {
     require("gruvbox").setup {
       transparent_mode = true,
       terminal_colors = true,
-      contrast = "",
+      contrast = "hard",
       italic = {
         strings = true,
         comments = true,
@@ -17,8 +17,8 @@ return {
         operators = false,
       },
       bold = true,
-      inverse = false,
-      invert_tabline = true,
+      inverse = true,
+      invert_tabline = false,
       invert_selection = false,
       strikethrough = true,
       undercurl = true,
