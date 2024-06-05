@@ -22,6 +22,7 @@ return {
       invert_selection = false,
       strikethrough = true,
       undercurl = true,
+      underline = true,
       overrides = {
         NotifyBackground = { bg = palette.dark0 },
         CursorLine = { bg = palette.dark0 },
